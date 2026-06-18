@@ -26,7 +26,15 @@ h1 {
   text-align: center;
 }
 
+/* CONTAINER PRINCIPAL */
+.main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* PRODUTOS */
 .container {
+  flex: 3;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
@@ -50,15 +58,14 @@ button {
   border-radius: 5px;
 }
 
+/* CARRINHO (AGORA LATERAL FIXO SEM TAPAR) */
 .carrinho {
-  position: fixed;
-  top: 20px;
-  right: 20px;
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
   background: #111;
-  border: 1px solid #333;
+  border-left: 1px solid #333;
   padding: 15px;
-  width: 260px;
-  border-radius: 10px;
 }
 
 .finalizar {
@@ -75,34 +82,40 @@ button {
   <h1>SIGA-ME STORE</h1>
 </header>
 
-<div class="container">
+<div class="main">
 
-  <div class="produto">
-    <h2>Camiseta Street</h2>
-    <p>R$ 59,90</p>
-    <button onclick="add('Camiseta Street', 59.9)">Adicionar</button>
+  <!-- PRODUTOS -->
+  <div class="container">
+
+    <div class="produto">
+      <h2>Camiseta Street</h2>
+      <p>R$ 59,90</p>
+      <button onclick="add('Camiseta Street', 59.9)">Adicionar</button>
+    </div>
+
+    <div class="produto">
+      <h2>Boné Urbano</h2>
+      <p>R$ 39,90</p>
+      <button onclick="add('Boné Urbano', 39.9)">Adicionar</button>
+    </div>
+
+    <div class="produto">
+      <h2>Moletom Premium</h2>
+      <p>R$ 99,90</p>
+      <button onclick="add('Moletom Premium', 99.9)">Adicionar</button>
+    </div>
+
   </div>
 
-  <div class="produto">
-    <h2>Boné Urbano</h2>
-    <p>R$ 39,90</p>
-    <button onclick="add('Boné Urbano', 39.9)">Adicionar</button>
+  <!-- CARRINHO -->
+  <div class="carrinho">
+    <h3>Carrinho</h3>
+    <div id="lista"></div>
+    <p id="total">Total: R$ 0</p>
+
+    <button class="finalizar" onclick="enviar()">Finalizar compra</button>
   </div>
 
-  <div class="produto">
-    <h2>Moletom Premium</h2>
-    <p>R$ 99,90</p>
-    <button onclick="add('Moletom Premium', 99.9)">Adicionar</button>
-  </div>
-
-</div>
-
-<div class="carrinho">
-  <h3>Carrinho</h3>
-  <div id="lista"></div>
-  <p id="total">Total: R$ 0</p>
-
-  <button class="finalizar" onclick="enviar()">Finalizar compra</button>
 </div>
 
 <script>

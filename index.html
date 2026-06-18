@@ -1,37 +1,101 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Siga-me Store</title>
+<meta charset="UTF-8">
+<title>Siga-me Store</title>
 
-  <style>
-    body {
-      background: black;
-      color: white;
-      font-family: Arial;
-      text-align: center;
-    }
+<style>
+body {
+  background-color: black;
+  color: white;
+  font-family: Arial;
+  text-align: center;
+}
 
-    h1 {
-      margin-top: 20px;
-    }
+h1 {
+  margin-top: 20px;
+}
 
-    .produto {
-      border: 1px solid white;
-      margin: 20px;
-      padding: 20px;
-      border-radius: 10px;
-    }
+.produto {
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+}
 
-    button {
-      background: white;
-      color: black;
-      padding: 10px 15px;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+button {
+  background: white;
+  color: black;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
 
-    .whatsapp {
-      position: fixed;
-      bottom: 20px;
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: green;
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>SIGA-ME STORE</h1>
+
+<div class="produto">
+  <h2>Produto 1</h2>
+  <p>R$ 29,90</p>
+  <button onclick="comprar('Produto 1', 29.90)">Comprar</button>
+</div>
+
+<div class="produto">
+  <h2>Produto 2</h2>
+  <p>R$ 49,90</p>
+  <button onclick="comprar('Produto 2', 49.90)">Comprar</button>
+</div>
+
+<div class="produto">
+  <h2>Produto 3</h2>
+  <p>R$ 19,90</p>
+  <button onclick="comprar('Produto 3', 19.90)">Comprar</button>
+</div>
+
+<div class="whatsapp" onclick="finalizar()">💬</div>
+
+<script>
+let carrinho = [];
+
+function comprar(nome, preco) {
+  carrinho.push({nome, preco});
+  alert("Produto adicionado!");
+}
+
+function finalizar() {
+  if (carrinho.length === 0) {
+    alert("Carrinho vazio!");
+    return;
+  }
+
+  let msg = "Pedido:%0A";
+  let total = 0;
+
+  carrinho.forEach(item => {
+    msg += item.nome + " - R$ " + item.preco + "%0A";
+    total += item.preco;
+  });
+
+  msg += "%0ATotal: R$ " + total.toFixed(2);
+
+  window.open("https://wa.me/5574999019805?text=" + msg);
+}
+</script>
+
+</body>
+</html>

@@ -63,6 +63,13 @@ button:hover {
   background: #00a844;
 }
 
+/* botão remover */
+.remover {
+  background: red;
+  padding: 5px 8px;
+  margin-left: 10px;
+}
+
 /* CARRINHO */
 .carrinho {
   flex: 1;
@@ -144,13 +151,23 @@ function atualizar() {
   lista.innerHTML = "";
   let total = 0;
 
-  carrinho.forEach(item => {
-    lista.innerHTML += `<p>${item.nome} - R$ ${item.preco.toFixed(2)}</p>`;
+  carrinho.forEach((item, index) => {
+    lista.innerHTML += `
+      <p>
+        ${item.nome} - R$ ${item.preco.toFixed(2)}
+        <button class="remover" onclick="remover(${index})">❌</button>
+      </p>
+    `;
     total += item.preco;
   });
 
-  document.getElementById("total").innerHTML = 
+  document.getElementById("total").innerHTML =
     "Total: R$ " + total.toFixed(2);
+}
+
+function remover(index) {
+  carrinho.splice(index, 1);
+  atualizar();
 }
 
 function enviar() {
@@ -175,3 +192,4 @@ function enviar() {
 
 </body>
 </html>
+``

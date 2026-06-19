@@ -7,7 +7,8 @@
 <style>
 body {
   margin: 0;
-  background: #0a0a0a;
+  background: url("fundo.jpg") no-repeat center center fixed;
+  background-size: cover;
   color: white;
   font-family: Arial;
 }
@@ -15,7 +16,7 @@ body {
 header {
   text-align: center;
   padding: 20px;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 header img {
@@ -42,11 +43,12 @@ h1 {
 }
 
 .produto {
-  background: #111;
+  background: rgba(0, 0, 0, 0.7);
   padding: 15px;
   border-radius: 10px;
   border: 1px solid #333;
   text-align: center;
+  backdrop-filter: blur(5px);
 }
 
 /* BOTÕES */
@@ -75,9 +77,10 @@ button:hover {
   flex: 1;
   min-width: 250px;
   max-width: 300px;
-  background: #111;
+  background: rgba(0, 0, 0, 0.8);
   border-left: 1px solid #333;
   padding: 15px;
+  backdrop-filter: blur(5px);
 }
 
 .finalizar {
@@ -101,7 +104,7 @@ button:hover {
 
     <div class="produto">
       <img src="livro.png" style="width: 100%; border-radius: 10px;">
-      <h2> O Deus que Destrói Sonhos</h2>
+      <h2>O Deus que Destrói Sonhos</h2>
       <p>Um livro que mostra como Deus pode usar sonhos interrompidos para cumprir propósitos ainda maiores.</p>
       <p><strong>R$ 39,90</strong></p>
       <button onclick="add('O Deus que Destrói Sonhos', 39.9)">Adicionar</button>
@@ -109,7 +112,7 @@ button:hover {
 
     <div class="produto">
       <img src="livro2.png" style="width: 100%; border-radius: 10px;">
-      <h2> Como Se Tornar um Cristão Inútil</h2>
+      <h2>Como Se Tornar um Cristão Inútil</h2>
       <p>Uma leitura provocativa e necessária para quem deseja viver uma fé prática e verdadeira.</p>
       <p><strong>R$ 39,90</strong></p>
       <button onclick="add('Como Se Tornar um Cristão Inútil', 39.9)">Adicionar</button>
@@ -117,10 +120,10 @@ button:hover {
 
     <div class="produto">
       <img src="combo.png" style="width: 100%; border-radius: 10px;">
-      <h2> Combo Rodrigo Bibo</h2>
+      <h2>Combo Rodrigo Bibo</h2>
       <p>Leve os dois livros e aprofunde sua caminhada cristã com reflexões transformadoras.</p>
-      <p> Como Se Tornar um Cristão Inútil<br>
-          O Deus que Destrói Sonhos</p>
+      <p>Como Se Tornar um Cristão Inútil<br>
+         O Deus que Destrói Sonhos</p>
       <p><strong>R$ 69,90</strong></p>
       <button onclick="add('Combo Rodrigo Bibo', 69.9)">Adicionar</button>
     </div>
@@ -192,4 +195,3 @@ function enviar() {
 
 </body>
 </html>
-``

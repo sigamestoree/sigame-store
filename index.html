@@ -1,197 +1,31 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<title>𝐒𝐈𝐆𝐀-𝐌𝐄 𝐒𝐓𝐎𝐑𝐄</title>
-
-<style>
-body {
-  margin: 0;
-  background: url("fundo.png") no-repeat center center fixed;
-  background-size: cover;
-  color: white;
-  font-family: Arial;
-}
-
-header {
-  text-align: center;
-  padding: 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-header img {
-  width: 150px;
-}
-
-h1 {
-  text-align: center;
-}
-
-/* CONTAINER PRINCIPAL */
-.main {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-/* PRODUTOS */
-.container {
-  flex: 3;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.produto {
-  background: rgba(0, 0, 0, 0.7);
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid #333;
-  text-align: center;
-  backdrop-filter: blur(5px);
-}
-
-/* BOTÕES */
-button {
-  background: #00c853;
-  border: none;
-  padding: 10px;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #00a844;
-}
-
-/* botão remover */
-.remover {
-  background: red;
-  padding: 5px 8px;
-  margin-left: 10px;
-}
-
-/* CARRINHO */
-.carrinho {
-  flex: 1;
-  min-width: 250px;
-  max-width: 300px;
-  background: rgba(0, 0, 0, 0.8);
-  border-left: 1px solid #333;
-  padding: 15px;
-  backdrop-filter: blur(5px);
-}
-
-.finalizar {
-  width: 100%;
-  margin-top: 10px;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <img src="Logo.png" alt="Logo da SIGA-ME STORE" width="150">
-    <h1>SIGA-ME STORE</h1>
-</header>
-
-<div class="main">
-
-  <!-- PRODUTOS -->
-  <div class="container">
-
-    <div class="produto">
-      <img src="Livro2.png" style="width: 100%; border-radius: 10px;">
-      <h2>O Deus que Destrói Sonhos</h2>
-      <p>Um livro que mostra como Deus pode usar sonhos interrompidos para cumprir propósitos ainda maiores.</p>
-      <p><strong>R$ 39,90</strong></p>
-      <button onclick="add('O Deus que Destrói Sonhos', 39.9)">Adicionar</button>
-    </div>
-
-    <div class="produto">
-      <img src="Livro1.png" style="width: 100%; border-radius: 10px;">
-      <h2>Como Se Tornar um Cristão Inútil</h2>
-      <p>Uma leitura provocativa e necessária para quem deseja viver uma fé prática e verdadeira.</p>
-      <p><strong>R$ 39,90</strong></p>
-      <button onclick="add('Como Se Tornar um Cristão Inútil', 39.9)">Adicionar</button>
-    </div>
-
-    <div class="produto">
-      <img src="Combo.png" style="width: 100%; border-radius: 10px;">
-      <h2>Combo Rodrigo Bibo</h2>
-      <p>Leve os dois livros e aprofunde sua caminhada cristã com reflexões transformadoras.</p>
-      <p>Como Se Tornar um Cristão Inútil<br>
-         O Deus que Destrói Sonhos</p>
-      <p><strong>R$ 69,90</strong></p>
-      <button onclick="add('Combo Rodrigo Bibo', 69.9)">Adicionar</button>
-    </div>
-
-  </div>
-
-  <!-- CARRINHO -->
-  <div class="carrinho">
-    <h3>Carrinho</h3>
-    <div id="lista"></div>
-    <p id="total">Total: R$ 0</p>
-
-    <button class="finalizar" onclick="enviar()">Finalizar compra</button>
-  </div>
-
+<div class="produto">
+  vida.png
+  <h2>Uma Vida com Propósitos</h2>
+  <p>Rick Warren</p>
+  <p><strong>R$ 36,45</strong></p>
+  <button onclick="add('Uma Vida com Propósitos', 36.45)">Adicionar</button>
 </div>
 
-<script>
-let carrinho = [];
+<div class="produto">
+  ego.png
+  <h2>Ego Transformado</h2>
+  <p>Timothy Keller</p>
+  <p><strong>R$ 24,90</strong></p>
+  <button onclick="add('Ego Transformado', 24.90)">Adicionar</button>
+</div>
 
-function add(nome, preco) {
-  carrinho.push({nome, preco});
-  atualizar();
-}
+<div class="produto">
+  diabo.png
+  <h2>Cartas de um Diabo a seu Aprendiz</h2>
+  <p>C.S. Lewis</p>
+  <p><strong>R$ 64,90</strong></p>
+  <button onclick="add('Cartas de um Diabo a seu Aprendiz', 64.90)">Adicionar</button>
+</div>
 
-function atualizar() {
-  let lista = document.getElementById("lista");
-  lista.innerHTML = "";
-  let total = 0;
-
-  carrinho.forEach((item, index) => {
-    lista.innerHTML += `
-      <p>
-        ${item.nome} - R$ ${item.preco.toFixed(2)}
-        <button class="remover" onclick="remover(${index})">❌</button>
-      </p>
-    `;
-    total += item.preco;
-  });
-
-  document.getElementById("total").innerHTML =
-    "Total: R$ " + total.toFixed(2);
-}
-
-function remover(index) {
-  carrinho.splice(index, 1);
-  atualizar();
-}
-
-function enviar() {
-  if (carrinho.length === 0) {
-    alert("Seu carrinho está vazio!");
-    return;
-  }
-
-  let msg = "🛍️ Pedido - Siga-me Store:%0A";
-  let total = 0;
-
-  carrinho.forEach(item => {
-    msg += item.nome + " - R$ " + item.preco.toFixed(2) + "%0A";
-    total += item.preco;
-  });
-
-  msg += "%0ATotal: R$ " + total.toFixed(2);
-
-  window.open("https://wa.me/5574999019805?text=" + msg);
-}
-</script>
-
-</body>
-</html>
+<div class="produto">
+  humildade.png
+  <h2>Humildade: A Beleza da Santidade</h2>
+  <p>Livro cristão exclusivo</p>
+  <p><strong>R$ 15,00</strong></p>
+  <button onclick="add('Humildade: A Beleza da Santidade', 15.00)">Adicionar</button>
+</div>

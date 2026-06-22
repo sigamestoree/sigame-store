@@ -23,10 +23,6 @@ header img {
   width: 150px;
 }
 
-h1 {
-  text-align: center;
-}
-
 .main {
   display: flex;
   flex-wrap: wrap;
@@ -41,12 +37,11 @@ h1 {
 }
 
 .produto {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0,0,0,0.7);
   padding: 15px;
   border-radius: 10px;
   border: 1px solid #333;
   text-align: center;
-  backdrop-filter: blur(5px);
 }
 
 button {
@@ -58,9 +53,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background: #00a844;
-}
+button:hover { background: #00a844; }
 
 .remover {
   background: red;
@@ -72,10 +65,9 @@ button:hover {
   flex: 1;
   min-width: 250px;
   max-width: 300px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0,0,0,0.8);
   border-left: 1px solid #333;
   padding: 15px;
-  backdrop-filter: blur(5px);
 }
 
 .finalizar {
@@ -88,90 +80,169 @@ button:hover {
 <body>
 
 <header>
-    <img src="Logo.png">
-    <h1>SIGA-ME STORE</h1>
+  <img src="Logo.png">
+  <h1>SIGA-ME STORE</h1>
 </header>
 
 <div class="main">
 
 <div class="container">
 
-<!-- LIVROS ORIGINAIS -->
-
+<!-- LIVROS -->
 <div class="produto">
-<img src="Livro2.png" style="width: 100%; border-radius: 10px;">
+<img src="Livro2.png" style="width:100%">
 <h2>O Deus que Destrói Sonhos</h2>
 <p>R$ 39,90</p>
 <button onclick="add('O Deus que Destrói Sonhos', 39.9)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="Livro1.png" style="width: 100%; border-radius: 10px;">
+<img src="Livro1.png" style="width:100%">
 <h2>Como Se Tornar um Cristão Inútil</h2>
 <p>R$ 39,90</p>
 <button onclick="add('Como Se Tornar um Cristão Inútil', 39.9)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="Combo.png" style="width: 100%; border-radius: 10px;">
+<img src="Combo.png" style="width:100%">
 <h2>Combo Rodrigo Bibo</h2>
 <p>R$ 69,90</p>
 <button onclick="add('Combo Rodrigo Bibo', 69.9)">Adicionar</button>
 </div>
 
-<!-- NOVOS LIVROS -->
-
 <div class="produto">
-<img src="vida.png" style="width: 100%; border-radius: 10px;">
+<img src="vida.png" style="width:100%">
 <h2>Uma Vida com Propósitos</h2>
 <p>R$ 36,45</p>
 <button onclick="add('Uma Vida com Propósitos', 36.45)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="ego.png" style="width: 100%; border-radius: 10px;">
+<img src="ego.png" style="width:100%">
 <h2>Ego Transformado</h2>
 <p>R$ 24,90</p>
 <button onclick="add('Ego Transformado', 24.90)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="diabo.png" style="width: 100%; border-radius: 10px;">
+<img src="diabo.png" style="width:100%">
 <h2>Cartas de um Diabo a seu Aprendiz</h2>
 <p>R$ 64,90</p>
 <button onclick="add('Cartas de um Diabo a seu Aprendiz', 64.90)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="humildade.png" style="width: 100%; border-radius: 10px;">
+<img src="humildade.png" style="width:100%">
 <h2>Humildade: A Beleza da Santidade</h2>
 <p>R$ 15,00</p>
 <button onclick="add('Humildade', 15.00)">Adicionar</button>
 </div>
 
 <!-- BÍBLIAS -->
-
 <div class="produto">
-<img src="graca.png" style="width: 100%; border-radius: 10px;">
+<img src="graca.png" style="width:100%">
 <h2>Bíblia Sagrada Tua Graça</h2>
 <p>R$ 16,30</p>
 <button onclick="add('Bíblia Sagrada Tua Graça', 16.30)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="oideus.png" style="width: 100%; border-radius: 10px;">
+<img src="oideus.png" style="width:100%">
 <h2>Oi Deus, Sou Eu de Novo</h2>
 <p>R$ 38,45</p>
 <button onclick="add('Oi Deus, Sou Eu de Novo', 38.45)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="biblia1.png" style="width: 100%; border-radius: 10px;">
+<img src="biblia1.png" style="width:100%">
 <h2>Bíblia Ruja o Leão</h2>
 <p>R$ 17,80</p>
-<button onclick="add('Bíblia Ruja o Leão', 17.8)">Adicionar</button>
+<button onclick="add('Bíblia Ruja o Leão', 17.80)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="biblia2.png" style="width: 100%; border-radius: 10px;">
+<img src="biblia2.png" style="width:100%">
 <h2>Bíblia Nada Será Capaz</h2>
+<p>R$ 22,72</p>
+<button onclick="add('Bíblia Nada Será Capaz', 22.72)">Adicionar</button>
+</div>
+
+<div class="produto">
+<img src="biblia3.png" style="width:100%">
+<h2>Bíblia Raiz de Davi</h2>
+<p>R$ 22,72</p>
+<button onclick="add('Bíblia Raiz de Davi', 22.72)">Adicionar</button>
+</div>
+
+<div class="produto">
+<img src="biblia4.png" style="width:100%">
+<h2>Bíblia em Quadrinhos</h2>
+<p>R$ 38,17</p>
+<button onclick="add('Bíblia em Quadrinhos', 38.17)">Adicionar</button>
+</div>
+
+</div>
+
+<!-- CARRINHO -->
+<div class="carrinho">
+<h3>Carrinho</h3>
+<div id="lista"><p>Seu carrinho está vazio</p></div>
+<p id="total">Total: R$ 0.00</p>
+<button class="finalizar" onclick="enviar()">Finalizar compra</button>
+</div>
+
+</div>
+
+<script>
+let carrinho = [];
+
+function add(nome, preco) {
+  carrinho.push({nome, preco});
+  atualizar();
+}
+
+function atualizar() {
+  let lista = document.getElementById("lista");
+  lista.innerHTML = "";
+  let total = 0;
+
+  carrinho.forEach((item, index) => {
+    lista.innerHTML += `
+      <p>
+        ${item.nome} - R$ ${item.preco.toFixed(2)}
+        <button class="remover" onclick="remover(${index})">❌</button>
+      </p>
+    `;
+    total += item.preco;
+  });
+
+  document.getElementById("total").innerHTML = "Total: R$ " + total.toFixed(2);
+}
+
+function remover(index) {
+  carrinho.splice(index, 1);
+  atualizar();
+}
+
+function enviar() {
+  if (carrinho.length === 0) {
+    alert("Seu carrinho está vazio!");
+    return;
+  }
+
+  let msg = "Pedido:%0A";
+  let total = 0;
+
+  carrinho.forEach(item => {
+    msg += item.nome + " - R$ " + item.preco.toFixed(2) + "%0A";
+    total += item.preco;
+  });
+
+  msg += "%0ATotal: R$ " + total.toFixed(2);
+
+  window.open("https://wa.me/5574999019805?text=" + msg);
+}
+</script>
+
+</body>
+</html>

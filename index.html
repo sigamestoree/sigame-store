@@ -64,6 +64,24 @@ button:hover { background: #00a844; }
   background: rgba(0,0,0,0.85);
   padding: 15px;
 }
+
+/* ✅ BOTÃO GRANDE FINALIZAR */
+.finalizar {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  background: #00c853;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.finalizar:hover {
+  background: #00a844;
+  transform: scale(1.03);
+}
 </style>
 </head>
 
@@ -90,7 +108,7 @@ button:hover { background: #00a844; }
 <img src="Lcomosetornarumcristaoinutil.png">
 <h2>Como Se Tornar um Cristão Inútil</h2>
 <p>R$ 44,99</p>
-<button onclick="add('Cristão Inútil',44.99)">Adicionar</button>
+<button onclick="add('Como Se Tornar um Cristão Inútil',44.99)">Adicionar</button>
 </div>
 
 <div class="produto">
@@ -104,7 +122,7 @@ button:hover { background: #00a844; }
 <img src="Lumavidacompropositos.png">
 <h2>Uma Vida com Propósitos</h2>
 <p>R$ 59,99</p>
-<button onclick="add('Vida com Propósitos',59.99)">Adicionar</button>
+<button onclick="add('Uma Vida com Propósitos',59.99)">Adicionar</button>
 </div>
 
 <div class="produto">
@@ -129,7 +147,6 @@ button:hover { background: #00a844; }
 </div>
 
 <!-- BÍBLIAS -->
-
 <div class="produto">
 <img src="Btuagraca.png">
 <h2>Bíblia Tua Graça</h2>
@@ -141,7 +158,7 @@ button:hover { background: #00a844; }
 <img src="Doideussoueudenovo.png">
 <h2>Oi Deus sou eu de novo</h2>
 <p>R$ 59,99</p>
-<button onclick="add('Oi Deus',59.99)">Adicionar</button>
+<button onclick="add('Oi Deus sou eu de novo',59.99)">Adicionar</button>
 </div>
 
 <div class="produto">
@@ -162,28 +179,28 @@ button:hover { background: #00a844; }
 <img src="Brujaoleao.png">
 <h2>Bíblia Leão de Judá</h2>
 <p>R$ 19,99</p>
-<button onclick="add('Bíblia Leão',19.99)">Adicionar</button>
+<button onclick="add('Bíblia Leão de Judá',19.99)">Adicionar</button>
 </div>
 
 <div class="produto">
 <img src="Bnadaseracapaz.png">
 <h2>Bíblia Nada Será Capaz</h2>
 <p>R$ 24,99</p>
-<button onclick="add('Nada será capaz',24.99)">Adicionar</button>
+<button onclick="add('Bíblia Nada Será Capaz',24.99)">Adicionar</button>
 </div>
 
 <div class="produto">
 <img src="BraizdeDavi.png">
 <h2>Bíblia Raiz de Davi</h2>
 <p>R$ 24,99</p>
-<button onclick="add('Raiz de Davi',24.99)">Adicionar</button>
+<button onclick="add('Bíblia Raiz de Davi',24.99)">Adicionar</button>
 </div>
 
 <div class="produto">
 <img src="Bemquadrinhos.png">
 <h2>Bíblia em Quadrinhos</h2>
 <p>R$ 59,99</p>
-<button onclick="add('Quadrinhos',59.99)">Adicionar</button>
+<button onclick="add('Bíblia em Quadrinhos',59.99)">Adicionar</button>
 </div>
 
 </div>
@@ -192,7 +209,10 @@ button:hover { background: #00a844; }
 <h3>Carrinho</h3>
 <div id="lista">Vazio</div>
 <p id="total">Total: R$ 0.00</p>
-<button onclick="enviar()">Finalizar</button>
+
+<!-- ✅ BOTÃO GRANDE -->
+<button class="finalizar" onclick="enviar()">Finalizar compra</button>
+
 </div>
 
 </div>

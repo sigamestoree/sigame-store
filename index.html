@@ -19,9 +19,14 @@ header {
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-header img { width: 150px; }
+header img {
+  width: 150px;
+}
 
-.main { display: flex; flex-wrap: wrap; }
+.main {
+  display: flex;
+  flex-wrap: wrap;
+}
 
 .container {
   flex: 3;
@@ -80,58 +85,126 @@ button:hover { background: #00a844; }
 </header>
 
 <div class="main">
+
 <div class="container">
 
+<!-- LIVROS -->
 <div class="produto">
+<img src="Lodeusquedestroisonhos.png" style="width:100%">
 <h2>O Deus que Destrói Sonhos</h2>
 <p>R$ 39,99</p>
-<button onclick="add('O Deus que Destrói Sonhos', 39.99)">Adicionar</button>
+<button onclick="add('O Deus que Destrói Sonhos', 39.9)">Adicionar</button>
 </div>
 
 <div class="produto">
+<img src="Lcomosetornarumcristaoinutil.png" style="width:100%">
 <h2>Como Se Tornar um Cristão Inútil</h2>
 <p>R$ 44,99</p>
-<button onclick="add('Como Se Tornar um Cristão Inútil', 44.99)">Adicionar</button>
+<button onclick="add('Como Se Tornar um Cristão Inútil', 39.9)">Adicionar</button>
 </div>
 
 <div class="produto">
+<img src="Lcombo.png" style="width:100%">
 <h2>Combo Rodrigo Bibo</h2>
 <p>R$ 69,99</p>
-<button onclick="add('Combo Rodrigo Bibo', 69.99)">Adicionar</button>
+<button onclick="add('Combo Rodrigo Bibo', 69.9)">Adicionar</button>
 </div>
 
 <div class="produto">
+<img src="Lumavidacompropositos.png" style="width:100%">
 <h2>Uma Vida com Propósitos</h2>
 <p>R$ 59,99</p>
-<button onclick="add('Uma Vida com Propósitos', 59.99)">Adicionar</button>
+<button onclick="add('Uma Vida com Propósitos', 36.45)">Adicionar</button>
 </div>
 
 <div class="produto">
+<img src="Legotransformado.png" style="width:100%">
 <h2>Ego Transformado</h2>
 <p>R$ 24,99</p>
-<button onclick="add('Ego Transformado', 24.99)">Adicionar</button>
+<button onclick="add('Ego Transformado', 24.90)">Adicionar</button>
 </div>
 
 <div class="produto">
+<img src="Lcartasdeumdiaboaseuaprendiz.png" style="width:100%">
 <h2>Cartas de um Diabo a seu Aprendiz</h2>
 <p>R$ 54,99</p>
-<button onclick="add('Cartas de um Diabo a seu Aprendiz', 54.99)">Adicionar</button>
+<button onclick="add('Cartas de um Diabo a seu Aprendiz', 64.90)">Adicionar</button>
 </div>
 
 <div class="produto">
-<h2>Humildade</h2>
+<img src="Lhumildade.png" style="width:100%">
+<h2>Humildade: A Beleza da Santidade</h2>
 <p>R$ 19,99</p>
-<button onclick="add('Humildade', 19.99)">Adicionar</button>
+<button onclick="add('Humildade', 15.00)">Adicionar</button>
+</div>
+
+<!-- BÍBLIAS -->
+<div class="produto">
+<img src="Btuagraça.png" style="width:100%">
+<h2>Bíblia Sagrada Tua Graça</h2>
+<p>R$ 29,99</p>
+<button onclick="add('Bíblia Sagrada Tua Graça', 16.30)">Adicionar</button>
+</div>
+
+<div class="produto">
+<img src="Doideussoueudenovo.png" style="width:100%">
+<h2>Oi Deus, Sou Eu de Novo</h2>
+<p>R$ 59,99</p>
+<button onclick="add('Oi Deus, Sou Eu de Novo', 38.45)">Adicionar</button>
+</div>
+
+<div class="produto">
+<img src="Bide.png" style="width:100%">
+<h2>Bíblia Sagrada Ide</h2>
+<p>R$ 34,99</p>
+<button onclick="add('Bíblia Sagrada Ide', 18.96)">Adicionar</button>
+</div>
+
+<div class="produto">
+<img src="Bfloreça.png" style="width:100%">
+<h2>Bíblia Sagrada Florença</h2>
+<p>R$ 44,99</p>
+<button onclick="add('Bíblia Sagrada Florença', 49.80)">Adicionar</button>
+</div>
+  
+<div class="produto">
+<img src="Brujaoleaodejuda.png" style="width:100%">
+<h2>Bíblia Ruja o Leão</h2>
+<p>R$ 19,99</p>
+<button onclick="add('Bíblia Ruja o Leão', 17.80)">Adicionar</button>
+</div>
+
+<div class="produto">
+<img src="Bnadaseracapaz.png" style="width:100%">
+<h2>Bíblia Nada Será Capaz</h2>
+<p>R$ 24,99</p>
+<button onclick="add('Bíblia Nada Será Capaz', 22.72)">Adicionar</button>
+</div>
+
+<div class="produto">
+<img src="Braizdedavi.png" style="width:100%">
+<h2>Bíblia Raiz de Davi</h2>
+<p>R$ 24,99</p>
+<button onclick="add('Bíblia Raiz de Davi', 22.72)">Adicionar</button>
+</div>
+
+<div class="produto">
+<img src="Bemquadrinhos.png" style="width:100%">
+<h2>Bíblia em Quadrinhos</h2>
+<p>R$ 59,99</p>
+<button onclick="add('Bíblia em Quadrinhos', 38.17)">Adicionar</button>
 </div>
 
 </div>
 
+<!-- CARRINHO -->
 <div class="carrinho">
 <h3>Carrinho</h3>
 <div id="lista"><p>Seu carrinho está vazio</p></div>
 <p id="total">Total: R$ 0.00</p>
 <button class="finalizar" onclick="enviar()">Finalizar compra</button>
 </div>
+
 </div>
 
 <script>
@@ -157,8 +230,7 @@ function atualizar() {
     total += item.preco;
   });
 
-  document.getElementById("total").innerHTML =
-    "Total: R$ " + total.toFixed(2);
+  document.getElementById("total").innerHTML = "Total: R$ " + total.toFixed(2);
 }
 
 function remover(index) {

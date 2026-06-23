@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>𝐒𝐈𝐆𝐀-𝐌𝐄 𝐒𝐓𝐎𝐑𝐄</title>
+<title>SIGA-ME STORE</title>
 
 <style>
 body {
@@ -16,17 +16,11 @@ body {
 header {
   text-align: center;
   padding: 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-header img {
-  width: 150px;
-}
+header img { width: 150px; }
 
-.main {
-  display: flex;
-  flex-wrap: wrap;
-}
+.main { display: flex; flex-wrap: wrap; }
 
 .container {
   flex: 3;
@@ -40,8 +34,12 @@ header img {
   background: rgba(0,0,0,0.7);
   padding: 15px;
   border-radius: 10px;
-  border: 1px solid #333;
   text-align: center;
+}
+
+.produto img {
+  width: 100%;
+  border-radius: 10px;
 }
 
 button {
@@ -57,22 +55,14 @@ button:hover { background: #00a844; }
 
 .remover {
   background: red;
-  padding: 5px 8px;
   margin-left: 10px;
 }
 
 .carrinho {
   flex: 1;
   min-width: 250px;
-  max-width: 300px;
-  background: rgba(0,0,0,0.8);
-  border-left: 1px solid #333;
+  background: rgba(0,0,0,0.85);
   padding: 15px;
-}
-
-.finalizar {
-  width: 100%;
-  margin-top: 10px;
 }
 </style>
 </head>
@@ -80,8 +70,8 @@ button:hover { background: #00a844; }
 <body>
 
 <header>
-  <img src="Logo.png">
-  <h1>SIGA-ME STORE</h1>
+<img src="Logo.png">
+<h1>SIGA-ME STORE</h1>
 </header>
 
 <div class="main">
@@ -90,119 +80,119 @@ button:hover { background: #00a844; }
 
 <!-- LIVROS -->
 <div class="produto">
-<img src="Lodeusquedestroisonhos.png" style="width:100%">
+<img src="Lodeusquedestroisonhos.png">
 <h2>O Deus que Destrói Sonhos</h2>
 <p>R$ 39,99</p>
-<button onclick="add('O Deus que Destrói Sonhos', 39.9)">Adicionar</button>
+<button onclick="add('O Deus que Destrói Sonhos',39.99)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="Lcomosetornarumcristaoinutil.png" style="width:100%">
+<img src="Lcomosetornarumcristaoinutil.png">
 <h2>Como Se Tornar um Cristão Inútil</h2>
 <p>R$ 44,99</p>
-<button onclick="add('Como Se Tornar um Cristão Inútil', 39.9)">Adicionar</button>
+<button onclick="add('Cristão Inútil',44.99)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="Lcombo.png" style="width:100%">
+<img src="Lcombo.png">
 <h2>Combo Rodrigo Bibo</h2>
 <p>R$ 69,99</p>
-<button onclick="add('Combo Rodrigo Bibo', 69.9)">Adicionar</button>
+<button onclick="add('Combo Rodrigo Bibo',69.99)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="Lumavidacompropositos.png" style="width:100%">
+<img src="Lumavidacompropositos.png">
 <h2>Uma Vida com Propósitos</h2>
 <p>R$ 59,99</p>
-<button onclick="add('Uma Vida com Propósitos', 36.45)">Adicionar</button>
+<button onclick="add('Vida com Propósitos',59.99)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="Legotransformado.png" style="width:100%">
+<img src="Legotransformado.png">
 <h2>Ego Transformado</h2>
 <p>R$ 24,99</p>
-<button onclick="add('Ego Transformado', 24.90)">Adicionar</button>
+<button onclick="add('Ego Transformado',24.99)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="Lcartasdeumdiaboaseuaprendiz.png" style="width:100%">
-<h2>Cartas de um Diabo a seu Aprendiz</h2>
+<img src="Lcartasdeumdiaboaseuaprendiz.png">
+<h2>Cartas de um Diabo</h2>
 <p>R$ 54,99</p>
-<button onclick="add('Cartas de um Diabo a seu Aprendiz', 64.90)">Adicionar</button>
+<button onclick="add('Cartas de um Diabo',54.99)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="Lhumildade.png" style="width:100%">
-<h2>Humildade: A Beleza da Santidade</h2>
+<img src="Lhumildade.png">
+<h2>Humildade</h2>
 <p>R$ 19,99</p>
-<button onclick="add('Humildade', 15.00)">Adicionar</button>
+<button onclick="add('Humildade',19.99)">Adicionar</button>
 </div>
 
 <!-- BÍBLIAS -->
+
 <div class="produto">
-<img src="Btuagraça.png" style="width:100%">
-<h2>Bíblia Sagrada Tua Graça</h2>
+<img src="Btuagraca.png">
+<h2>Bíblia Tua Graça</h2>
 <p>R$ 29,99</p>
-<button onclick="add('Bíblia Sagrada Tua Graça', 16.30)">Adicionar</button>
+<button onclick="add('Bíblia Tua Graça',29.99)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="Doideussoueudenovo.png" style="width:100%">
-<h2>Oi Deus, Sou Eu de Novo</h2>
+<img src="Doideussoueudenovo.png">
+<h2>Oi Deus sou eu de novo</h2>
 <p>R$ 59,99</p>
-<button onclick="add('Oi Deus, Sou Eu de Novo', 38.45)">Adicionar</button>
+<button onclick="add('Oi Deus',59.99)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="Bide.png" style="width:100%">
-<h2>Bíblia Sagrada Ide</h2>
+<img src="Bide.png">
+<h2>Bíblia Ide</h2>
 <p>R$ 34,99</p>
-<button onclick="add('Bíblia Sagrada Ide', 18.96)">Adicionar</button>
+<button onclick="add('Bíblia Ide',34.99)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="Bfloreça.png" style="width:100%">
-<h2>Bíblia Sagrada Florença</h2>
+<img src="Bflorenca.png">
+<h2>Bíblia Florença</h2>
 <p>R$ 44,99</p>
-<button onclick="add('Bíblia Sagrada Florença', 49.80)">Adicionar</button>
-</div>
-  
-<div class="produto">
-<img src="Brujaoleaodejuda.png" style="width:100%">
-<h2>Bíblia Ruja o Leão</h2>
-<p>R$ 19,99</p>
-<button onclick="add('Bíblia Ruja o Leão', 17.80)">Adicionar</button>
+<button onclick="add('Bíblia Florença',44.99)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="Bnadaseracapaz.png" style="width:100%">
+<img src="Brujaoleao.png">
+<h2>Bíblia Leão de Judá</h2>
+<p>R$ 19,99</p>
+<button onclick="add('Bíblia Leão',19.99)">Adicionar</button>
+</div>
+
+<div class="produto">
+<img src="Bnadaseracapaz.png">
 <h2>Bíblia Nada Será Capaz</h2>
 <p>R$ 24,99</p>
-<button onclick="add('Bíblia Nada Será Capaz', 22.72)">Adicionar</button>
+<button onclick="add('Nada será capaz',24.99)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="Braizdedavi.png" style="width:100%">
+<img src="BraizdeDavi.png">
 <h2>Bíblia Raiz de Davi</h2>
 <p>R$ 24,99</p>
-<button onclick="add('Bíblia Raiz de Davi', 22.72)">Adicionar</button>
+<button onclick="add('Raiz de Davi',24.99)">Adicionar</button>
 </div>
 
 <div class="produto">
-<img src="Bemquadrinhos.png" style="width:100%">
+<img src="Bemquadrinhos.png">
 <h2>Bíblia em Quadrinhos</h2>
 <p>R$ 59,99</p>
-<button onclick="add('Bíblia em Quadrinhos', 38.17)">Adicionar</button>
+<button onclick="add('Quadrinhos',59.99)">Adicionar</button>
 </div>
 
 </div>
 
-<!-- CARRINHO -->
 <div class="carrinho">
 <h3>Carrinho</h3>
-<div id="lista"><p>Seu carrinho está vazio</p></div>
+<div id="lista">Vazio</div>
 <p id="total">Total: R$ 0.00</p>
-<button class="finalizar" onclick="enviar()">Finalizar compra</button>
+<button onclick="enviar()">Finalizar</button>
 </div>
 
 </div>
@@ -210,51 +200,44 @@ button:hover { background: #00a844; }
 <script>
 let carrinho = [];
 
-function add(nome, preco) {
-  carrinho.push({nome, preco});
+function add(nome,preco){
+  carrinho.push({nome,preco});
   atualizar();
 }
 
-function atualizar() {
+function atualizar(){
   let lista = document.getElementById("lista");
-  lista.innerHTML = "";
-  let total = 0;
+  lista.innerHTML="";
+  let total=0;
 
-  carrinho.forEach((item, index) => {
-    lista.innerHTML += `
-      <p>
-        ${item.nome} - R$ ${item.preco.toFixed(2)}
-        <button class="remover" onclick="remover(${index})">❌</button>
-      </p>
-    `;
-    total += item.preco;
+  carrinho.forEach((item,i)=>{
+    lista.innerHTML+=`
+    <p>${item.nome} - R$ ${item.preco.toFixed(2)}
+    <button class='remover' onclick='remover(${i})'>X</button></p>`;
+    total+=item.preco;
   });
 
-  document.getElementById("total").innerHTML = "Total: R$ " + total.toFixed(2);
+  document.getElementById("total").innerHTML=
+  "Total: R$ "+total.toFixed(2);
 }
 
-function remover(index) {
-  carrinho.splice(index, 1);
+function remover(i){
+  carrinho.splice(i,1);
   atualizar();
 }
 
-function enviar() {
-  if (carrinho.length === 0) {
-    alert("Seu carrinho está vazio!");
-    return;
-  }
+function enviar(){
+  let msg="Pedido:%0A";
+  let total=0;
 
-  let msg = "Pedido:%0A";
-  let total = 0;
-
-  carrinho.forEach(item => {
-    msg += item.nome + " - R$ " + item.preco.toFixed(2) + "%0A";
-    total += item.preco;
+  carrinho.forEach(p=>{
+    msg+=p.nome+" - R$ "+p.preco.toFixed(2)+"%0A";
+    total+=p.preco;
   });
 
-  msg += "%0ATotal: R$ " + total.toFixed(2);
+  msg+="%0ATotal: R$ "+total.toFixed(2);
 
-  window.open("https://wa.me/5574999019805?text=" + msg);
+  window.open("https://wa.me/5574999019805?text="+msg);
 }
 </script>
 

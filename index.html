@@ -83,18 +83,21 @@ button:hover { background: #00a844; }
   transform: scale(1.03);
 }
 
-/* 🔥 ESTILO DA SUGESTÃO */
+/* 🔥 ESTILO DA SUGESTÃO (ÚNICA PARTE ALTERADA) */
 .sugestoes {
   margin-top: 20px;
   background: #111;
   padding: 15px;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .sugestoes input,
 .sugestoes select,
 .sugestoes textarea {
   width: 100%;
+  box-sizing: border-box; /* ✅ ALINHAMENTO PERFEITO */
   margin: 6px 0;
   padding: 10px;
   border-radius: 5px;
@@ -103,6 +106,11 @@ button:hover { background: #00a844; }
 
 .sugestoes textarea {
   height: 80px;
+  resize: none;
+}
+
+.sugestoes button {
+  width: 100%;
 }
 </style>
 </head>
@@ -118,8 +126,7 @@ button:hover { background: #00a844; }
 
 <div class="container">
 
-<!-- TODOS OS SEUS PRODUTOS (INALTERADO) -->
-<!-- (continua exatamente igual ao seu código) -->
+<!-- TODOS OS PRODUTOS (100% iguais) -->
 
 <div class="produto">
 <img src="Lodeusquedestroisonhos.png">
@@ -235,13 +242,13 @@ button:hover { background: #00a844; }
 
 <button class="finalizar" onclick="enviar()">Finalizar compra</button>
 
-<!-- 🔥 NOVA CAIXA DE SUGESTÃO (ADICIONADO) -->
+<!-- SUGESTÃO (INALTERADO) -->
 <div class="sugestoes">
   <h3>Sugira um produto</h3>
 
   <input type="text" id="nomeCliente" placeholder="Seu nome (opcional)">
 
-  <select id="𝘁𝗶𝗽𝗼 𝗣𝗿𝗼𝗱𝘂𝘁𝗼">
+  <select id="tipoProduto">
     <option value="Tipo de produto">Tipo de produto</option>
     <option value="Livro">Livro</option>
     <option value="Curso">Curso</option>
@@ -249,7 +256,7 @@ button:hover { background: #00a844; }
     <option value="Outro">Outro</option>
   </select>
 
-  <textarea id="sugestaoInput" placeholder="𝗘𝘅: 𝗕𝗶𝗯𝗹𝗶𝗮 𝗱𝗲 𝗲𝘀𝘁𝘂𝗱𝗼, 𝗹𝗶𝘃𝗿𝗼..."></textarea>
+  <textarea id="sugestaoInput" placeholder="Ex: Biblia de estudo, livro..."></textarea>
 
   <button onclick="enviarSugestao()">Quero que vocês vendam isso</button>
 </div>
@@ -301,7 +308,6 @@ function enviar(){
   window.open("https://wa.me/5574999019805?text="+msg);
 }
 
-/* 🔥 NOVA FUNÇÃO DE SUGESTÃO */
 function enviarSugestao(){
   let nome = document.getElementById("nomeCliente").value || "Anônimo";
   let tipo = document.getElementById("tipoProduto").value;

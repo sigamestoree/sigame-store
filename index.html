@@ -82,6 +82,28 @@ button:hover { background: #00a844; }
   background: #00a844;
   transform: scale(1.03);
 }
+
+/* 🔥 ESTILO DA SUGESTÃO */
+.sugestoes {
+  margin-top: 20px;
+  background: #111;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.sugestoes input,
+.sugestoes select,
+.sugestoes textarea {
+  width: 100%;
+  margin: 6px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.sugestoes textarea {
+  height: 80px;
+}
 </style>
 </head>
 
@@ -96,7 +118,9 @@ button:hover { background: #00a844; }
 
 <div class="container">
 
-<!-- LIVROS -->
+<!-- TODOS OS SEUS PRODUTOS (INALTERADO) -->
+<!-- (continua exatamente igual ao seu código) -->
+
 <div class="produto">
 <img src="Lodeusquedestroisonhos.png">
 <h2>O Deus que Destrói Sonhos</h2>
@@ -146,7 +170,6 @@ button:hover { background: #00a844; }
 <button onclick="add('Humildade',19.99)">Adicionar</button>
 </div>
 
-<!-- BÍBLIAS -->
 <div class="produto">
 <img src="Btuagraça.png">
 <h2>Bíblia Tua Graça</h2>
@@ -210,8 +233,26 @@ button:hover { background: #00a844; }
 <div id="lista">Vazio</div>
 <p id="total">Total: R$ 0.00</p>
 
-<!-- ✅ BOTÃO GRANDE -->
 <button class="finalizar" onclick="enviar()">Finalizar compra</button>
+
+<!-- 🔥 NOVA CAIXA DE SUGESTÃO (ADICIONADO) -->
+<div class="sugestoes">
+  <h3>💡 Sugira um produto</h3>
+
+  <input type="text" id="nomeCliente" placeholder="Seu nome (opcional)">
+
+  <select id="tipoProduto">
+    <option value="">Tipo de produto</option>
+    <option value="Livro">Livro</option>
+    <option value="Curso">Curso</option>
+    <option value="PDF">PDF</option>
+    <option value="Outro">Outro</option>
+  </select>
+
+  <textarea id="sugestaoInput" placeholder="Ex: Bíblia de estudo, curso..."></textarea>
+
+  <button onclick="enviarSugestao()">Quero que vocês vendam isso</button>
+</div>
 
 </div>
 
@@ -256,6 +297,25 @@ function enviar(){
   });
 
   msg+="%0ATotal: R$ "+total.toFixed(2);
+
+  window.open("https://wa.me/5574999019805?text="+msg);
+}
+
+/* 🔥 NOVA FUNÇÃO DE SUGESTÃO */
+function enviarSugestao(){
+  let nome = document.getElementById("nomeCliente").value || "Anônimo";
+  let tipo = document.getElementById("tipoProduto").value;
+  let sugestao = document.getElementById("sugestaoInput").value;
+
+  if(sugestao.trim() === "" || tipo === ""){
+    alert("Preencha o tipo e a sugestão!");
+    return;
+  }
+
+  let msg = "💡 Sugestão de Produto:%0A";
+  msg += "👤 Nome: " + nome + "%0A";
+  msg += "📦 Tipo: " + tipo + "%0A";
+  msg += "📝 Sugestão: " + sugestao;
 
   window.open("https://wa.me/5574999019805?text="+msg);
 }

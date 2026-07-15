@@ -49,11 +49,11 @@ header img {
   padding: 20px;
 }
 
-.produto {
-  background: rgba(0,0,0,0.7);
-  padding: 15px;
+.produto img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
   border-radius: 10px;
-  text-align: center;
 }
 
 .produto img {
@@ -138,6 +138,25 @@ button:hover {
 .sugestoes button {
   width: 100%;
 }
+
+@media (max-width:900px){
+
+    .main{
+        flex-direction: column;
+    }
+
+    .carrinho{
+        position: static;
+        width: auto;
+        max-height: none;
+    }
+
+    .container{
+        grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+    }
+
+}
+  
 </style>
 </head>
 
@@ -385,6 +404,12 @@ function remover(i){
 }
 
 function enviar(){
+  
+  if(carrinho.length === 0){
+    alert("Seu carrinho está vazio!");
+    return;
+}
+  
   let msg = "Pedido:%0A";
   let total = 0;
 
@@ -399,6 +424,9 @@ function enviar(){
     "https://wa.me/5574999019805?text=" + msg,
     "_blank"
   );
+  
+  carrinho = [];
+atualizar();
 }
 
 function enviarSugestao(){

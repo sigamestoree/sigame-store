@@ -411,6 +411,7 @@ function add(nome, preco){
 }
 
 function atualizar(){
+
   let lista = document.getElementById("lista");
   lista.innerHTML = "";
 
@@ -424,11 +425,14 @@ function atualizar(){
   });
 
   if(carrinho.length === 0){
-    lista.innerHTML = "Vazio";
+      lista.innerHTML = "Vazio";
+      document.getElementById("btnFinalizar").disabled = true;
+  }else{
+      document.getElementById("btnFinalizar").disabled = false;
   }
 
   document.getElementById("total").innerHTML =
-    "Total: R$ " + total.toFixed(2);
+      "Total: R$ " + total.toFixed(2);
 }
 
 function remover(i){
@@ -437,24 +441,29 @@ function remover(i){
 }
 
 function enviar(){
-  
-  if(carrinho.length === 0){
-    lista.innerHTML = "Vazio";
-    document.getElementById("btnFinalizar").disabled = true;
-}else{
-    document.getElementById("btnFinalizar").disabled = false;
-}
 
-document.getElementById("total").innerHTML =
-    "Total: R$ " + total.toFixed(2);
+  if(carrinho.length === 0){
+    alert("Seu carrinho está vazio!");
+    return;
+  }
+
+  let msg = "Pedido:%0A";
+  let total = 0;
+
+  carrinho.forEach(p=>{
+    msg += p.nome + " - R$ " + p.preco.toFixed(2) + "%0A";
+    total += p.preco;
+  });
+
+  msg += "%0ATotal: R$ " + total.toFixed(2);
 
   window.open(
     "https://wa.me/5574999019805?text=" + msg,
     "_blank"
   );
-  
+
   carrinho = [];
-atualizar();
+  atualizar();
 }
 
 function enviarSugestao(){
@@ -493,6 +502,7 @@ function filtrarProdutos() {
     }
   });
 }
+  atualizar();
 </script>
 
 </body>

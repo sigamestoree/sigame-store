@@ -112,6 +112,28 @@ button:hover {
   transform: scale(1.03);
 }
 
+  .finalizar:disabled {
+  background: #777;
+  cursor: not-allowed;
+  opacity: .7;
+}
+
+.finalizar:disabled:hover {
+  background: #777;
+  transform: none;
+}
+
+.finalizar:disabled {
+  background: #777;
+  cursor: not-allowed;
+  opacity: .7;
+}
+
+.finalizar:disabled:hover {
+  background: #777;
+  transform: none;
+}
+
 .sugestoes {
   margin-top: 20px;
   background: #111;
@@ -417,19 +439,14 @@ function remover(i){
 function enviar(){
   
   if(carrinho.length === 0){
-    alert("Seu carrinho está vazio!");
-    return;
+    lista.innerHTML = "Vazio";
+    document.getElementById("btnFinalizar").disabled = true;
+}else{
+    document.getElementById("btnFinalizar").disabled = false;
 }
-  
-  let msg = "Pedido:%0A";
-  let total = 0;
 
-  carrinho.forEach(p=>{
-    msg += p.nome + " - R$ " + p.preco.toFixed(2) + "%0A";
-    total += p.preco;
-  });
-
-  msg += "%0ATotal: R$ " + total.toFixed(2);
+document.getElementById("total").innerHTML =
+    "Total: R$ " + total.toFixed(2);
 
   window.open(
     "https://wa.me/5574999019805?text=" + msg,

@@ -442,7 +442,7 @@ function enviar(){
     return;
   }
 
-  let msg = "Pedido:%0A";
+  let msg = "🛒 *NOVO PEDIDO*%0A%0A";
   let total = 0;
 
   carrinho.forEach(p=>{
@@ -450,7 +450,7 @@ function enviar(){
     total += p.preco;
   });
 
-  msg += "%0ATotal: R$ " + total.toFixed(2);
+  msg += "%0A💰 *Total:* R$ " + total.toFixed(2);
 
   window.open(
     "https://wa.me/5574999019805?text=" + msg,

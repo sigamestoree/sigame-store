@@ -85,19 +85,80 @@ button:hover {
   background: rgba(0,0,0,0.85);
   padding: 15px;
 }
+  
+</div>
+<div class="carrinho">
+<h3>Carrinho</h3>
+<div id="lista">Vazio</div>
+<p id="total">Total: R$ 0.00</p>
 
 .finalizar {
-   ...
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  background: #00c853;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.finalizar:hover {
+  background: #00a844;
+  transform: scale(1.03);
 }
 
 .sugestoes {
-   ...
+  margin-top: 20px;
+  background: #111;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
+.sugestoes input,
+.sugestoes select,
+.sugestoes textarea {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 6px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.sugestoes textarea {
+  height: 80px;
+  resize: none;
+}
+
+.sugestoes button {
+  width: 100%;
+}
 </style>
+</head>
 
-  <body>
+<body>
 
+<header>
+  <img src="Logo.png">
+  <h1>SIGA-ME STORE</h1>
+</header>
+
+<!-- BARRA DE PESQUISA -->
+<input
+type="text"
+id="pesquisa"
+class="pesquisa"
+placeholder="Pesquisar produtos..."
+onkeyup="filtrarProdutos()">
+
+<div class="main">
+
+  <!-- SEM PRODUTOS -->
+  <div class="container">
 <header>...</header>
 
 <div class="main">
@@ -268,81 +329,6 @@ button:hover {
 <p class="estoque">Disponíveis: 1</p>
 <button onclick="add('Bloco de Anotações Flor',14.99)">Adicionar</button>
 </div>
-  
-</div>
-<div class="carrinho">
-<h3>Carrinho</h3>
-<div id="lista">Vazio</div>
-<p id="total">Total: R$ 0.00</p>
-
-.finalizar {
-  width: 100%;
-  padding: 16px;
-  font-size: 18px;
-  font-weight: bold;
-  background: #00c853;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-}
-
-.finalizar:hover {
-  background: #00a844;
-  transform: scale(1.03);
-}
-
-.sugestoes {
-  margin-top: 20px;
-  background: #111;
-  padding: 15px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.sugestoes input,
-.sugestoes select,
-.sugestoes textarea {
-  width: 100%;
-  box-sizing: border-box;
-  margin: 6px 0;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-}
-
-.sugestoes textarea {
-  height: 80px;
-  resize: none;
-}
-
-.sugestoes button {
-  width: 100%;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <img src="Logo.png">
-  <h1>SIGA-ME STORE</h1>
-</header>
-
-<!-- BARRA DE PESQUISA -->
-<input
-type="text"
-id="pesquisa"
-class="pesquisa"
-placeholder="Pesquisar produtos..."
-onkeyup="filtrarProdutos()">
-
-<div class="main">
-
-  <!-- SEM PRODUTOS -->
-  <div class="container">
-
   </div>
 
   <div class="carrinho">

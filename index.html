@@ -182,25 +182,37 @@ button:hover {
     background:#777;
 }
   
-  footer{
-    width:100%;
-    background:rgba(0,0,0,.9);
-    text-align:center;
+ footer{
+    background: rgba(0,0,0,.95);
     padding:40px 20px;
     margin-top:50px;
-    border-top:2px solid #00c853;
-    color:white;
-    box-sizing:border-box;
+    border-top:2px solid #c9a227;
 }
 
-footer h3{
-    font-size:32px;
-    margin-bottom:20px;
+.footer-grid{
+    max-width:1200px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+
+    text-align:left;
 }
 
-footer p{
-    margin:15px 0;
+.footer-grid h4{
+    color:#c9a227;
+    margin-bottom:10px;
+}
+
+.footer-grid p{
     line-height:1.8;
+}
+
+.copyright{
+    text-align:center;
+    margin-top:30px;
+    opacity:.8;
 }
 
 </style>
@@ -419,27 +431,35 @@ onkeyup="filtrarProdutos()">
 </div> 
 
 <footer>
-    <h3>SIGA-ME STORE</h3>
+    <div class="footer-grid">
 
-    <p>
-        📦 <strong>Entregas:</strong><br>
-        Santana - R$ 8,00<br>
-        Francisco - R$ 7,00<br>
-        Joaquim - R$ 6,00
+        <div>
+            <h4>📦 Entregas</h4>
+            <p>
+            Santana - R$ 8,00<br>
+            Francisco - R$ 7,00<br>
+            Joaquim - R$ 6,00
+            </p>
+        </div>
+
+        <div>
+            <h4>💳 Pagamentos</h4>
+            <p>PIX • Dinheiro • Cartão</p>
+        </div>
+
+        <div>
+            <h4>🔄 Trocas</h4>
+            <p>
+            Compras online: 7 dias.<br>
+            Compras presenciais: casos específicos.
+            </p>
+        </div>
+
+    </div>
+
+    <p class="copyright">
+        © 2026 SIGA-ME STORE
     </p>
-
-    <p>
-        💳 <strong>Pagamentos:</strong><br>
-        PIX • Dinheiro • Cartão
-    </p>
-
-    <p>
-        🔄 <strong>Trocas:</strong><br>
-        Compras online: 7 dias.<br>
-        Compras presenciais: somente em casos específicos.
-    </p>
-
-    <p>© 2026 SIGA-ME STORE</p>
 </footer>
   
 <script>

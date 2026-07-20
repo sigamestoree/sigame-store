@@ -589,6 +589,27 @@ function filtrarProdutos() {
     }
   });
 }
+
+function filtrarCategoria(categoria){
+
+    let produtos = document.querySelectorAll(".produto");
+
+    produtos.forEach(produto => {
+
+        if(categoria === "todos"){
+            produto.style.display = "";
+            return;
+        }
+
+        if(produto.dataset.categoria === categoria){
+            produto.style.display = "";
+        }else{
+            produto.style.display = "none";
+        }
+
+    });
+}
+  
   atualizar();
 </script>
 

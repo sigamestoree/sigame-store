@@ -215,6 +215,26 @@ button:hover {
     opacity:.8;
 }
 
+.abas{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:20px 0;
+    flex-wrap:wrap;
+}
+
+.abas button{
+    background:#222;
+    color:white;
+    border:1px solid #555;
+    padding:10px 20px;
+    border-radius:20px;
+}
+
+.abas button:hover{
+    background:#00c853;
+}
+  
 </style>
 </head>
 
@@ -233,19 +253,26 @@ class="pesquisa"
 placeholder="Pesquisar produtos..."
 onkeyup="filtrarProdutos()">
 
+<div class="abas">
+    <button onclick="filtrarCategoria('todos')">🛍️ Todos</button>
+    <button onclick="filtrarCategoria('livro')">📚 Livros</button>
+    <button onclick="filtrarCategoria('biblia')">📖 Bíblias</button>
+    <button onclick="filtrarCategoria('bloco')">📝 Blocos</button>
+</div>
+  
 <div class="main">
 
 <div class="container">
   
   <!-- TODOS OS PRODUTOS (100% iguais) -->
-<div class="produto">
+<div class="produto" data-categoria="livro">
 <img src="Lodeusquedestroisonhos.png">
 <h2>O Deus que Destrói Sonhos</h2>
 <p>R$ 39,99</p>
 <button class="esgotadoBtn" disabled>❌ Esgotado</button>
 </div>
 
-<div class="produto">
+<div class="produto" data-categoria="livro">
 <img src="Lcomosetornarumcristaoinutil.png">
 <h2>Como Se Tornar um Cristão Inútil</h2>
 <p>R$ 44,99</p>
@@ -253,14 +280,14 @@ onkeyup="filtrarProdutos()">
 <button onclick="add('Como Se Tornar um Cristão Inútil',44.99)">Adicionar</button>
 </div>
   
-<div class="produto">
+<div class="produto" data-categoria="livro">
 <img src="Lcombo.png">
 <h2>Combo Rodrigo Bibo</h2>
 <p>R$ 69,99</p>
 <button class="esgotadoBtn" disabled>❌ Esgotado</button>
 </div>
 
-<div class="produto">
+<div class="produto" data-categoria="livro">
 <img src="Lumavidacompropositos.png">
 <h2>Uma Vida com Propósitos</h2>
 <p>R$ 59,99</p>
@@ -268,7 +295,7 @@ onkeyup="filtrarProdutos()">
 <button onclick="add('Uma Vida com Propósitos',59.99)">Adicionar</button>
 </div>
   
-<div class="produto">
+<div class="produto" data-categoria="livro">
 <img src="Legotransformado.png">
 <h2>Ego Transformado</h2>
 <p>R$ 24,99</p>
@@ -276,7 +303,7 @@ onkeyup="filtrarProdutos()">
 <button onclick="add('Ego Transformado',24.99)">Adicionar</button>
 </div>
   
-<div class="produto">
+<div class="produto" data-categoria="livro">
 <img src="Lcartasdeumdiaboaseuaprendiz.png">
 <h2>Cartas de um Diabo</h2>
 <p>R$ 54,99</p>
@@ -284,23 +311,15 @@ onkeyup="filtrarProdutos()">
 <button class="esgotadoBtn" disabled>❌ Esgotado</button>
 </div>
   
-<div class="produto">
+<div class="produto" data-categoria="livro">
 <img src="Lhumildade.png">
 <h2>Humildade</h2>
 <p>R$ 19,99</p>
 <p class="estoque">Disponíveis: 2</p>
 <button class="esgotadoBtn" disabled>❌ Esgotado</button>
 </div>
-  
-<div class="produto">
-<img src="Btuagraça.png">
-<h2>Bíblia Tua Graça</h2>
-<p>R$ 29,99</p>
-<p class="estoque">Disponíveis: 1</p>
-<button onclick="add('Bíblia Tua Graça',29.99)">Adicionar</button>
-</div>
-  
-<div class="produto">
+
+<div class="produto" data-categoria="livro">
 <img src="Doideussoueudenovo.png">
 <h2>Devocional Oi Deus sou eu de novo</h2>
 <p>R$ 59,99</p>
@@ -308,7 +327,15 @@ onkeyup="filtrarProdutos()">
 <button onclick="add('Oi Deus sou eu de novo',59.99)">Adicionar</button>
 </div>
   
-<div class="produto">
+<div class="produto" data-categoria="biblia">
+<img src="Btuagraça.png">
+<h2>Bíblia Tua Graça</h2>
+<p>R$ 29,99</p>
+<p class="estoque">Disponíveis: 1</p>
+<button onclick="add('Bíblia Tua Graça',29.99)">Adicionar</button>
+</div>
+
+<div class="produto" data-categoria="biblia">
 <img src="Bide.png">
 <h2>Bíblia Ide</h2>
 <p>R$ 34,99</p>
@@ -316,14 +343,14 @@ onkeyup="filtrarProdutos()">
 <button onclick="add('Bíblia Ide',34.99)">Adicionar</button>
 </div>
   
-<div class="produto">
+<div class="produto" data-categoria="biblia">
 <img src="Bfloreça.png">
 <h2>Bíblia Florença</h2>
 <p>R$ 44,99</p>
 <button class="esgotadoBtn" disabled>❌ Esgotado</button>
 </div>
 
-<div class="produto">
+<div class="produto" data-categoria="biblia">
 <img src="Brujaoleaodejuda.png">
 <h2>Bíblia Leão de Judá</h2>
 <p>R$ 19,99</p>
@@ -331,7 +358,7 @@ onkeyup="filtrarProdutos()">
 <button onclick="add('Bíblia Leão de Judá',19.99)">Adicionar</button>
 </div>
   
-<div class="produto">
+<div class="produto" data-categoria="biblia">
 <img src="Bnadaseracapaz.png">
 <h2>Bíblia Nada Será Capaz</h2>
 <p>R$ 24,99</p>
@@ -339,7 +366,7 @@ onkeyup="filtrarProdutos()">
 <button onclick="add('Bíblia Nada Será Capaz',24.99)">Adicionar</button>
 </div>
   
-<div class="produto">
+<div class="produto" data-categoria="biblia">
 <img src="Braizdedavi.png">
 <h2>Bíblia Raiz de Davi</h2>
 <p>R$ 24,99</p>
@@ -347,7 +374,7 @@ onkeyup="filtrarProdutos()">
 <button onclick="add('Bíblia Raiz de Davi',24.99)">Adicionar</button>
 </div>
   
-<div class="produto">
+<div class="produto" data-categoria="biblia">
 <img src="Bemquadrinhos.png">
 <h2>Bíblia em Quadrinhos</h2>
 <p>R$ 59,99</p>
@@ -355,7 +382,7 @@ onkeyup="filtrarProdutos()">
 <button onclick="add('Bíblia em Quadrinhos',59.99)">Adicionar</button>
 </div>
   
-<div class="produto">
+<div class="produto" data-categoria="bloco">
 <img src="BOdeAnotaçõesEleVive.png">
 <h2>Bloco de Anotações Ele Vive</h2>
 <p>R$ 14,99</p>
@@ -363,7 +390,7 @@ onkeyup="filtrarProdutos()">
 <button onclick="add('Bloco de Anotações Ele Vive',14.99)">Adicionar</button>
 </div>
   
-<div class="produto">
+<div class="produto" data-categoria="bloco">
 <img src="BOdeAnotaçõesEleRessuscitou.png">
 <h2>Bloco de Anotações Ele Ressuscitou</h2>
 <p>R$ 14,99</p>
@@ -371,7 +398,7 @@ onkeyup="filtrarProdutos()">
 <button onclick="add('Bloco de Anotações Ele Ressuscitou',14.99)">Adicionar</button>
 </div>
   
-<div class="produto">
+<div class="produto" data-categoria="bloco">
 <img src="BOdeanotacoescorrenteza.png">
 <h2>Bloco de Anotações Correnteza</h2>
 <p>R$ 14,99</p>
@@ -379,7 +406,7 @@ onkeyup="filtrarProdutos()">
 <button onclick="add('Bloco de Anotações Correnteza',14.99)">Adicionar</button>
 </div>
   
-<div class="produto">
+<div class="produto" data-categoria="bloco">
 <img src="BOdeAnotaçõesTudoCrê.png">
 <h2>Bloco de Anotações Tudo Crê</h2>
 <p>R$ 14,99</p>
@@ -387,7 +414,7 @@ onkeyup="filtrarProdutos()">
 <button onclick="add('Bloco de Anotações Tudo Crê',14.99)">Adicionar</button>
 </div>
   
-<div class="produto">
+<div class="produto" data-categoria="bloco">
 <img src="BOdeAnotaçõesFlor.png">
 <h2>Bloco de Anotações Flor</h2>
 <p>R$ 14,99</p>

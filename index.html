@@ -509,8 +509,12 @@ function atualizar(){
 
   carrinho.forEach((item,i)=>{
     lista.innerHTML += `
-      <p>${item.nome} - R$ ${item.preco.toFixed(2)}
-      <button class='remover' onclick='remover(${i})'>X</button></p>`;
+  <p>
+  ${item.nome}
+  ${item.tipo === "encomenda" ? " 📦(Encomenda)" : ""}
+  - R$ ${item.preco.toFixed(2)}
+  <button class='remover' onclick='remover(${i})'>X</button>
+  </p>`;
     total += item.preco;
   });
 
@@ -530,7 +534,7 @@ function remover(i){
   atualizar();
 }
 
-function enviar(){
+  function enviar(){
 
   if(carrinho.length === 0){
     alert("Seu carrinho está vazio!");
@@ -540,16 +544,49 @@ function enviar(){
   let msg = "🛒 *NOVO PEDIDO*%0A%0A";
   let total = 0;
 
-  carrinho.forEach(p=>{
-    msg += p.nome + " - R$ " + p.preco.toFixed(2) + "%0A";
-    total += p.preco;
-  });
+  const prontaEntrega = carrinho.filter(
+    item => item.tipo === "pronta_entrega"
+  );
 
-  msg += "%0A💰 *Total:* R$ " + total.toFixed(2);
+  const encomendas = carrinho.filter(
+    item => item.tipo === "encomenda"
+  );
 
-  window.open(
-    "https://wa.me/5574999019805?text=" + msg,
-    "_blank"
+  if(prontaEntrega.length > 0){
+
+    msg += "✅ *PRONTA ENTREGA*%0A";
+
+    prontaEntrega.forEach(item=>{
+      msg += item.nome +
+      " - R$ " +
+      item.preco.toFixed(2) +
+      "%0A";
+
+      total += item.preco;
+    });
+
+    msg += "%0A";
+  }
+
+  if(encomendas.length > 0){
+
+    msg += "📦 *ENCOMENDAS*%0A";
+
+    encomendas.forEach(item=>{
+      msg += item.nome +
+      " - R$ " +
+      item.preco.toFixed(2) +
+      "%0A";
+
+      total += item.preco;
+    });
+
+    msg += "%0A";
+  }
+
+  msg += "💰 *Total:* R$ " + total.toFixed(2);
+
+  ```javascript9window.open(10  "https://wa.me/5574999019805?text=" + msg,11  "_blank"12);
   );
 
   carrinho = [];

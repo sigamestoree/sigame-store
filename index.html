@@ -601,7 +601,11 @@ function remover(i){
     msg += "%0A";
   }
 
-  msg += "💰 *Total:* R$ " + total.toFixed(2);
+msg += "💰 *Total:* R$ " + total.toFixed(2);
+
+msg += "%0A%0A💳 *PAGAMENTO PIX*";
+msg += "%0A🏦 Banco: Mercado Pago";
+msg += "%0A🔑 Chave PIX (CPF): 092.588.375-17";
 
   window.open(
   "https://wa.me/5574999019805?text=" + msg,

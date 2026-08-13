@@ -127,7 +127,6 @@ button:hover{
     color:black;
     padding:20px;
     border-radius:20px;
-  ``
 
     position: sticky;
     top: 20px;
@@ -298,6 +297,36 @@ button:hover{
 .produto{
     animation:aparecer .7s ease;
 }
+
+.banner{
+    height:450px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    background:
+    linear-gradient(
+      rgba(0,0,0,.5),
+      rgba(0,0,0,.5)
+    ),
+    url("banner.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.banner h1{
+    font-size:70px;
+    margin:0;
+}
+
+.banner p{
+    font-size:24px;
+}
   
 </style>
 </head>
@@ -308,6 +337,14 @@ button:hover{
   <img src="Logo.png">
   <h1>SIGA-ME STORE</h1>
 </header>
+
+<div class="banner">
+2
+<h1>LEIA APRENDA CRESÇA</h1>
+3
+<p>Livros cristãos para fortalecer sua fé.</p>
+4
+</div>
 
 <!-- BARRA DE PESQUISA -->
 <input

@@ -121,10 +121,13 @@ button:hover{
 }
 
 .carrinho {
-    flex: 1;
-    min-width: 250px;
-    background: rgba(0,0,0,0.85);
-    padding: 15px;
+    flex:1;
+    min-width:250px;
+    background:white;
+    color:black;
+    padding:20px;
+    border-radius:20px;
+  ``
 
     position: sticky;
     top: 20px;
@@ -263,15 +266,37 @@ button:hover{
 }
 
 .abas button{
-    background:#222;
-    color:white;
-    border:1px solid #555;
-    padding:10px 20px;
-    border-radius:20px;
+    background:white;
+    color:black;
+    border:none;
+    padding:12px 25px;
+    border-radius:999px;
+    font-weight:bold;
+    transition:.3s;
 }
 
 .abas button:hover{
-    background:#00c853;
+    background:black;
+    color:white;
+    transform:translateY(-3px);
+}
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.produto{
+    animation:aparecer .7s ease;
 }
   
 </style>

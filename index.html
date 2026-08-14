@@ -780,6 +780,12 @@ document.getElementById("total").innerHTML =
     total.toLocaleString("pt-BR", {
         minimumFractionDigits: 2
     });
+
+localStorage.setItem(
+  "carrinho",
+  JSON.stringify(carrinho)
+);
+  
 }
 
 function remover(i){

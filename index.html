@@ -349,10 +349,55 @@ button:hover{
     font-size:24px;
     text-shadow:0 3px 10px rgba(0,0,0,.8);
 }
+
+.selo{
+    background:#ff5722;
+    color:white;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    display:inline-block;
+
+    font-size:12px;
+    font-weight:bold;
+
+    margin-bottom:10px;
+}
+
+.avaliacao{
+    color:#ffb800;
+    font-size:14px;
+    margin:5px 0;
+}
+
+#toast{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+
+    background:#00c853;
+    color:white;
+
+    padding:15px 20px;
+
+    border-radius:10px;
+
+    opacity:0;
+
+    transition:.4s;
+
+    z-index:9999;
+}
   
 </style>
 </head>
 
+  <div id="toast">
+✅ Produto adicionado ao carrinho
+</div>
+  
 <body>
 
 <header>
@@ -395,7 +440,11 @@ onkeyup="filtrarProdutos()">
 
 <div class="produto" data-categoria="livro">
 <img src="Lcomosetornarumcristaoinutil.png">
+<div class="selo">🔥 Mais Vendido</div>
 <h2>Como Se Tornar um Cristão Inútil</h2>
+<p class="avaliacao">
+⭐⭐⭐⭐⭐ (12 avaliações)
+</p>
 <p>R$ 44,99</p>
 <p class="estoque">Disponíveis: 3</p>
 <button onclick="add('Como Se Tornar um Cristão Inútil',44.99)">Adicionar</button>
@@ -477,7 +526,11 @@ Encomendar
   
 <div class="produto" data-categoria="biblia">
 <img src="Bfloreça.png">
+<div class="selo">🔥 Mais Vendido</div>
 <h2>Bíblia Floreça</h2>
+<p class="avaliacao">
+⭐⭐⭐⭐⭐ (12 avaliações)
+</p>
 <p>R$ 44,99</p>
   <button onclick="add('Bíblia Floreça',44.99,'encomenda')">
 Encomendar
@@ -545,6 +598,10 @@ Encomendar
 <div class="produto" data-categoria="bloco">
 <img src="BOdeAnotaçõesTudoCrê.png">
 <h2>Bloco de Anotações Tudo Crê</h2>
+<p class="avaliacao">
+⭐⭐⭐⭐⭐ (12 avaliações)
+</p>
+<div class="selo">🔥 Mais Vendido</div>
 <p>R$ 14,99</p>
 <button onclick="add('Bloco de Anotações Tudo Crê',14.99,'encomenda')">Encomendar</button>
 <button class="esgotadoBtn" disabled>❌ Esgotado</button>
@@ -560,7 +617,7 @@ Encomendar
   </div>
 
   <div class="carrinho">
-    <h3>Carrinho</h3>
+    <h3 id="tituloCarrinho">Carrinho (0)</h3>
     <div id="lista">Vazio</div>
     <p id="total">Total: R$ 0.00</p>
 
@@ -630,6 +687,20 @@ let carrinho = [];
 
 function add(nome, preco, tipo = "pronta_entrega"){
   carrinho.push({nome, preco, tipo});
+
+function mostrarToast(){
+
+    let toast =
+    document.getElementById("toast");
+
+    toast.style.opacity = "1";
+
+    setTimeout(()=>{
+        toast.style.opacity = "0";
+    },2000);
+
+}
+  
   atualizar();
 }
 
@@ -788,8 +859,25 @@ function filtrarCategoria(categoria){
 
     });
 }
+
+document.getElementById("tituloCarrinho").innerHTML =
+"Carrinho (" + carrinho.length + ")";
   
   atualizar();
+
+function mostrarToast(){
+
+    let toast =
+    document.getElementById("toast");
+
+    toast.style.opacity = "1";
+
+    setTimeout(()=>{
+        toast.style.opacity = "0";
+    },2000);
+
+}
+  
 </script>
 
 </body>

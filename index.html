@@ -772,7 +772,9 @@ function remover(i){
     prontaEntrega.forEach(item=>{
       msg += item.nome +
       " - R$ " +
-      item.preco.toFixed(2) +
+      item.preco.toLocaleString("pt-BR", {
+  minimumFractionDigits: 2
+}) +
       "%0A";
 
       total += item.preco;
@@ -806,9 +808,10 @@ msg += "%0A%0A💳 *PAGAMENTO PIX*";
 msg += "%0A🏦 Banco: Mercado Pago";
 msg += "%0A🔑 Chave PIX (CPF): 092.588.375-17";
 
-  window.open(
+window.open(
   "https://wa.me/5574999019805?text=" + msg,
   "_blank"
+);
 );
 
   carrinho = [];
@@ -831,9 +834,9 @@ function enviarSugestao(){
   msg += "📝 Sugestão: " + sugestao;
 
   window.open(
-    "https://wa.me/5574999019805?text=" + msg,
-    "_blank"
-  );
+  "https://wa.me/5574999019805?text=" + msg,
+  "_blank"
+);
 }
 
 /* PESQUISA */

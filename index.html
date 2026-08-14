@@ -809,7 +809,7 @@ msg += "%0A🏦 Banco: Mercado Pago";
 msg += "%0A🔑 Chave PIX (CPF): 092.588.375-17";
 
 window.open(
-  "https://wa.me/5574999019805?text=" + msg,
+  "https://wa.me/5574999019805?text=" + encodeURIComponent(msg),
   "_blank"
 );
 );
@@ -833,8 +833,8 @@ function enviarSugestao(){
   msg += "📦 Tipo: " + tipo + "%0A";
   msg += "📝 Sugestão: " + sugestao;
 
-  window.open(
-  "https://wa.me/5574999019805?text=" + msg,
+window.open(
+  "https://wa.me/5574999019805?text=" + encodeURIComponent(msg),
   "_blank"
 );
 }

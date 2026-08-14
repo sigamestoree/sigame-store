@@ -720,7 +720,9 @@ function atualizar(){
   <p>
   ${item.nome}
   ${item.tipo === "encomenda" ? " 📦(Encomenda)" : ""}
-  - R$ ${item.preco.toFixed(2)}
+  - R$ ${item.preco.toLocaleString("pt-BR", {
+  minimumFractionDigits: 2
+})}
   <button class='remover' onclick='remover(${i})'>X</button>
   </p>`;
     total += item.preco;

@@ -735,8 +735,11 @@ function atualizar(){
       document.getElementById("btnFinalizar").disabled = false;
   }
 
-  document.getElementById("total").innerHTML =
-      "Total: R$ " + total.toFixed(2);
+document.getElementById("total").innerHTML =
+    "Total: R$ " +
+    total.toLocaleString("pt-BR", {
+        minimumFractionDigits: 2
+    });
 }
 
 function remover(i){
@@ -794,7 +797,10 @@ function remover(i){
     msg += "%0A";
   }
 
-msg += "💰 *Total:* R$ " + total.toFixed(2);
+msg += "💰 *Total:* R$ " +
+total.toLocaleString("pt-BR", {
+  minimumFractionDigits: 2
+});
 
 msg += "%0A%0A💳 *PAGAMENTO PIX*";
 msg += "%0A🏦 Banco: Mercado Pago";

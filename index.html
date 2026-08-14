@@ -790,8 +790,10 @@ function remover(i){
     encomendas.forEach(item=>{
       msg += item.nome +
       " - R$ " +
-      item.preco.toFixed(2) +
-      "%0A";
+    item.preco.toLocaleString("pt-BR", {
+  minimumFractionDigits: 2
+}) +
+"%0A";
 
       total += item.preco;
     });
@@ -811,7 +813,6 @@ msg += "%0A🔑 Chave PIX (CPF): 092.588.375-17";
 window.open(
   "https://wa.me/5574999019805?text=" + encodeURIComponent(msg),
   "_blank"
-);
 );
 
   carrinho = [];
@@ -836,7 +837,6 @@ function enviarSugestao(){
 window.open(
   "https://wa.me/5574999019805?text=" + encodeURIComponent(msg),
   "_blank"
-);
 }
 
 /* PESQUISA */

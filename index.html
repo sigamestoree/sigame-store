@@ -394,11 +394,11 @@ button:hover{
 </style>
 </head>
 
-  <div id="toast">
+<body>
+
+<div id="toast">
 ✅ Produto adicionado ao carrinho
 </div>
-  
-<body>
 
 <header>
   <img src="Logo.png">
@@ -688,6 +688,11 @@ let carrinho = [];
 function add(nome, preco, tipo = "pronta_entrega"){
   carrinho.push({nome, preco, tipo});
 
+  mostrarToast();
+
+  atualizar();
+}
+
 function mostrarToast(){
 
     let toast =
@@ -705,6 +710,9 @@ function mostrarToast(){
 }
 
 function atualizar(){
+
+  document.getElementById("tituloCarrinho").innerHTML =
+"Carrinho (" + carrinho.length + ")";
 
   let lista = document.getElementById("lista");
   lista.innerHTML = "";
@@ -860,9 +868,6 @@ function filtrarCategoria(categoria){
     });
 }
 
-document.getElementById("tituloCarrinho").innerHTML =
-"Carrinho (" + carrinho.length + ")";
-  
   atualizar();
 
 function mostrarToast(){

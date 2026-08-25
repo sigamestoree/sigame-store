@@ -200,7 +200,8 @@ body::before{
 .slide-track{
     display:flex;
     width:max-content;
-    animation:scroll 25s linear infinite;
+    gap:20px;
+    animation:scroll 60s linear infinite;
 }
 
 .slide-track img{
@@ -216,14 +217,14 @@ body::before{
     animation-play-state:paused;
 }
 
-@keyframes scroll{
+@keyframes scroll {
 
-    0%{
-        transform:translateX(0);
+    from {
+        transform: translateX(0);
     }
 
-    100%{
-        transform:translateX(-50%);
+    to {
+        transform: translateX(-50%);
     }
 }
 

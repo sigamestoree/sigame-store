@@ -231,6 +231,34 @@ body::before{
 .slide-track:hover{
     animation-play-state: paused;
 }
+
+.slider::before,
+.slider::after{
+    content:"";
+    position:absolute;
+    top:0;
+    width:150px;
+    height:100%;
+    z-index:10;
+}
+
+.slider::before{
+    left:0;
+    background:linear-gradient(
+        to right,
+        rgba(0,0,0,1),
+        transparent
+    );
+}
+
+.slider::after{
+    right:0;
+    background:linear-gradient(
+        to left,
+        rgba(0,0,0,1),
+        transparent
+    );
+}
     
 </style>
 </head>

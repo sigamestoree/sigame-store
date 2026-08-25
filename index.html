@@ -9,75 +9,145 @@
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 body{
 
-background:url("Fundo.png");
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
+    background:url("Fundo.png");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
 
-color:white;
+    color:white;
 }
 
 .hero{
 
-height:100vh;
+    min-height:100vh;
 
-display:flex;
-flex-direction:column;
+    display:flex;
+    flex-direction:column;
 
-justify-content:center;
-align-items:center;
+    justify-content:center;
+    align-items:center;
 
-text-align:center;
-padding:20px;
+    text-align:center;
+
+    padding:20px;
 }
 
 .hero img{
-width:150px;
-margin-bottom:20px;
+    width:150px;
+    margin-bottom:30px;
 }
 
 .hero h1{
 
-font-size:70px;
-margin-bottom:20px;
+    font-size:90px;
+    font-weight:900;
+
+    letter-spacing:-3px;
+
+    margin-bottom:20px;
 }
 
 .hero p{
 
-font-size:22px;
+    font-size:24px;
 
-max-width:700px;
+    max-width:800px;
 
-margin-bottom:40px;
+    line-height:1.6;
+
+    margin-bottom:40px;
+
+    opacity:.95;
+}
+
+.acoes{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
 }
 
 .botao{
 
-background:white;
-color:black;
+    background:white;
+    color:black;
 
-padding:18px 40px;
+    padding:18px 42px;
 
-border-radius:999px;
+    border-radius:999px;
 
-text-decoration:none;
+    text-decoration:none;
 
-font-weight:bold;
+    font-weight:700;
 
-transition:.3s;
+    transition:.3s;
+
+    display:inline-block;
 }
 
 .botao:hover{
 
-transform:translateY(-5px);
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 15px 40px rgba(255,255,255,.25);
+}
+
+.botaoSecundario{
+
+    background:transparent;
+
+    color:white;
+
+    border:1px solid white;
+
+    padding:18px 42px;
+
+    border-radius:999px;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    transition:.3s;
+
+    display:inline-block;
+}
+
+.botaoSecundario:hover{
+
+    background:white;
+
+    color:black;
+
+    transform:translateY(-5px);
+}
+
+@media(max-width:768px){
+
+    .hero h1{
+        font-size:55px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .acoes{
+        flex-direction:column;
+    }
 }
 
 </style>
@@ -88,19 +158,40 @@ transform:translateY(-5px);
 
 <section class="hero">
 
-<img src="Logo.png">
+<img src="Logo.png" alt="SIGA-ME STORE">
 
 <h1>SIGA-ME STORE</h1>
 
 <p>
-Livros, Bíblias e materiais cristãos para fortalecer sua caminhada de fé.
+Descubra livros, Bíblias e materiais cristãos cuidadosamente selecionados para fortalecer sua fé e sua jornada espiritual.
 </p>
 
-" class="botao">
+<div class="acoes">
+
+ja.html" class="botao">
 EXPLORAR COLEÇÃO
 </a>
+
+<aobre
+
+</div>
+
+</section>
+
+<section id="sobre" style="padding:120px 20px;text-align:center;max-width:900px;margin:auto;">
+
+<h2 style="font-size:50px;margin-bottom:30px;">
+SOBRE A SIGA-ME STORE
+</h2>
+
+<p style="font-size:22px;line-height:1.8;">
+Nossa missão é disponibilizar materiais cristãos que edifiquem a fé,
+estimulem o conhecimento bíblico e aproximem pessoas de Deus por meio
+da leitura e do aprendizado.
+</p>
 
 </section>
 
 </body>
+
 </html>

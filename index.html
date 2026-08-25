@@ -134,23 +134,86 @@ body{
     transform:scale(1.08);
 }
 
-.indicadores{
+    .indicadores{
+
     display:flex;
     justify-content:center;
-    gap:80px;
+    align-items:center;
+    gap:100px;
     flex-wrap:wrap;
     text-align:center;
-    padding:100px 20px;
+    padding:120px 20px;
+}
+
+.indicador{
+
+    min-width:180px;
 }
 
 .indicador h2{
-    font-size:55px;
+
+    font-size:60px;
+    font-weight:900;
     margin-bottom:10px;
 }
 
 .indicador p{
+
     font-size:18px;
     opacity:.8;
+}
+
+.carrossel{
+
+    padding:100px 0;
+    text-align:center;
+    overflow:hidden;
+}
+
+.carrossel h2{
+
+    font-size:50px;
+    margin-bottom:50px;
+}
+
+.slider{
+
+    overflow:hidden;
+}
+
+.slide-track{
+
+    display:flex;
+    width:max-content;
+    animation:scroll 20s linear infinite;
+}
+
+.slide-track img{
+
+    width:220px;
+    height:320px;
+    object-fit:cover;
+    margin:0 20px;
+    border-radius:25px;
+    transition:.3s;
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.3);
+}
+
+.slide-track img:hover{
+
+    transform:scale(1.05);
+}
+
+@keyframes scroll{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
 }
     
 </style>

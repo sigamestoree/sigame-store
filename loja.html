@@ -347,22 +347,25 @@ transform: scale(1.03);
     position:fixed;
     bottom:25px;
     right:25px;
-    background:white;
-    color:white;
+    display:flex;
+    align-items:center;
+    gap:8px;
     padding:14px 24px;
-    border-radius:999px;
+    background:rgba(255,255,255,.1);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.15);
+    color:white;
     text-decoration:none;
+    border-radius:999px;
     font-weight:700;
-    z-index:9998;
     transition:.3s;
-    box-shadow:
-        0 10px 30px rgba(255,255,255,.15);
+    z-index:9999;
 }
 
 .suporte:hover{
-    transform:translateY(-5px);
-    box-shadow:
-        0 15px 40px rgba(255,255,255,.25);
+    background:white;
+    color:black;
+    transform:translateY(-3px);
 }
   
 </style>

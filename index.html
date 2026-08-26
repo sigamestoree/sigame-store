@@ -134,20 +134,25 @@ body::before{
     position:fixed;
     bottom:25px;
     right:25px;
-    background:#25D366;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 24px;
+    background:rgba(255,255,255,.1);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.15);
     color:white;
-    padding:15px 22px;
-    border-radius:999px;
     text-decoration:none;
-    font-weight:bold;
-    box-shadow:
-    0 8px 30px rgba(37,211,102,.4);
-    z-index:9999;
+    border-radius:999px;
+    font-weight:700;
     transition:.3s;
+    z-index:9999;
 }
 
 .suporte:hover{
-    transform:scale(1.08);
+    background:white;
+    color:black;
+    transform:translateY(-3px);
 }
 
     .indicadores{
@@ -213,10 +218,6 @@ body::before{
     flex-shrink:0;
 }
 
-.slide-track:hover{
-    animation-play-state:paused;
-}
-
 @keyframes scroll {
 
     from {
@@ -226,10 +227,6 @@ body::before{
     to {
         transform: translateX(-50%);
     }
-}
-
-.slide-track:hover{
-    animation-play-state: paused;
 }
 
 .slider::before,

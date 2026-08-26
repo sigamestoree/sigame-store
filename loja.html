@@ -301,16 +301,11 @@ button:hover{
 .selo{
     background:#ff5722;
     color:white;
-
     padding:6px 12px;
-
     border-radius:20px;
-
     display:inline-block;
-
     font-size:12px;
     font-weight:bold;
-
     margin-bottom:10px;
 }
 
@@ -322,20 +317,19 @@ button:hover{
 
 #toast{
     position:fixed;
-    bottom:20px;
-    right:20px;
-
-    background:#00c853;
+    bottom:25px;
+    right:25px;
+    background:rgba(15,15,15,.95);
     color:white;
-
-    padding:15px 20px;
-
-    border-radius:10px;
-
+    padding:16px 22px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter:blur(15px);
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.4);
     opacity:0;
-
-    transition:.4s;
-
+    transform:translateY(20px);
+    transition:.35s;
     z-index:9999;
 }
 
@@ -689,14 +683,15 @@ function add(nome, preco, tipo = "pronta_entrega"){
 }
 
 function mostrarToast(){
-
     let toast =
     document.getElementById("toast");
-
     toast.style.opacity = "1";
-
+    toast.style.transform = "translateY(0)";
     setTimeout(()=>{
         toast.style.opacity = "0";
+        toast.style.transform =
+        "translateY(20px)";
+
     },2000);
 }
 

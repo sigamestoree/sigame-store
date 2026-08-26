@@ -877,21 +877,36 @@ function filtrarProdutos() {
 
 function filtrarCategoria(categoria){
 
-    let produtos = document.querySelectorAll(".produto");
-
+    let produtos =
+    document.querySelectorAll(".produto");
     produtos.forEach(produto => {
-
         if(categoria === "todos"){
             produto.style.display = "";
             return;
         }
 
-        if(produto.dataset.categoria === categoria){
-            produto.style.display = "";
-        }else{
-            produto.style.display = "none";
+        if(categoria === "maisvendido"){
+            produto.style.display =
+            produto.dataset.maisvendido === "sim"
+            ? ""
+            : "none";
+
+            return;
         }
 
+        if(categoria === "5estrelas"){
+            produto.style.display =
+            produto.dataset["5estrelas"] === "sim"
+            ? ""
+            : "none";
+
+            return;
+        }
+      
+        produto.style.display =
+        produto.dataset.categoria === categoria
+        ? ""
+        : "none";
     });
 }
 

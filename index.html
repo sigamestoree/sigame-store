@@ -202,20 +202,21 @@ body::before{
     position:relative;
 }
 
-.slide-track{
-    display:flex;
-    width:max-content;
-    gap:20px;
-    animation:scroll 60s linear infinite;
-}
-
 .slide-track img{
     width:220px;
     height:320px;
     object-fit:cover;
     border-radius:20px;
-    margin-right:20px;
     flex-shrink:0;
+
+    margin-right:0;
+}
+
+.slide-track{
+    display:flex;
+    gap:20px;
+    width:max-content;
+    animation:scroll 60s linear infinite;
 }
 
 @keyframes scroll {
@@ -277,11 +278,11 @@ footer{
 
 .footer-grid{
     display:flex;
-    flex-direction:column;
-    align-items:center;
     justify-content:center;
+    align-items:flex-start;
+    gap:100px;
     text-align:center;
-    gap:25px;
+    flex-wrap:wrap;
 }
 
 .footer-grid div{

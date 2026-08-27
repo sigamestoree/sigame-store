@@ -258,16 +258,16 @@ body::before{
 }
 
 .divisoria{
-    width:100%;
+    width:100vw;
     height:3px;
-    margin:0px auto;
-    border-radius:0px;
+    margin:0;
+    margin-left:calc(50% - 50vw);
     background:white;
     box-shadow:
         0 0 15px rgba(255,255,255,.8),
         0 0 30px rgba(255,255,255,.4);
 }
-
+    
 footer{
     background: rgba(0,0,0,.95);
     padding:40px 20px;
@@ -289,12 +289,8 @@ footer{
 }
 
 .footer-grid h4{
-    margin-bottom:8px;
-}
-
-.footer-grid h4{
     color:#fff;
-    margin-bottom:10px;
+    margin-bottom:8px;
 }
 
 .footer-grid p{

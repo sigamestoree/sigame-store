@@ -225,11 +225,14 @@ transform: scale(1.03);
 }
 
 .footer-grid{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-    gap:15px;
+    max-width:1200px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+
+    text-align:left;
 }
 
 .footer-grid h4{
@@ -662,22 +665,33 @@ data-cincoestrelas="sim">
 
 <footer>
     <div class="footer-grid">
+
         <div>
-            <h3>SIGA-ME STORE</h3>
+            <h4>📦 Entregas</h4>
+            <p>
+            Santana - R$ 8,00<br>
+            São Francisco - R$ 7,00<br>
+            São Joaquim - R$ 6,00
+            </p>
         </div>
 
         <div>
-            <p>Criada em 2026 por Paulo Santos.</p>
+            <h4>💳 Pagamentos</h4>
+            <p>PIX • Dinheiro • Cartão</p>
         </div>
 
         <div>
-            <p>Qualidade, confiança e excelência em cada produto.</p>
+            <h4>🔄 Trocas</h4>
+            <p>
+            Compras online: 7 dias.<br>
+            Compras presenciais: casos específicos.
+            </p>
         </div>
 
     </div>
 
     <p class="copyright">
-        © 2026 SIGA-ME STORE.
+        © 2026 SIGA-ME STORE
     </p>
 </footer>
   

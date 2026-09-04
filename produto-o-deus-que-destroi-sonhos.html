@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>O Deus que Destrói Sonhos</title>
+<title>O Deus que Destrói Sonhos | SIGA-ME STORE</title>
 
 <style>
 
@@ -13,87 +14,149 @@ body{
     padding:30px;
     background:url("Fundo.png") no-repeat center center fixed;
     background-size:cover;
-    color:white;
-    font-family:Arial,sans-serif;
+    font-family:"Segoe UI", Arial, sans-serif;
 }
 
 .voltar{
     color:white;
     text-decoration:none;
-    font-weight:bold;
+    font-weight:600;
+    font-size:15px;
 }
 
 .container{
     max-width:1400px;
-    margin:30px auto;
+    margin:25px auto;
     display:grid;
-    grid-template-columns:120px 1fr 350px;
+    grid-template-columns:100px 1fr 380px;
     gap:30px;
+    align-items:start;
 }
 
 .miniaturas{
     display:flex;
     flex-direction:column;
-    gap:10px;
+    gap:12px;
 }
 
 .miniaturas img{
-    width:90px;
-    border-radius:10px;
+    width:80px;
+    height:110px;
+    object-fit:cover;
+    border-radius:8px;
     cursor:pointer;
-    border:2px solid transparent;
+    border:2px solid #ddd;
+    background:white;
 }
 
 .miniaturas img:hover{
-    border-color:#ff5722;
+    border-color:#3483fa;
 }
 
 .principal{
     background:white;
-    border-radius:20px;
-    padding:20px;
+    border-radius:15px;
+    padding:25px;
     text-align:center;
 }
 
 .principal img{
-    max-width:450px;
     width:100%;
+    max-width:550px;
+    transition:.3s;
+}
+
+.principal img:hover{
+    transform:scale(1.03);
 }
 
 .info{
     background:white;
-    color:black;
-    padding:25px;
-    border-radius:20px;
+    border-radius:15px;
+    padding:30px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+    color:#333;
+}
+
+.vendidos{
+    color:#666;
+    font-size:14px;
+    margin-bottom:10px;
 }
 
 .info h1{
+    font-size:38px;
+    font-weight:400;
+    line-height:1.2;
     margin-top:0;
+    margin-bottom:15px;
+}
+
+.autor{
+    color:#666;
+    font-size:15px;
 }
 
 .preco{
-    font-size:40px;
-    font-weight:bold;
-    color:#ff5722;
+    font-size:48px;
+    font-weight:300;
+    color:#000;
+    margin-top:20px;
 }
 
-.comprar{
+.pix{
+    background:#00a650;
+    color:white;
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:5px;
+    font-size:13px;
+    margin-top:10px;
+}
+
+.descricao{
+    margin-top:25px;
+    font-size:18px;
+    line-height:1.6;
+    color:#444;
+}
+
+.titulo-secao{
+    margin-top:30px;
+    font-size:24px;
+}
+
+ul{
+    padding-left:20px;
+}
+
+ul li{
+    margin-bottom:10px;
+    color:#555;
+}
+
+.compra{
     background:white;
-    color:black;
-    border-radius:20px;
+    border-radius:15px;
     padding:25px;
-    height:fit-content;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+.estoque{
+    color:#00a650;
+    font-size:18px;
+    font-weight:600;
 }
 
 .botao{
     width:100%;
-    padding:15px;
+    padding:16px;
     border:none;
     border-radius:10px;
-    font-size:18px;
-    font-weight:bold;
     cursor:pointer;
-    margin-top:10px;
+    font-size:18px;
+    font-weight:600;
+    margin-top:15px;
 }
 
 .encomendar{
@@ -105,11 +168,30 @@ body{
     background:#e64a19;
 }
 
-ul{
-    line-height:2;
+.whats{
+    background:#25D366;
+    color:white;
+}
+
+.whats:hover{
+    background:#1ebe5d;
+}
+
+@media(max-width:1000px){
+
+.container{
+    grid-template-columns:1fr;
+}
+
+.miniaturas{
+    flex-direction:row;
+    justify-content:center;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
@@ -122,55 +204,93 @@ ul{
 <div class="miniaturas">
 <img src="Lodeusquedestroisonhos.png"
 onclick="trocarImagem(this.src)">
+
 <img src="Lodeusquedestroisonhos.png"
 onclick="trocarImagem(this.src)">
+
+<img src="Lodeusquedestroisonhos.png"
+onclick="trocarImagem(this.src)">
+
+<img src="Lodeusquedestroisonhos.png"
+onclick="trocarImagem(this.src)">
+
+<img src="Lodeusquedestroisonhos.png"
+onclick="trocarImagem(this.src)">
+
+<img src="Lodeusquedestroisonhos.png"
+onclick="trocarImagem(this.src)">
+
 <img src="Lodeusquedestroisonhos.png"
 onclick="trocarImagem(this.src)">
 </div>
 
 <div class="principal">
-<img id="imagemPrincipal"
+<img
+id="imagemPrincipal"
 src="Lodeusquedestroisonhos.png">
 </div>
 
 <div class="info">
-<h1>O Deus que Destrói Sonhos</h1>
-<p>Livro • Rodrigo Bibo</p>
+<p class="vendidos">
+Novo | +50 vendidos
+</p>
+<h1>
+O Deus que Destrói Sonhos
+</h1>
+<p class="autor">
+Livro | Rodrigo Bibo
+</p>
 <div class="preco">
 R$ 39,99
 </div>
-
-<p>
-Uma reflexão poderosa sobre como Deus utiliza
-nossos sonhos, fracassos e expectativas para
-moldar nosso caráter e nos aproximar de Sua
-vontade.
+<p class="pix">
+10% OFF no Pix
 </p>
-
-<h3>Características</h3>
-
+<p class="descricao">
+Uma reflexão poderosa sobre como Deus utiliza nossos sonhos,
+fracassos e expectativas para moldar nosso caráter e nos
+aproximar de Sua vontade.
+</p>
+<h2 class="titulo-secao">
+Características
+</h2>
 <ul>
 <li>Autor: Rodrigo Bibo</li>
-<li>Categoria: Teologia</li>
-<li>Idioma: Português</li>
 <li>Editora: Thomas Nelson Brasil</li>
+<li>Idioma: Português</li>
+<li>Categoria: Teologia</li>
 <li>Formato: Capa comum</li>
+<li>Condição: Novo</li>
 </ul>
+</div>
 
-<hr>
-<button class="botao encomendar"
-onclick="window.open('https://wa.me/5574999019805?text=Olá! Tenho interesse no livro O Deus que Destrói Sonhos.')">
+<div class="compra">
+<p class="estoque">
+✅ Disponível por encomenda
+</p>
+
+<p>
+Entrega mediante pedido.
+</p>
+
+<button
+class="botao encomendar"
+onclick="window.open('https://wa.me/5574999019805?text=' + encodeURIComponent('Olá! Tenho interesse no livro O Deus que Destrói Sonhos.'))">
 📦 Encomendar
+</button>
+
+<button
+class="botao whats"
+onclick="window.open('https://wa.me/5574999019805')">
+💬 Falar no WhatsApp
 </button>
 </div>
 
 </div>
 <script>
-
 function trocarImagem(src){
-    document.getElementById(
-        "imagemPrincipal"
-    ).src = src;
+document.getElementById("imagemPrincipal")
+.src = src;
 }
 
 </script>

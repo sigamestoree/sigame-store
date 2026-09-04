@@ -319,20 +319,22 @@ transform: scale(1.03);
 
 #toast{
     position:fixed;
-    bottom:90px; /* acima do suporte */
+    bottom:90px;
     right:25px;
-    background:rgba(15,15,15,.95);
-    color:white;
+
+    background:white;
+    color:black;
     padding:16px 22px;
     border-radius:16px;
-    border:1px solid rgba(255,255,255,.15);
+    border:1px solid rgba(0,0,0,.15);
     backdrop-filter:blur(15px);
     box-shadow:
-        0 10px 30px rgba(0,0,0,.4);
+        0 10px 30px rgba(0,0,0,.25);
     opacity:0;
     transform:translateY(20px);
     transition:.35s;
     z-index:9999;
+    font-weight:600;
 }
 
 .preco-antigo{

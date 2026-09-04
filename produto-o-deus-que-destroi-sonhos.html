@@ -2,29 +2,178 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>O Deus que Destrói Sonhos</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:30px;
+    background:url("Fundo.png") no-repeat center center fixed;
+    background-size:cover;
+    color:white;
+    font-family:Arial,sans-serif;
+}
+
+.voltar{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.container{
+    max-width:1400px;
+    margin:30px auto;
+    display:grid;
+    grid-template-columns:120px 1fr 350px;
+    gap:30px;
+}
+
+.miniaturas{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.miniaturas img{
+    width:90px;
+    border-radius:10px;
+    cursor:pointer;
+    border:2px solid transparent;
+}
+
+.miniaturas img:hover{
+    border-color:#ff5722;
+}
+
+.principal{
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+}
+
+.principal img{
+    max-width:450px;
+    width:100%;
+}
+
+.info{
+    background:white;
+    color:black;
+    padding:25px;
+    border-radius:20px;
+}
+
+.info h1{
+    margin-top:0;
+}
+
+.preco{
+    font-size:40px;
+    font-weight:bold;
+    color:#ff5722;
+}
+
+.comprar{
+    background:white;
+    color:black;
+    border-radius:20px;
+    padding:25px;
+    height:fit-content;
+}
+
+.botao{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+.encomendar{
+    background:#ff5722;
+    color:white;
+}
+
+.encomendar:hover{
+    background:#e64a19;
+}
+
+ul{
+    line-height:2;
+}
+
+</style>
 </head>
 
 <body>
-<a href="loja.html">
+
+<a class="voltar" href="loja.html">
 ⬅ Voltar para a loja
 </a>
-  
+
+<div class="container">
+<div class="miniaturas">
+<img src="Lodeusquedestroisonhos.png"
+onclick="trocarImagem(this.src)">
+<img src="Lodeusquedestroisonhos.png"
+onclick="trocarImagem(this.src)">
+<img src="Lodeusquedestroisonhos.png"
+onclick="trocarImagem(this.src)">
+</div>
+
+<div class="principal">
+<img id="imagemPrincipal"
+src="Lodeusquedestroisonhos.png">
+</div>
+
+<div class="info">
 <h1>O Deus que Destrói Sonhos</h1>
-<img src="Lodeusquedestroisonhos.png" width="350">
-<h2>R$ 39,99</h2>
-  
+<p>Livro • Rodrigo Bibo</p>
+<div class="preco">
+R$ 39,99
+</div>
+
 <p>
 Uma reflexão poderosa sobre como Deus utiliza
 nossos sonhos, fracassos e expectativas para
-moldar nosso caráter e nos aproximar de Sua vontade.
+moldar nosso caráter e nos aproximar de Sua
+vontade.
 </p>
-<h3>Informações</h3>
+
+<h3>Características</h3>
+
 <ul>
 <li>Autor: Rodrigo Bibo</li>
 <li>Categoria: Teologia</li>
 <li>Idioma: Português</li>
+<li>Editora: Thomas Nelson Brasil</li>
+<li>Formato: Capa comum</li>
 </ul>
+
+<hr>
+<button class="botao encomendar"
+onclick="window.open('https://wa.me/5574999019805?text=Olá! Tenho interesse no livro O Deus que Destrói Sonhos.')">
+📦 Encomendar
+</button>
+</div>
+
+</div>
+<script>
+
+function trocarImagem(src){
+    document.getElementById(
+        "imagemPrincipal"
+    ).src = src;
+}
+
+</script>
 
 </body>
 </html>

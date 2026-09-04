@@ -109,6 +109,49 @@ ul{
     line-height:2;
 }
 
+@media (max-width: 768px){
+
+    .container{
+        display:flex;
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .miniaturas{
+        flex-direction:row;
+        overflow-x:auto;
+        gap:10px;
+        padding-bottom:10px;
+    }
+
+    .miniaturas img{
+        width:70px;
+        flex-shrink:0;
+    }
+
+    .principal{
+        width:auto;
+    }
+
+    .principal img{
+        max-width:100%;
+        height:auto;
+    }
+
+    .info{
+        width:auto;
+    }
+
+    .info h1{
+        font-size:30px;
+    }
+
+    .preco{
+        font-size:32px;
+    }
+
+}
+    
 </style>
 </head>
 

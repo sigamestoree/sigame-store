@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>O Deus que Destrói Sonhos | SIGA-ME STORE</title>
+<title>O Deus que Destrói Sonhos</title>
 
 <style>
 
@@ -14,207 +13,103 @@ body{
     padding:30px;
     background:url("Fundo.png") no-repeat center center fixed;
     background-size:cover;
-
-    font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Arial,
-    sans-serif;
+    color:white;
+    font-family:Arial,sans-serif;
 }
 
 .voltar{
     color:white;
     text-decoration:none;
-    font-weight:600;
-    font-size:15px;
+    font-weight:bold;
 }
 
 .container{
-    max-width:1700px;
-    margin:25px auto;
-
+    max-width:1400px;
+    margin:30px auto;
     display:grid;
-    grid-template-columns:100px 1fr 420px 320px;
+    grid-template-columns:120px 1fr 350px;
     gap:30px;
-
-    align-items:start;
 }
 
 .miniaturas{
     display:flex;
     flex-direction:column;
-    gap:12px;
+    gap:10px;
 }
 
 .miniaturas img{
-    width:80px;
-    height:110px;
-    object-fit:cover;
-    border-radius:8px;
+    width:90px;
+    border-radius:10px;
     cursor:pointer;
-    border:2px solid #ddd;
-    background:white;
-    transition:.2s;
+    border:2px solid transparent;
 }
 
 .miniaturas img:hover{
-    border-color:#3483fa;
+    border-color:#ff5722;
 }
 
 .principal{
     background:white;
-    border-radius:15px;
-    padding:25px;
+    border-radius:20px;
+    padding:20px;
     text-align:center;
 }
 
 .principal img{
+    max-width:450px;
     width:100%;
-    max-width:650px;
-    transition:.3s;
-}
-
-.principal img:hover{
-    transform:scale(1.03);
 }
 
 .info{
     background:white;
-    border-radius:15px;
-    padding:30px;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
-    color:#333;
-}
-
-.vendidos{
-    color:#666;
-    font-size:14px;
-    margin-bottom:10px;
+    color:black;
+    padding:25px;
+    border-radius:20px;
 }
 
 .info h1{
-    font-size:42px;
-    font-weight:300;
-    line-height:1.2;
     margin-top:0;
-    margin-bottom:15px;
-}
-
-.autor{
-    color:#666;
-    font-size:15px;
 }
 
 .preco{
-    font-size:52px;
-    font-weight:300;
-    color:#111;
-    margin-top:20px;
+    font-size:40px;
+    font-weight:bold;
+    color:#ff5722;
 }
 
-.entrega{
-    color:#00a650;
-    font-size:14px;
-    margin-top:8px;
-}
-
-.pix{
-    background:#00a650;
-    color:white;
-    display:inline-block;
-    padding:5px 10px;
-    border-radius:5px;
-    font-size:13px;
-    margin-top:10px;
-}
-
-.descricao{
-    margin-top:25px;
-    font-size:18px;
-    line-height:1.6;
-    color:#444;
-}
-
-.titulo-secao{
-    margin-top:35px;
-    font-size:24px;
-}
-
-ul{
-    padding-left:18px;
-}
-
-ul li{
-    margin-bottom:10px;
-    color:#555;
-}
-
-.compra{
+.comprar{
     background:white;
-    border-radius:15px;
+    color:black;
+    border-radius:20px;
     padding:25px;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
-
-    position:sticky;
-    top:20px;
-}
-
-.estoque{
-    color:#00a650;
-    font-weight:600;
-    font-size:18px;
+    height:fit-content;
 }
 
 .botao{
     width:100%;
-    padding:16px;
+    padding:15px;
     border:none;
     border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
     cursor:pointer;
-    font-size:17px;
-    font-weight:600;
-    margin-top:12px;
+    margin-top:10px;
 }
 
 .encomendar{
-    background:#3483fa;
+    background:#ff5722;
     color:white;
 }
 
 .encomendar:hover{
-    background:#2968c8;
+    background:#e64a19;
 }
 
-.whats{
-    background:#25D366;
-    color:white;
-}
-
-.whats:hover{
-    background:#1ebe5d;
-}
-
-@media(max-width:1200px){
-
-.container{
-    grid-template-columns:1fr;
-}
-
-.compra{
-    position:static;
-}
-
-.miniaturas{
-    flex-direction:row;
-    justify-content:center;
-}
-
+ul{
+    line-height:2;
 }
 
 </style>
-
 </head>
 
 <body>
@@ -253,90 +148,50 @@ onclick="trocarImagem(this.src)">
     <img src="O Deus que Destrói Sonhos 7.png"
 onclick="trocarImagem(this.src)">
 </div>
+
 </div>
 
 <div class="principal">
 
-<img
-id="imagemPrincipal"
+<img id="imagemPrincipal"
 src="Lodeusquedestroisonhos.png">
 
 </div>
 
 <div class="info">
 
-<p class="vendidos">
-Novo | +50 vendidos
-</p>
+<h1>O Deus que Destrói Sonhos</h1>
 
-<h1>
-O Deus que Destrói Sonhos
-</h1>
-
-<p class="autor">
-Livro • Rodrigo Bibo • Thomas Nelson Brasil
-</p>
+<p>Livro • Rodrigo Bibo</p>
 
 <div class="preco">
 R$ 39,99
 </div>
 
-<p class="entrega">
-Frete a combinar • Entrega rápida
-</p>
-
-<p class="pix">
-10% OFF no Pix
-</p>
-
-<p class="descricao">
+<p>
 Uma reflexão poderosa sobre como Deus utiliza
 nossos sonhos, fracassos e expectativas para
-moldar nosso caráter e nos aproximar de Sua vontade.
+moldar nosso caráter e nos aproximar de Sua
+vontade.
 </p>
 
-<h2 class="titulo-secao">
-Características
-</h2>
+<h3>Características</h3>
 
 <ul>
 <li>Autor: Rodrigo Bibo</li>
-<li>Editora: Thomas Nelson Brasil</li>
-<li>Idioma: Português</li>
 <li>Categoria: Teologia</li>
+<li>Idioma: Português</li>
+<li>Editora: Thomas Nelson Brasil</li>
 <li>Formato: Capa comum</li>
-<li>Condição: Novo</li>
 </ul>
 
-</div>
+<hr>
 
-<div class="compra">
+<button class="botao encomendar"
+onclick="window.open('https://wa.me/5574999019805?text=Olá! Tenho interesse no livro O Deus que Destrói Sonhos.')">
 
-<p class="estoque">
-✅ Disponível por encomenda
-</p>
+📦 Encomendar
 
-<p>
-Entrega mediante pedido.
-</p>
-
-<button
-class="botao encomendar"
-onclick="window.open(
-'https://wa.me/5574999019805?text=' +
-encodeURIComponent('Olá! Tenho interesse no livro O Deus que Destrói Sonhos.'),
-'_blank'
-)">
-Comprar Agora
-</button>
-
-<button
-class="botao whats"
-onclick="window.open(
-'https://wa.me/5574999019805',
-'_blank'
-)">
-💬 Falar no WhatsApp
 </button>
 
 </div>
@@ -346,10 +201,11 @@ onclick="window.open(
 <script>
 
 function trocarImagem(src){
-    document.getElementById("imagemPrincipal").src = src;
+    document.getElementById(
+        "imagemPrincipal"
+    ).src = src;
 }
 
 </script>
-
-</body>
-</html>
+<body>
+<html>

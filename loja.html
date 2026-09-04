@@ -415,12 +415,18 @@ onkeyup="filtrarProdutos()">
 <div class="container">
   
   <!-- TODOS OS PRODUTOS (100% iguais) -->
-<div class="produto" data-categoria="livro">
+<div class="produto"
+     data-categoria="livro"
+     onclick="window.location.href='produto-deus-que-destroi-sonhos.html'">
 <img src="Lodeusquedestroisonhos.png">
 <h2>O Deus que Destrói Sonhos</h2>
 <p>R$ 39,99</p>
-<button onclick="add('O Deus que Destrói Sonhos',39.99,'encomenda')">Encomendar</button>
-<button class="esgotadoBtn" disabled>❌ Esgotado</button>
+<button onclick="event.stopPropagation(); add('O Deus que Destrói Sonhos',39.99,'encomenda')">
+Encomendar
+</button>
+<button class="esgotadoBtn" disabled>
+❌ Esgotado
+</button>
 </div>
 
 <div class="produto"

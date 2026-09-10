@@ -162,6 +162,20 @@ ul{
     opacity: .7;
     font-size: 14px;
 }
+
+.mais-fotos{
+    width:90px;
+    height:90px;
+    background:#ff5722;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:24px;
+    font-weight:bold;
+}
     
 </style>
 </head>
@@ -269,6 +283,20 @@ function add(nome, preco){
 
     window.location.href = "loja.html";
 }
+
+function mostrarFotos(){
+
+    let extras =
+    document.getElementById("fotosExtras");
+
+    if(extras.style.display === "none"){
+        extras.style.display = "flex";
+    }else{
+        extras.style.display = "none";
+    }
+
+}
+`
     
 </script>
 <body>

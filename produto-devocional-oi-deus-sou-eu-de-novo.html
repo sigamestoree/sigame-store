@@ -218,10 +218,9 @@ vontade.
 
 <hr>
 
-<button class="botao encomendar"
-onclick="window.open('https://wa.me/5574999019805?text=Olá! Tenho interesse no livro O Deus que Destrói Sonhos.')">
-
-📦 Encomendar
+<button class="botao encomendar" onclick="add('O Deus que Destrói Sonhos', 39.99, 'encomenda')">
+  📦 Encomendar
+</button>
 
 </button>
 
@@ -231,6 +230,21 @@ onclick="window.open('https://wa.me/5574999019805?text=Olá! Tenho interesse no 
 
 <script>
 
+function add(nome, preco, tipo = "pronta_entrega") {
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+    carrinho.push({
+        nome: nome,
+        preco: preco,
+        tipo: tipo
+    });
+
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+    // Redireciona para a loja central onde o carrinho é exibido
+    window.location.href = "loja.html";
+}
+    
 function trocarImagem(src){
     document.getElementById(
         "imagemPrincipal"

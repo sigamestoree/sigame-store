@@ -109,6 +109,22 @@ ul{
     line-height:2;
 }
 
+#toast{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:white;
+    color:black;
+    padding:16px 22px;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    opacity:0;
+    transform:translateY(20px);
+    transition:.35s;
+    z-index:9999;
+    font-weight:bold;
+}
+
 @media (max-width: 768px){
 
     .container{
@@ -158,8 +174,12 @@ ul{
 <body>
 
 <a class="voltar" href="loja.html">
-Voltar para a loja
+← Voltar para a loja
 </a>
+
+<div id="toast">
+🛒 Produto adicionado ao carrinho!
+</div>
 
 <div class="container">
 <div class="miniaturas">
@@ -222,8 +242,6 @@ vontade.
   📦 Encomendar
 </button>
 
-</button>
-
 </div>
 
 </div>
@@ -241,10 +259,21 @@ function add(nome, preco, tipo = "pronta_entrega") {
 
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
-    // Redireciona para a loja central onde o carrinho é exibido
-    window.location.href = "loja.html";
+    // Notifica o usuário na tela sem trocar de página
+    mostrarToast();
 }
+
+function mostrarToast(){
+    let toast = document.getElementById("toast");
+    toast.style.opacity = "1";
+    toast.style.transform = "translateY(0)";
     
+    setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.transform = "translateY(20px)";
+    }, 2000);
+}
+
 function trocarImagem(src){
     document.getElementById(
         "imagemPrincipal"
@@ -252,5 +281,5 @@ function trocarImagem(src){
 }
 
 </script>
-<body>
-<html>
+</body>
+</html>

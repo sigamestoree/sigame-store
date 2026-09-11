@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>O Deus que Destrói Sonhos</title>
+<title>Ego Transformado</title>
 
 <style>
 
@@ -77,12 +77,11 @@ body{
     color:#ff5722;
 }
 
-.comprar{
-    background:white;
-    color:black;
-    border-radius:20px;
-    padding:25px;
-    height:fit-content;
+.estoque{
+    color:#00a844;
+    font-weight:bold;
+    margin-top:15px;
+    margin-bottom:15px;
 }
 
 .botao{
@@ -96,17 +95,33 @@ body{
     margin-top:10px;
 }
 
-.encomendar{
-    background:#ff5722;
+.adicionar{
+    background:#111;
     color:white;
 }
 
-.encomendar:hover{
-    background:#e64a19;
+.adicionar:hover{
+    background:#ff5722;
 }
 
 ul{
     line-height:2;
+}
+
+#toast{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:white;
+    color:black;
+    padding:16px 22px;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    opacity:0;
+    transform:translateY(20px);
+    transition:.35s;
+    z-index:9999;
+    font-weight:bold;
 }
 
 @media (max-width: 768px){
@@ -158,71 +173,65 @@ ul{
 <body>
 
 <a class="voltar" href="loja.html">
-Voltar para a loja
+← Voltar para a loja
 </a>
+
+<div id="toast">
+🛒 Produto adicionado ao carrinho!
+</div>
 
 <div class="container">
 <div class="miniaturas">
 
-<img src="Lodeusquedestroisonhos.png"
+<img src="Legotransformado.png"
 onclick="trocarImagem(this.src)">
 
-<img src="O Deus que Destrói Sonhos 2.png"
+<img src="Ego Transformado 2.png"
 onclick="trocarImagem(this.src)">
 
-<img src="O Deus que Destrói Sonhos 3.png"
-onclick="trocarImagem(this.src)">
-
-<img src="O Deus que Destrói Sonhos 4.png"
-onclick="trocarImagem(this.src)">
-
-<img src="O Deus que Destrói Sonhos 6.png"
-onclick="trocarImagem(this.src)">
-
-<img src="O Deus que Destrói Sonhos 7.png"
+<img src="Ego Transformado 3.png"
 onclick="trocarImagem(this.src)">
 </div>
     
 <div class="principal">
 <img
 id="imagemPrincipal"
-src="Lodeusquedestroisonhos.png"
-alt="O Deus que Destrói Sonhos">
+src="Legotransformado.png"
+alt="Ego Transformado">
 </div>
 
 <div class="info">
-<h1>O Deus que Destrói Sonhos</h1>
+<h1>Ego Transformado</h1>
 
-<p>Livro • Rodrigo Bibo</p>
+<p>Livro • Timothy Keller</p>
 
 <div class="preco">
-R$ 39,99
+R$ 24,99
 </div>
 
 <p>
-Uma reflexão poderosa sobre como Deus utiliza
-nossos sonhos, fracassos e expectativas para
-moldar nosso caráter e nos aproximar de Sua
-vontade.
+Neste livro impactante e reflexivo, Timothy Keller nos mostra o caminho bíblico para 
+a verdadeira liberdade e paz de espírito: o esquecimento de si mesmo através do Evangelho. 
+Uma leitura essencial sobre humildade cristã autêntica.
 </p>
 
 <h3>Características</h3>
 
 <ul>
-<li>Autor: Rodrigo Bibo</li>
-<li>Categoria: Teologia</li>
+<li>Autor: Timothy Keller</li>
+<li>Categoria: Teologia / Vida Cristã</li>
 <li>Idioma: Português</li>
-<li>Editora: Thomas Nelson Brasil</li>
+<li>Editora: Vida Nova</li>
 <li>Formato: Capa comum</li>
 </ul>
 
 <hr>
+<p class="estoque">
+✅ Disponíveis em estoque
+</p>
 
-<button class="botao encomendar"
-onclick="window.open('https://wa.me/5574999019805?text=Olá! Tenho interesse no livro O Deus que Destrói Sonhos.')">
-
-📦 Encomendar
-
+<button class="botao adicionar" onclick="add('Ego Transformado', 24.99, 'pronta_entrega')">
+🛒 Adicionar
 </button>
 
 </div>
@@ -231,6 +240,31 @@ onclick="window.open('https://wa.me/5574999019805?text=Olá! Tenho interesse no 
 
 <script>
 
+function add(nome, preco, tipo = "pronta_entrega") {
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+    carrinho.push({
+        nome: nome,
+        preco: preco,
+        tipo: tipo
+    });
+
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+    mostrarToast();
+}
+
+function mostrarToast(){
+    let toast = document.getElementById("toast");
+    toast.style.opacity = "1";
+    toast.style.transform = "translateY(0)";
+    
+    setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.transform = "translateY(20px)";
+    }, 2000);
+}
+
 function trocarImagem(src){
     document.getElementById(
         "imagemPrincipal"
@@ -238,5 +272,5 @@ function trocarImagem(src){
 }
 
 </script>
-<body>
-<html>
+</body>
+</html>

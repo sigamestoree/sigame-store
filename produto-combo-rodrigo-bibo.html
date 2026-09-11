@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>O Deus que Destrói Sonhos</title>
+<title>Combo Rodrigo Bibo</title>
 
 <style>
 
@@ -77,14 +77,6 @@ body{
     color:#ff5722;
 }
 
-.comprar{
-    background:white;
-    color:black;
-    border-radius:20px;
-    padding:25px;
-    height:fit-content;
-}
-
 .botao{
     width:100%;
     padding:15px;
@@ -107,6 +99,22 @@ body{
 
 ul{
     line-height:2;
+}
+
+#toast{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:white;
+    color:black;
+    padding:16px 22px;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    opacity:0;
+    transform:translateY(20px);
+    transition:.35s;
+    z-index:9999;
+    font-weight:bold;
 }
 
 @media (max-width: 768px){
@@ -158,40 +166,23 @@ ul{
 <body>
 
 <a class="voltar" href="loja.html">
-Voltar para a loja
+← Voltar para a loja
 </a>
+
+<div id="toast">
+📦 Combo adicionado para encomenda!
+</div>
 
 <div class="container">
 <div class="miniaturas">
 
 <img src="Lcombo.png"
 onclick="trocarImagem(this.src)">
-    
+
 <img src="Lodeusquedestroisonhos.png"
 onclick="trocarImagem(this.src)">
 
-<img src="O Deus que Destrói Sonhos 2.png"
-onclick="trocarImagem(this.src)">
-
-<img src="O Deus que Destrói Sonhos 4.png"
-onclick="trocarImagem(this.src)">
-
-<img src="O Deus que Destrói Sonhos 6.png"
-onclick="trocarImagem(this.src)">
-
-<img src="O Deus que Destrói Sonhos 7.png"
-onclick="trocarImagem(this.src)">
-
 <img src="Lcomosetornarumcristaoinutil.png"
-onclick="trocarImagem(this.src)">
-
-<img src="comosetornarumcristãoinutil2.png"
-onclick="trocarImagem(this.src)">
-
-<img src="comosetornarumcristãoinutil3.png"
-onclick="trocarImagem(this.src)">
-
-<img src="comosetornarumcristãoinutil4.png"
 onclick="trocarImagem(this.src)">
 </div>
     
@@ -199,41 +190,36 @@ onclick="trocarImagem(this.src)">
 <img
 id="imagemPrincipal"
 src="Lcombo.png"
-alt="O Deus que Destrói Sonhos">
+alt="Combo Rodrigo Bibo">
 </div>
 
 <div class="info">
 <h1>Combo Rodrigo Bibo</h1>
 
-<p>Kit Especial • Rodrigo Bibo</p>
+<p>Livros • Rodrigo Bibo</p>
 
 <div class="preco">
 R$ 69,99
 </div>
 
 <p>
-Um combo ideal para quem deseja aprofundar seus conhecimentos na fé cristã por meio das reflexões de
-Rodrigo Bibo. Reúne obras que abordam maturidade espiritual, propósito, desafios da vida cristã e
-crescimento na caminhada com Deus.
+Leve dois grandes sucessos de Rodrigo Bibo em um único combo com desconto especial:
+"O Deus que Destrói Sonhos" e "Como Se Tornar um Cristão Inútil".
 </p>
 
-<h3>Características</h3>
+<h3>O Combo inclui:</h3>
 
 <ul>
-<li>Autor: Rodrigo Bibo</li>
-<li>Categoria: Teologia</li>
-<li>Idioma: Português</li>
+<li>1x Livro: O Deus que Destrói Sonhos</li>
+<li>1x Livro: Como Se Tornar um Cristão Inútil</li>
 <li>Editora: Thomas Nelson Brasil</li>
 <li>Formato: Capa comum</li>
 </ul>
 
 <hr>
 
-<button class="botao encomendar"
-onclick="window.open('https://wa.me/5574999019805?text=Olá! Tenho interesse no livro O Deus que Destrói Sonhos.')">
-
+<button class="botao encomendar" onclick="add('Combo Rodrigo Bibo', 69.99, 'encomenda')">
 📦 Encomendar
-
 </button>
 
 </div>
@@ -242,6 +228,31 @@ onclick="window.open('https://wa.me/5574999019805?text=Olá! Tenho interesse no 
 
 <script>
 
+function add(nome, preco, tipo = "encomenda") {
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+    carrinho.push({
+        nome: nome,
+        preco: preco,
+        tipo: tipo
+    });
+
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+    mostrarToast();
+}
+
+function mostrarToast(){
+    let toast = document.getElementById("toast");
+    toast.style.opacity = "1";
+    toast.style.transform = "translateY(0)";
+    
+    setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.transform = "translateY(20px)";
+    }, 2000);
+}
+
 function trocarImagem(src){
     document.getElementById(
         "imagemPrincipal"
@@ -249,5 +260,5 @@ function trocarImagem(src){
 }
 
 </script>
-<body>
-<html>
+</body>
+</html>

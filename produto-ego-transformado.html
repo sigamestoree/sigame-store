@@ -77,11 +77,19 @@ body{
     color:#ff5722;
 }
 
+.preco-antigo{
+    text-decoration: line-through;
+    opacity: .7;
+    font-size: 14px;
+    margin-top: -5px;
+    margin-bottom: 15px;
+}
+
 .estoque{
-    color:#00a844;
-    font-weight:bold;
-    margin-top:15px;
-    margin-bottom:15px;
+    color: black;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .botao{
@@ -165,12 +173,6 @@ ul{
         font-size:32px;
     }
 
-    .estoque{
-    color: black;
-    font-weight: bold;
-    margin-top: 15px;
-    margin-bottom: 15px;
-
 }
     
 </style>
@@ -221,6 +223,10 @@ alt="Ego Transformado">
 R$ 24,99
 </div>
 
+<p class="preco-antigo">
+R$ 34,99
+</p>
+
 <p>
 Neste livro impactante e reflexivo, Timothy Keller nos mostra o caminho bíblico para 
 a verdadeira liberdade e paz de espírito: o esquecimento de si mesmo através do Evangelho. 
@@ -239,7 +245,7 @@ Uma leitura essencial sobre humildade cristã autêntica.
 
 <hr>
 <p class="estoque">
-Disponíveis em estoque: 2
+✅ Disponíveis em estoque: 2
 </p>
 
 <button class="botao adicionar" onclick="add('Ego Transformado', 24.99, 'pronta_entrega')">

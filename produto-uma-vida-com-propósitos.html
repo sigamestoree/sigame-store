@@ -77,11 +77,27 @@ body{
     color:#ff5722;
 }
 
+.preco-antigo{
+    text-decoration: line-through;
+    opacity: .7;
+    font-size: 14px;
+    margin-top: -5px;
+    margin-bottom: 15px;
+}
+
 .estoque{
-    color:#00a844;
-    font-weight:bold;
-    margin-top:15px;
-    margin-bottom:15px;
+    color: black;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.comprar{
+    background:white;
+    color:black;
+    border-radius:20px;
+    padding:25px;
+    height:fit-content;
 }
 
 .botao{
@@ -165,12 +181,6 @@ ul{
         font-size:32px;
     }
 
-    .estoque{
-    color: black;
-    font-weight: bold;
-    margin-top: 15px;
-    margin-bottom: 15px;
-
 }
     
 </style>
@@ -230,6 +240,10 @@ alt="Uma Vida com Propósitos">
 R$ 59,99
 </div>
 
+<p class="preco-antigo">
+R$ 64,99
+</p>
+
 <p>
 Um clássico inspirador que ajuda a responder à pergunta mais fundamental da vida: 
 "Para que estou na Terra?". Rick Warren guia o leitor em uma jornada de reflexão 
@@ -248,7 +262,7 @@ espiritual para descobrir o propósito de Deus para sua existência.
 
 <hr>
 <p class="estoque">
-Disponíveis em estoque: 1
+✅ Disponíveis em estoque: 1
 </p>
 
 <button class="botao adicionar" onclick="add('Uma Vida com Propósitos', 59.99, 'pronta_entrega')">

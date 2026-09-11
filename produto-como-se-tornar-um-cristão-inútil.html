@@ -109,6 +109,22 @@ ul{
     line-height:2;
 }
 
+#toast{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:white;
+    color:black;
+    padding:16px 22px;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    opacity:0;
+    transform:translateY(20px);
+    transition:.35s;
+    z-index:9999;
+    font-weight:bold;
+}
+
 @media (max-width: 768px){
 
     .container{
@@ -150,31 +166,6 @@ ul{
         font-size:32px;
     }
 
-    .estoque{
-    color:#00a844;
-    font-weight:bold;
-    margin-top:15px;
-    margin-bottom:15px;
-}
-
-.preco-antigo{
-    text-decoration: line-through;
-    opacity: .7;
-    font-size: 14px;
-}
-
-.mais-fotos{
-    width:90px;
-    height:90px;
-    background:#ff5722;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:24px;
-    font-weight:bold;
 }
     
 </style>
@@ -183,54 +174,56 @@ ul{
 <body>
 
 <a class="voltar" href="loja.html">
-Voltar para a loja
+← Voltar para a loja
 </a>
+
+<div id="toast">
+🛒 Produto adicionado ao carrinho!
+</div>
 
 <div class="container">
 <div class="miniaturas">
 
-<img src="Lcomosetornarumcristaoinutil.png"
+<img src="Lodeusquedestroisonhos.png"
 onclick="trocarImagem(this.src)">
 
-<img src="comosetornarumcristãoinutil2.png"
+<img src="O Deus que Destrói Sonhos 2.png"
 onclick="trocarImagem(this.src)">
 
-<img src="comosetornarumcristãoinutil3.png"
+<img src="O Deus que Destrói Sonhos 3.png"
 onclick="trocarImagem(this.src)">
 
-<img src="comosetornarumcristãoinutil4.png"
+<img src="O Deus que Destrói Sonhos 4.png"
+onclick="trocarImagem(this.src)">
+
+<img src="O Deus que Destrói Sonhos 6.png"
+onclick="trocarImagem(this.src)">
+
+<img src="O Deus que Destrói Sonhos 7.png"
 onclick="trocarImagem(this.src)">
 </div>
     
 <div class="principal">
 <img
 id="imagemPrincipal"
-src="Lcomosetornarumcristaoinutil.png"
-alt="Como Se Tornar um Cristão Inútil">
+src="Lodeusquedestroisonhos.png"
+alt="O Deus que Destrói Sonhos">
 </div>
 
 <div class="info">
-<h1>Como Se Tornar um Cristão Inútil</h1>
+<h1>O Deus que Destrói Sonhos</h1>
 
 <p>Livro • Rodrigo Bibo</p>
 
 <div class="preco">
-R$ 44,99
+R$ 39,99
 </div>
-<p class="preco-antigo">
-R$ 54,99
-</p>
-    
-<p style="color:#ff5722;font-weight:bold;">
-🔥 Mais Vendido
-</p>
 
 <p>
-Um livro provocativo que desafia o leitor a abandonar uma fé superficial
-e viver um cristianismo autêntico, relevante e transformador. Rodrigo Bibo
-apresenta reflexões que ajudam a identificar hábitos e atitudes que podem
-tornar a vida cristã estagnada, incentivando uma caminhada mais profunda
-com Deus.
+Uma reflexão poderosa sobre como Deus utiliza
+nossos sonhos, fracassos e expectativas para
+moldar nosso caráter e nos aproximar de Sua
+vontade.
 </p>
 
 <h3>Características</h3>
@@ -244,12 +237,9 @@ com Deus.
 </ul>
 
 <hr>
-<p class="estoque">
-✅ Disponíveis: 3
-</p>
-    
-<button class="botao encomendar" onclick="add('Como Se Tornar um Cristão Inútil', 44.99, 'pronta_entrega')">
-  🛒 Adicionar ao Carrinho
+
+<button class="botao encomendar" onclick="add('O Deus que Destrói Sonhos', 39.99, 'encomenda')">
+  📦 Encomendar
 </button>
 
 </div>
@@ -257,12 +247,6 @@ com Deus.
 </div>
 
 <script>
-
-function trocarImagem(src){
-    document.getElementById(
-        "imagemPrincipal"
-    ).src = src;
-}
 
 function add(nome, preco, tipo = "pronta_entrega") {
     let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
@@ -275,28 +259,27 @@ function add(nome, preco, tipo = "pronta_entrega") {
 
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
-    // Redireciona para a loja central onde o carrinho é exibido
-    window.location.href = "loja.html";
+    // Notifica o usuário na tela sem trocar de página
+    mostrarToast();
 }
 
-function mostrarFotos(){
-
-    let extras =
-    document.getElementById("fotosExtras");
-
-    if(extras.style.display === "none"){
-        extras.style.display = "flex";
-    }else{
-        extras.style.display = "none";
-    }
-
-}
-
-function mostrarFotos(){
-    alert("Aqui você pode abrir uma galeria completa.");
-}
-
+function mostrarToast(){
+    let toast = document.getElementById("toast");
+    toast.style.opacity = "1";
+    toast.style.transform = "translateY(0)";
     
+    setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.transform = "translateY(20px)";
+    }, 2000);
+}
+
+function trocarImagem(src){
+    document.getElementById(
+        "imagemPrincipal"
+    ).src = src;
+}
+
 </script>
-<body>
-<html>
+</body>
+</html>

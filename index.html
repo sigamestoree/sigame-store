@@ -26,7 +26,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,.45);
+  background: rgba(0,0,0,.55);
   z-index: -1;
 }
 
@@ -37,27 +37,29 @@ body::before {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  padding: 30px 20px;
 }
 
 .hero img {
   width: 150px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
 }
 
 .hero h1 {
-  font-size: 90px;
+  font-size: 80px;
   font-weight: 900;
-  letter-spacing: -3px;
-  margin-bottom: 20px;
+  letter-spacing: -2px;
+  margin-bottom: 15px;
+  text-shadow: 0 5px 15px rgba(0,0,0,0.4);
 }
 
 .hero p {
-  font-size: 24px;
+  font-size: 22px;
   max-width: 800px;
   line-height: 1.6;
-  margin-bottom: 40px;
-  opacity: .95;
+  margin-bottom: 35px;
+  color: #f5f5f5;
 }
 
 .acoes {
@@ -74,13 +76,15 @@ body::before {
   border-radius: 999px;
   text-decoration: none;
   font-weight: 700;
-  transition: .3s;
+  transition: all .3s ease;
   display: inline-block;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 .botao:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(255,255,255,.25);
+  box-shadow: 0 15px 40px rgba(255,255,255,.3);
+  background: #f0f0f0;
 }
 
 .suporte {
@@ -91,15 +95,16 @@ body::before {
   align-items: center;
   gap: 8px;
   padding: 14px 24px;
-  background: rgba(255,255,255,.1);
+  background: rgba(255,255,255,.12);
   backdrop-filter: blur(15px);
-  border: 1px solid rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.2);
   color: white;
   text-decoration: none;
   border-radius: 999px;
   font-weight: 700;
-  transition: .3s;
+  transition: all .3s ease;
   z-index: 9999;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
 .suporte:hover {
@@ -112,10 +117,10 @@ body::before {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
   flex-wrap: wrap;
   text-align: center;
-  padding: 10px 10px 30px;
+  padding: 20px 20px 40px;
 }
 
 .indicador {
@@ -123,18 +128,20 @@ body::before {
 }
 
 .indicador h2 {
-  font-size: 60px;
+  font-size: 50px;
   font-weight: 900;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  color: #ffffff;
 }
 
 .indicador p {
   font-size: 18px;
-  opacity: .8;
+  color: #e0e0e0;
+  font-weight: 500;
 }
 
 .carrossel {
-  padding: 30px 0;
+  padding: 40px 0;
   overflow: hidden;
   width: 100%;
 }
@@ -147,7 +154,7 @@ body::before {
 
 .slide-track {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   width: max-content;
   animation: scroll 60s linear infinite;
 }
@@ -158,6 +165,12 @@ body::before {
   object-fit: cover;
   border-radius: 20px;
   flex-shrink: 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+
+.slide-track img:hover {
+  transform: scale(1.03);
 }
 
 @keyframes scroll {
@@ -177,20 +190,39 @@ body::before {
 
 .slider::before {
   left: 0;
-  background: linear-gradient(to right, rgba(0,0,0,1), transparent);
+  background: linear-gradient(to right, rgba(0,0,0,0.85), transparent);
 }
 
 .slider::after {
   right: 0;
-  background: linear-gradient(to left, rgba(0,0,0,1), transparent);
+  background: linear-gradient(to left, rgba(0,0,0,0.85), transparent);
 }
 
 .divisoria {
   width: 100vw;
-  height: 3px;
+  height: 2px;
   margin-left: calc(50% - 50vw);
-  background: white;
-  box-shadow: 0 0 15px rgba(255,255,255,.8), 0 0 30px rgba(255,255,255,.4);
+  background: rgba(255,255,255,0.3);
+  box-shadow: 0 0 15px rgba(255,255,255,.5);
+}
+
+#sobre {
+  padding: 50px 20px;
+  text-align: center;
+  max-width: 900px;
+  margin: auto;
+}
+
+#sobre h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+#sobre p {
+  font-size: 20px;
+  line-height: 1.8;
+  color: #e0e0e0;
 }
 
 footer {
@@ -198,24 +230,27 @@ footer {
   padding: 40px 20px;
   margin-top: 50px;
   text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .copyright {
-  margin-top: 30px;
-  opacity: .8;
+  margin-top: 10px;
+  color: #cccccc;
+  font-size: 15px;
 }
 
 @media(max-width: 768px) {
-  .hero h1 { font-size: 50px; }
+  .hero h1 { font-size: 45px; }
   .hero p { font-size: 16px; }
   .acoes { flex-direction: column; }
+  .indicadores { gap: 20px; }
 }
 </style>
 </head>
 <body>
 
 <a href="https://wa.me/5574999019805" class="suporte" target="_blank">💬 Suporte</a>
-    
+  
 <section class="hero">
   <img src="Logo.png" alt="SIGA-ME STORE Logo">
   <h1>SIGA-ME STORE</h1>
@@ -245,7 +280,7 @@ footer {
 </section>
 
 <div class="divisoria"></div>
-    
+  
 <section class="carrossel">
   <div class="slider">
     <div class="slide-track">
@@ -297,9 +332,9 @@ footer {
 
 <div class="divisoria"></div>
 
-<section id="sobre" style="padding: 30px 20px; text-align: center; max-width: 900px; margin: auto;">
-  <h2 style="font-size: 50px; margin-bottom: 30px;">SOBRE A SIGA-ME STORE</h2>
-  <p style="font-size: 22px; line-height: 1.8;">
+<section id="sobre">
+  <h2>SOBRE A SIGA-ME STORE</h2>
+  <p>
     Oferecemos produtos selecionados com foco em qualidade, confiança e satisfação, buscando proporcionar a melhor experiência para cada cliente.
   </p>
 </section>
@@ -307,6 +342,6 @@ footer {
 <footer>
   <p class="copyright">© 2026 SIGA-ME STORE</p>
 </footer>
-    
+  
 </body>
 </html>

@@ -56,14 +56,16 @@ header img {
   padding: 15px;
   border-radius: 20px;
   text-align: center;
-  overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,.15);
   transition: all .4s ease;
   animation: aparecer .7s ease;
 
-  /* ALINHAMENTO IGUAL PARA TODOS OS CARDS */
+  /* ESTRUTURA FLEX PARA ALINHAR TUDO DE CIMA PARA BAIXO */
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .produto:hover {
@@ -73,7 +75,7 @@ header img {
 
 .produto img {
   width: 100%;
-  height: 280px;
+  height: 240px;
   object-fit: cover;
   border-radius: 10px;
   transition: .5s;
@@ -84,23 +86,24 @@ header img {
 }
 
 .produto h2 {
-  font-size: 16px;
-  margin: 10px 0 5px;
-  min-height: 42px;
+  font-size: 15px;
+  margin: 12px 0 8px;
+  min-height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: 1.3;
 }
 
 .produto p {
   font-weight: bold;
-  margin-bottom: 10px;
+  margin: 0 0 15px 0;
 }
 
 button {
   background: #111;
   border: none;
-  padding: 14px;
+  padding: 12px;
   color: white;
   border-radius: 30px;
   cursor: pointer;
@@ -108,13 +111,13 @@ button {
   transition: all .3s ease;
 }
 
-.produto > button {
+.produto button {
   width: 100%;
-  margin-top: auto; /* EMPURRA O BOTÃO PARA O FUNDO */
+  margin-top: auto;
 }
 
-.produto > button + button {
-  margin-top: 6px; /* ESPAÇAMENTO ENTRE OS BOTÕES CASO HAJA MAIS DE UM */
+.produto button + button {
+  margin-top: 6px;
 }
 
 button:hover {
@@ -127,6 +130,8 @@ button:hover {
 .remover {
   background: red;
   margin-left: 10px;
+  padding: 4px 8px;
+  border-radius: 5px;
 }
 
 .carrinho {
@@ -217,6 +222,9 @@ button:hover {
 
 .esgotadoBtn:hover {
   background: #777;
+  transform: none;
+  box-shadow: none;
+  color: white;
 }
 
 footer {
@@ -673,11 +681,6 @@ function filtrarCategoria(categoria){
 
     if(categoria === "maisvendido"){
       produto.style.display = produto.dataset.maisvendido === "sim" ? "" : "none";
-      return;
-    }
-
-    if(categoria === "5estrelas"){
-      produto.style.display = produto.dataset.cincoestrelas === "sim" ? "" : "none";
       return;
     }
       

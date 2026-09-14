@@ -1,900 +1,1389 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+
+<html lang="pt-br">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SIGA-ME STORE - Loja</title>
+
+<title>SIGA-ME STORE</title>
+
+
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
 body {
-  background: url("Fundo2.png") no-repeat center center fixed;
+
+  margin: 0;
+
+  background: url("Fundo.png") no-repeat center center fixed;
+
   background-size: cover;
+
   color: white;
-  min-height: 100vh;
+
+  font-family: Arial, sans-serif;
+
 }
 
-/* Camada escura de fundo para dar destaque aos produtos e suavizar a textura */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.78);
-  z-index: -1;
-}
 
-/* TOPO / HEADER DA LOJA */
+
 header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px 20px 20px;
-  position: relative;
-}
 
-.logo-topo {
-  width: 100px;
-  margin-bottom: 15px;
-  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
-}
-
-h1.titulo-loja {
-  font-size: 36px;
-  font-weight: 800;
-  letter-spacing: -1px;
-  margin-bottom: 25px;
   text-align: center;
+
+  padding: 20px;
+
 }
+
+
+
+header img {
+
+  width: 150px;
+
+}
+
+
 
 /* BARRA DE PESQUISA */
-.busca-container {
-  width: 100%;
-  max-width: 550px;
-  margin-bottom: 25px;
-  position: relative;
-}
 
-.busca-container input {
-  width: 100%;
-  padding: 16px 20px 16px 50px;
-  border-radius: 99px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  color: white;
-  font-size: 16px;
-  outline: none;
-  transition: all 0.3s ease;
-}
+.pesquisa {
 
-.busca-container input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.busca-container input:focus {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
-}
-
-.busca-container::before {
-  content: "🔍";
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 16px;
-}
-
-/* FILTROS / ABAS DE CATEGORIA */
-.filtros {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-.filtro-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: white;
-  padding: 10px 24px;
-  border-radius: 99px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.filtro-btn:hover, .filtro-btn.ativo {
-  background: white;
-  color: black;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
-}
-
-/* BOTÃO DE ABRIR CARRINHO (FLUTUANTE NO TOPO DIREITO) */
-.btn-abrir-carrinho {
-  position: absolute;
-  top: 30px;
-  right: 40px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  padding: 12px 22px;
-  border-radius: 99px;
-  cursor: pointer;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  z-index: 100;
-}
-
-.btn-abrir-carrinho:hover {
-  background: white;
-  color: black;
-}
-
-/* CONTAINER PRINCIPAL (GRID DE PRODUTOS + CARRINHO) */
-.container-principal {
-  max-width: 1350px;
-  margin: 0 auto;
-  padding: 0 20px 60px;
-  display: flex;
-  gap: 30px;
-  position: relative;
-}
-
-/* GRID DE PRODUTOS */
-.grid-produtos {
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: 25px;
-}
-
-.card-produto {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 16px;
-  overflow: hidden;
-  color: #111;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
-}
-
-.card-produto:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 15px 35px rgba(255,255,255,0.15);
-}
-
-.card-produto img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  background: #f0f0f0;
-}
-
-.card-conteudo {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  justify-content: space-between;
-}
-
-.card-titulo {
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: #222;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  height: 38px;
-}
-
-.card-preco {
-  font-size: 16px;
-  font-weight: 800;
-  color: #000;
-  margin-bottom: 12px;
-}
-
-.card-botoes {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.btn-card {
-  width: 100%;
-  padding: 9px;
-  border-radius: 8px;
-  border: none;
-  font-weight: 700;
-  font-size: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-align: center;
-  text-decoration: none;
-}
-
-.btn-encomendar {
-  background: #2c2c2c;
-  color: white;
-}
-
-.btn-encomendar:hover {
-  background: #000;
-}
-
-.btn-adicionar {
-  background: #e0e0e0;
-  color: #222;
-}
-
-.btn-adicionar:hover {
-  background: #d0d0d0;
-}
-
-/* CARRINHO LATERAL MODAL (GAVETA OCULTA ELEGANTE) */
-.carrinho-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(5px);
-  z-index: 998;
-  display: none;
-}
-
-.carrinho-lateral {
-  position: fixed;
-  top: 0;
-  right: -420px;
   width: 400px;
-  max-width: 100%;
+
+  max-width: 90%;
+
+  display: block;
+
+  margin: 20px auto;
+
+  padding: 12px;
+
+  font-size: 16px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  outline: none;
+
+  box-sizing: border-box;
+
+}
+
+
+
+.main {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+}
+
+
+
+.container {
+
+  flex: 3;
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+
+  gap: 20px;
+
+  padding: 20px;
+
+}
+
+
+
+.produto {
+
+  background: white;
+
+  color: black;
+
+  padding: 15px;
+
+  border-radius: 20px;
+
+  text-align: center;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+
+  transition: all .4s ease;
+
+  animation: aparecer .7s ease;
+
+
+
+  /* ESTRUTURA FLEX PARA ALINHAR TUDO DE CIMA PARA BAIXO */
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: flex-start;
+
   height: 100%;
-  background: #161616;
-  border-left: 1px solid rgba(255,255,255,0.15);
-  box-shadow: -10px 0 40px rgba(0,0,0,0.8);
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  padding: 25px;
-  color: white;
+
+  box-sizing: border-box;
+
 }
 
-.carrinho-lateral.ativo {
-  right: 0;
+
+
+.produto:hover {
+
+  transform: translateY(-10px);
+
+  box-shadow: 0 20px 40px rgba(0,0,0,.25);
+
 }
 
-.carrinho-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  padding-bottom: 15px;
-  margin-bottom: 20px;
-}
 
-.carrinho-header h2 {
-  font-size: 20px;
-  font-weight: 700;
-}
 
-.btn-fechar-carrinho {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 22px;
-  cursor: pointer;
-}
+.produto img {
 
-.carrinho-corpo {
-  flex: 1;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.carrinho-vazio {
-  text-align: center;
-  color: rgba(255,255,255,0.5);
-  margin-top: 50px;
-  font-size: 15px;
-}
-
-.carrinho-footer {
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 20px;
-}
-
-.carrinho-total {
-  display: flex;
-  justify-content: space-between;
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.btn-finalizar {
   width: 100%;
-  background: white;
-  color: black;
-  border: none;
-  padding: 16px;
-  border-radius: 12px;
-  font-weight: 800;
+
+  height: 240px;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+
+  transition: .5s;
+
+}
+
+
+
+.produto:hover img {
+
+  transform: scale(1.05);
+
+}
+
+
+
+.produto h2 {
+
   font-size: 15px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
 
-.btn-finalizar:hover {
-  background: #e0e0e0;
-  transform: translateY(-2px);
-}
+  margin: 12px 0 8px;
 
-/* SUPORTE FLUTUANTE */
-.suporte {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
+  min-height: 40px;
+
   display: flex;
+
   align-items: center;
-  gap: 8px;
-  padding: 14px 24px;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255,255,255,0.2);
+
+  justify-content: center;
+
+  line-height: 1.3;
+
+}
+
+
+
+.produto p {
+
+  font-weight: bold;
+
+  margin: 0 0 15px 0;
+
+}
+
+
+
+button {
+
+  background: #111;
+
+  border: none;
+
+  padding: 12px;
+
   color: white;
-  text-decoration: none;
-  border-radius: 999px;
-  font-weight: 700;
+
+  border-radius: 30px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+
   transition: all .3s ease;
-  z-index: 997;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+
 }
 
-.suporte:hover {
+
+
+.produto button {
+
+  width: 100%;
+
+  margin-top: auto;
+
+}
+
+
+
+.produto button + button {
+
+  margin-top: 6px;
+
+}
+
+
+
+button:hover {
+
   background: white;
+
   color: black;
+
   transform: translateY(-3px);
+
+  box-shadow: 0 10px 25px rgba(255,255,255,.25);
+
 }
 
-/* RODAPÉ */
-footer {
-  background: rgba(0,0,0,.95);
-  padding: 30px 20px;
-  text-align: center;
-  border-top: 1px solid rgba(255,255,255,0.1);
+
+
+.remover {
+
+  background: red;
+
+  margin-left: 10px;
+
+  padding: 4px 8px;
+
+  border-radius: 5px;
+
 }
+
+
+
+.carrinho {
+
+  flex: 1;
+
+  min-width: 280px;
+
+  background: white;
+
+  color: black;
+
+  padding: 20px;
+
+  border-radius: 20px;
+
+  position: sticky;
+
+  top: 20px;
+
+  align-self: flex-start;
+
+  max-height: calc(100vh - 40px);
+
+  overflow-y: auto;
+
+}
+
+
+
+.finalizar {
+
+  width: 100%;
+
+  padding: 16px;
+
+  font-size: 18px;
+
+  font-weight: bold;
+
+  background: #111;
+
+  border: none;
+
+  border-radius: 8px;
+
+  color: white;
+
+  cursor: pointer;
+
+}
+
+
+
+.finalizar:hover {
+
+  background: #00a844;
+
+  transform: scale(1.03);
+
+}
+
+
+
+.finalizar:disabled {
+
+  background: #777;
+
+  cursor: not-allowed;
+
+  opacity: .7;
+
+}
+
+
+
+.finalizar:disabled:hover {
+
+  background: #777;
+
+  transform: none;
+
+}
+
+
+
+.sugestoes {
+
+  margin-top: 20px;
+
+  background: #111;
+
+  padding: 15px;
+
+  border-radius: 10px;
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+
+.sugestoes input,
+
+.sugestoes select,
+
+.sugestoes textarea {
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  margin: 6px 0;
+
+  padding: 10px;
+
+  border-radius: 5px;
+
+  border: none;
+
+}
+
+
+
+.sugestoes textarea {
+
+  height: 80px;
+
+  resize: none;
+
+}
+
+
+
+.sugestoes button {
+
+  width: 100%;
+
+}
+
+
+
+#sugestaoInput::placeholder {
+
+  font-family: 'Trebuchet MS', sans-serif;
+
+  font-size: 15px;
+
+  color: #888;
+
+  font-style: normal;
+
+  font-weight: 500;
+
+}
+
+
+
+.esgotadoBtn {
+
+  width: 100%;
+
+  background: #777;
+
+  color: white;
+
+  cursor: not-allowed;
+
+}
+
+
+
+.esgotadoBtn:hover {
+
+  background: #777;
+
+  transform: none;
+
+  box-shadow: none;
+
+  color: white;
+
+}
+
+
+
+footer {
+
+  background: rgba(0,0,0,.95);
+
+  padding: 40px 20px;
+
+  margin-top: 50px;
+
+  border-top: 2px solid #fff;
+
+}
+
+
 
 .copyright {
-  color: #aaaaaa;
-  font-size: 14px;
+
+  text-align: center;
+
+  opacity: .8;
+
 }
 
-/* RESPONSIVIDADE */
-@media(max-width: 768px) {
-  .btn-abrir-carrinho {
-    position: relative;
-    top: auto;
-    right: auto;
-    margin-bottom: 20px;
-  }
-  header {
-    padding: 20px 15px 10px;
-  }
-  .carrinho-lateral {
-    width: 100%;
-    right: -100%;
-  }
+
+
+.abas {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  margin: 20px 0;
+
+  flex-wrap: wrap;
+
 }
+
+
+
+.abas button {
+
+  background: white;
+
+  color: black;
+
+  border: none;
+
+  padding: 12px 25px;
+
+  border-radius: 999px;
+
+  font-weight: bold;
+
+  transition: .3s;
+
+}
+
+
+
+.abas button:hover {
+
+  background: black;
+
+  color: white;
+
+  transform: translateY(-3px);
+
+}
+
+
+
+@keyframes aparecer {
+
+  from {
+
+    opacity: 0;
+
+    transform: translateY(30px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+  }
+
+}
+
+
+
+#toast {
+
+  position: fixed;
+
+  bottom: 90px;
+
+  right: 25px;
+
+  background: white;
+
+  color: black;
+
+  padding: 16px 22px;
+
+  border-radius: 16px;
+
+  border: 1px solid rgba(0,0,0,.15);
+
+  backdrop-filter: blur(15px);
+
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+
+  opacity: 0;
+
+  transform: translateY(20px);
+
+  transition: .35s;
+
+  z-index: 9999;
+
+  font-weight: 600;
+
+}
+
+
+
+.suporte {
+
+  position: fixed;
+
+  bottom: 25px;
+
+  right: 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 14px 24px;
+
+  background: rgba(255,255,255,.1);
+
+  backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255,255,255,.15);
+
+  color: white;
+
+  text-decoration: none;
+
+  border-radius: 999px;
+
+  font-weight: 700;
+
+  transition: .3s;
+
+  z-index: 9999;
+
+}
+
+
+
+.suporte:hover {
+
+  background: white;
+
+  color: black;
+
+  transform: translateY(-3px);
+
+}
+
+
+
+#tipoProduto {
+
+  font-family: Arial, sans-serif;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+}
+
+
+
+@media (max-width: 900px) {
+
+  .main {
+
+    flex-direction: column;
+
+  }
+
+  .carrinho {
+
+    position: static;
+
+    width: auto;
+
+    max-height: none;
+
+  }
+
+  .container {
+
+    grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+
+  }
+
+}
+
 </style>
+
 </head>
+
+
+
 <body>
 
-<!-- BOTÃO DE SUPORTE FLUTUANTE -->
-<a href="https://wa.me/5574999019805" class="suporte" target="_blank">💬 Suporte</a>
 
-<!-- TOPO DA LOJA -->
+
+<a href="https://wa.me/5574999019805" class="suporte" target="_blank">
+
+  💬 Suporte
+
+</a>
+
+  
+
+<div id="toast">
+
+  🛒 Produto adicionado ao carrinho
+
+</div>
+
+
+
 <header>
-  <button class="btn-abrir-carrinho" onclick="toggleCarrinho()">
-    🛒 Carrinho (<span id="contador-carrinho">0</span>)
-  </button>
-  <img src="Logo.png" alt="SIGA-ME STORE Logo" class="logo-topo">
-  <h1 class="titulo-loja">SIGA-ME STORE</h1>
 
-  <!-- BARRA DE PESQUISA -->
-  <div class="busca-container">
-    <input type="text" id="inputBusca" placeholder="Pesquisar produtos..." onkeyup="filtrarProdutos()">
-  </div>
+  <img src="Logo.png" alt="SIGA-ME STORE Logo">
 
-  <!-- FILTROS DE CATEGORIA -->
-  <div class="filtros">
-    <button class="filtro-btn ativo" onclick="filtrarCategoria('todos', this)">TODOS</button>
-    <button class="filtro-btn" onclick="filtrarCategoria('livros', this)">LIVROS</button>
-    <button class="filtro-btn" onclick="filtrarCategoria('blocos', this)">BLOCOS DE ANOTAÇÕES</button>
-    <button class="filtro-btn" onclick="filtrarCategoria('outros', this)">OUTROS</button>
-  </div>
+  <h1>SIGA-ME STORE</h1>
+
 </header>
 
-<!-- CONTAINER DA VITRINE -->
-<div class="container-principal">
+
+
+<!-- BARRA DE PESQUISA -->
+
+<input type="text" id="pesquisa" class="pesquisa" placeholder="Pesquisar produtos..." onkeyup="filtrarProdutos()">
+
+
+
+<div class="abas">
+
+  <button onclick="filtrarCategoria('todos')">Todos</button>
+
+  <button onclick="filtrarCategoria('livro')">Livros</button>
+
+  <button onclick="filtrarCategoria('maisvendido')">Mais Vendidos</button>
+
+  <button onclick="filtrarCategoria('biblia')">Bíblias</button>
+
+  <button onclick="filtrarCategoria('bloco')">Blocos</button>
+
+</div>
+
   
-  <!-- GRID DE PRODUTOS -->
-  <div class="grid-produtos" id="gridProdutos">
 
-    <!-- Produto 1 -->
-    <div class="card-produto" data-categoria="livros" data-nome="o deus que destrói sonhos">
-      <img src="Doideussoueudenovo.png" alt="O Deus que Destrói Sonhos">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">O Deus que Destrói Sonhos</div>
-          <div class="card-preco">R$ 35,85</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('O Deus que Destrói Sonhos')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('O Deus que Destrói Sonhos', 35.85)">Adicionar</button>
-        </div>
-      </div>
+<div class="main">
+
+
+
+  <div class="container">
+
+    <div class="produto" data-categoria="livro" onclick="window.location.href='produto-o-deus-que-destroi-sonhos.html'">
+
+      <img src="Lodeusquedestroisonhos.png" alt="O Deus que Destrói Sonhos">
+
+      <h2>O Deus que Destrói Sonhos</h2>
+
+      <p>R$ 39,99</p>
+
+      <button onclick="event.stopPropagation(); add('O Deus que Destrói Sonhos',39.99,'encomenda')">Encomendar</button>
+
+      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+
     </div>
 
-    <!-- Produto 2 -->
-    <div class="card-produto" data-categoria="livros" data-nome="como se tornar um cristao inutil">
-      <img src="Lcomosetornarumcristaoinutil.png" alt="Como se Tornar um Cristão Inútil">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Como se Tornar um Cristão Inútil</div>
-          <div class="card-preco">R$ 44,99</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Como se Tornar um Cristão Inútil')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Como se Tornar um Cristão Inútil', 44.99)">Adicionar</button>
-        </div>
-      </div>
+    
+
+    <div class="produto" data-categoria="livro" data-maisvendido="sim" onclick="window.location.href='produto-como-se-tornar-um-cristão-inútil.html'">
+
+      <img src="Lcomosetornarumcristaoinutil.png" alt="Como Se Tornar um Cristão Inútil">
+
+      <h2>Como Se Tornar um Cristão Inútil</h2>
+
+      <p>R$ 44,99</p>
+
+      <button onclick="event.stopPropagation(); add('Como Se Tornar um Cristão Inútil',44.99)">Adicionar</button>
+
     </div>
 
-    <!-- Produto 3 -->
-    <div class="card-produto" data-categoria="livros" data-nome="comboigo livro">
-      <img src="Lcombo.png" alt="Combo IGO Livro">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Combo IGO Livro</div>
-          <div class="card-preco">R$ 79,90</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Combo IGO Livro')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Combo IGO Livro', 79.90)">Adicionar</button>
-        </div>
-      </div>
+   
+
+    <div class="produto" data-categoria="livro" onclick="window.location.href='produto-combo-rodrigo-bibo.html'">
+
+      <img src="Lcombo.png" alt="Combo Rodrigo Bibo">
+
+      <h2>Combo Rodrigo Bibo</h2>
+
+      <p>R$ 69,99</p>
+
+      <button onclick="event.stopPropagation(); add('Combo Rodrigo Bibo',69.99,'encomenda')">Encomendar</button>
+
+      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+
     </div>
 
-    <!-- Produto 4 -->
-    <div class="card-produto" data-categoria="livros" data-nome="uma vida com propositos">
+
+
+    <div class="produto" data-categoria="livro" onclick="window.location.href='produto-uma-vida-com-propósitos.html'">
+
       <img src="Lumavidacompropositos.png" alt="Uma Vida com Propósitos">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Uma Vida com Propósitos</div>
-          <div class="card-preco">R$ 55,90</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Uma Vida com Propósitos')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Uma Vida com Propósitos', 55.90)">Adicionar</button>
-        </div>
-      </div>
+
+      <h2>Uma Vida com Propósitos</h2>
+
+      <p>R$ 59,99</p>
+
+      <button onclick="event.stopPropagation(); add('Uma Vida com Propósitos',59.99)">Adicionar</button>
+
     </div>
 
-    <!-- Produto 5 -->
-    <div class="card-produto" data-categoria="livros" data-nome="ego transformado">
+
+
+    <div class="produto" data-categoria="livro" onclick="window.location.href='produto-ego-transformado.html'">
+
       <img src="Legotransformado.png" alt="Ego Transformado">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Ego Transformado</div>
-          <div class="card-preco">R$ 24,90</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Ego Transformado')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Ego Transformado', 24.90)">Adicionar</button>
-        </div>
-      </div>
+
+      <h2>Ego Transformado</h2>
+
+      <p>R$ 24,99</p>
+
+      <button onclick="event.stopPropagation(); add('Ego Transformado',24.99)">Adicionar</button>
+
     </div>
 
-    <!-- Produto 6 -->
-    <div class="card-produto" data-categoria="livros" data-nome="cartas de um diabo a seu aprendiz">
-      <img src="Lcartasdeumdiaboaseuaprendiz.png" alt="Cartas de um Diabo a seu Aprendiz">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Cartas de um Diabo a seu Aprendiz</div>
-          <div class="card-preco">R$ 34,90</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Cartas de um Diabo a seu Aprendiz')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Cartas de um Diabo a seu Aprendiz', 34.90)">Adicionar</button>
-        </div>
-      </div>
+
+
+    <div class="produto" data-categoria="livro" onclick="window.location.href='produto-cartas-de-um-diabo-a-seu-aprendiz.html'">
+
+      <img src="Lcartasdeumdiaboaseuaprendiz.png" alt="Cartas de um Diabo a seu aprendiz">
+
+      <h2>Cartas de um Diabo a seu aprendiz</h2>
+
+      <p>R$ 54,99</p>
+
+      <button onclick="event.stopPropagation(); add('Cartas de um Diabo',54.99,'encomenda')">Encomendar</button>
+
+      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+
     </div>
 
-    <!-- Produto 7 -->
-    <div class="card-produto" data-categoria="livros" data-nome="humildade">
+
+
+    <div class="produto" data-categoria="livro" onclick="window.location.href='produto-humildade.html'">
+
       <img src="Lhumildade.png" alt="Humildade">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Humildade</div>
-          <div class="card-preco">R$ 19,90</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Humildade')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Humildade', 19.90)">Adicionar</button>
-        </div>
-      </div>
+
+      <h2>Humildade</h2>
+
+      <p>R$ 19,99</p>
+
+      <button onclick="event.stopPropagation(); add('Humildade',19.99,'encomenda')">Encomendar</button>
+
+      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+
     </div>
 
-    <!-- Produto 8 -->
-    <div class="card-produto" data-categoria="livros" data-nome="devocional crianca que ouve a voz de deus">
-      <img src="Bemquadrinhos.png" alt="Devocional Criança que Ouve a Voz de Deus">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Devocional Criança que Ouve a Voz de Deus</div>
-          <div class="card-preco">R$ 49,90</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Devocional Criança que Ouve a Voz de Deus')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Devocional Criança que Ouve a Voz de Deus', 49.90)">Adicionar</button>
-        </div>
-      </div>
+
+
+    <div class="produto" data-categoria="livro" onclick="window.location.href='produto-devocional-oi-deus-sou-eu-de-novo.html'">
+
+      <img src="Doideussoueudenovo.png" alt="Devocional Oi Deus sou eu de novo">
+
+      <h2>Devocional Oi Deus sou eu de novo</h2>
+
+      <p>R$ 59,99</p>
+
+      <button onclick="event.stopPropagation(); add('Oi Deus sou eu de novo',59.99)">Adicionar</button>
+
     </div>
 
-    <!-- Produto 9 -->
-    <div class="card-produto" data-categoria="livros" data-nome="biblia tua graca">
+
+
+    <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-tua-graça.html'">
+
       <img src="Btuagraça.png" alt="Bíblia Tua Graça">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Bíblia Tua Graça</div>
-          <div class="card-preco">R$ 55,00</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Bíblia Tua Graça')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Bíblia Tua Graça', 55.00)">Adicionar</button>
-        </div>
-      </div>
+
+      <h2>Bíblia Tua Graça</h2>
+
+      <p>R$ 29,99</p>
+
+      <button onclick="event.stopPropagation(); add('Bíblia Tua Graça',29.99,'encomenda')">Encomendar</button>
+
+      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+
     </div>
 
-    <!-- Produto 10 -->
-    <div class="card-produto" data-categoria="livros" data-nome="biblia ide">
+
+
+    <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-ide.html'">
+
       <img src="Bide.png" alt="Bíblia Ide">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Bíblia Ide</div>
-          <div class="card-preco">R$ 54,99</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Bíblia Ide')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Bíblia Ide', 54.99)">Adicionar</button>
-        </div>
-      </div>
+
+      <h2>Bíblia Ide</h2>
+
+      <p>R$ 34,99</p>
+
+      <button onclick="event.stopPropagation(); add('Bíblia Ide',34.99,'encomenda')">Encomendar</button>
+
+      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+
     </div>
 
-    <!-- Produto 11 -->
-    <div class="card-produto" data-categoria="livros" data-nome="biblia floreca">
+
+
+    <div class="produto" data-categoria="biblia" data-maisvendido="sim" onclick="window.location.href='produto-bíblia-floreça.html'">
+
       <img src="Bfloreça.png" alt="Bíblia Floreça">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Bíblia Floreça</div>
-          <div class="card-preco">R$ 44,99</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Bíblia Floreça')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Bíblia Floreça', 44.99)">Adicionar</button>
-        </div>
-      </div>
+
+      <h2>Bíblia Floreça</h2>
+
+      <p>R$ 44,99</p>
+
+      <button onclick="event.stopPropagation(); add('Bíblia Floreça',44.99,'encomenda')">Encomendar</button>
+
+      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+
     </div>
 
-    <!-- Produto 12 -->
-    <div class="card-produto" data-categoria="livros" data-nome="biblia leao de juda">
+
+
+    <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-leão-de-judá.html'">
+
       <img src="Brujaoleaodejuda.png" alt="Bíblia Leão de Judá">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Bíblia Leão de Judá</div>
-          <div class="card-preco">R$ 52,22</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Bíblia Leão de Judá')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Bíblia Leão de Judá', 52.22)">Adicionar</button>
-        </div>
-      </div>
+
+      <h2>Bíblia Leão de Judá</h2>
+
+      <p>R$ 29,99</p>
+
+      <button onclick="event.stopPropagation(); add('Bíblia Leão de Judá',29.99)">Adicionar</button>
+
     </div>
 
-    <!-- Produto 13 -->
-    <div class="card-produto" data-categoria="livros" data-nome="biblia nada sera capaz">
+
+
+    <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-nada-será-capaz.html'">
+
       <img src="Bnadaseracapaz.png" alt="Bíblia Nada Será Capaz">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Bíblia Nada Será Capaz</div>
-          <div class="card-preco">R$ 54,00</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Bíblia Nada Será Capaz')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Bíblia Nada Será Capaz', 54.00)">Adicionar</button>
-        </div>
-      </div>
+
+      <h2>Bíblia Nada Será Capaz</h2>
+
+      <p>R$ 24,99</p>
+
+      <button onclick="event.stopPropagation(); add('Bíblia Nada Será Capaz',24.99)">Adicionar</button>
+
     </div>
 
-    <!-- Produto 14 -->
-    <div class="card-produto" data-categoria="livros" data-nome="biblia raiz de davi">
+
+
+    <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-raiz-de-davi.html'">
+
       <img src="Braizdedavi.png" alt="Bíblia Raiz de Davi">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Bíblia Raiz de Davi</div>
-          <div class="card-preco">R$ 54,00</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Bíblia Raiz de Davi')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Bíblia Raiz de Davi', 54.00)">Adicionar</button>
-        </div>
-      </div>
+
+      <h2>Bíblia Raiz de Davi</h2>
+
+      <p>R$ 24,99</p>
+
+      <button onclick="event.stopPropagation(); add('Bíblia Raiz de Davi',24.99)">Adicionar</button>
+
     </div>
 
-    <!-- Produto 15 -->
-    <div class="card-produto" data-categoria="livros" data-nome="biblia em quadrinhos">
+
+
+    <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-em-quadrinhos.html'">
+
       <img src="Bemquadrinhos.png" alt="Bíblia em Quadrinhos">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Bíblia em Quadrinhos</div>
-          <div class="card-preco">R$ 39,00</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Bíblia em Quadrinhos')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Bíblia em Quadrinhos', 39.00)">Adicionar</button>
-        </div>
-      </div>
+
+      <h2>Bíblia em Quadrinhos</h2>
+
+      <p>R$ 59,99</p>
+
+      <button onclick="event.stopPropagation(); add('Bíblia em Quadrinhos',59.99,'encomenda')">Encomendar</button>
+
+      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+
     </div>
 
-    <!-- Produto 16 -->
-    <div class="card-produto" data-categoria="blocos" data-nome="bloco de anotacoes ele vive">
+
+
+    <div class="produto" data-categoria="bloco" onclick="window.location.href='produto-bloco-de-anotações-ele-vive.html'">
+
       <img src="BOdeAnotaçõesEleVive.png" alt="Bloco de Anotações Ele Vive">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Bloco de Anotações Ele Vive</div>
-          <div class="card-preco">R$ 14,00</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Bloco de Anotações Ele Vive')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Bloco de Anotações Ele Vive', 14.00)">Adicionar</button>
-        </div>
-      </div>
+
+      <h2>Bloco de Anotações Ele Vive</h2>
+
+      <p>R$ 14,99</p>
+
+      <button onclick="event.stopPropagation(); add('Bloco de Anotações Ele Vive',14.99)">Adicionar</button>
+
     </div>
 
-    <!-- Produto 17 -->
-    <div class="card-produto" data-categoria="blocos" data-nome="bloco de anotacoes ele ressuscitou">
+
+
+    <div class="produto" data-categoria="bloco" onclick="window.location.href='produto-bloco-de-anotações-ele-ressuscitou.html'">
+
       <img src="BOdeAnotaçõesEleRessuscitou.png" alt="Bloco de Anotações Ele Ressuscitou">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Bloco de Anotações Ele Ressuscitou</div>
-          <div class="card-preco">R$ 14,00</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Bloco de Anotações Ele Ressuscitou')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Bloco de Anotações Ele Ressuscitou', 14.00)">Adicionar</button>
-        </div>
-      </div>
+
+      <h2>Bloco de Anotações Ele Ressuscitou</h2>
+
+      <p>R$ 14,99</p>
+
+      <button onclick="event.stopPropagation(); add('Bloco de Anotações Ele Ressuscitou',14.99)">Adicionar</button>
+
     </div>
 
-    <!-- Produto 18 -->
-    <div class="card-produto" data-categoria="blocos" data-nome="bloco de anotacoes correnteza">
+
+
+    <div class="produto" data-categoria="bloco" onclick="window.location.href='produto-bloco-de-anotações-correnteza.html'">
+
       <img src="BOdeanotacoescorrenteza.png" alt="Bloco de Anotações Correnteza">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Bloco de Anotações Correnteza</div>
-          <div class="card-preco">R$ 14,00</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Bloco de Anotações Correnteza')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Bloco de Anotações Correnteza', 14.00)">Adicionar</button>
-        </div>
-      </div>
+
+      <h2>Bloco de Anotações Correnteza</h2>
+
+      <p>R$ 14,99</p>
+
+      <button onclick="event.stopPropagation(); add('Bloco de Anotações Correnteza',14.99)">Adicionar</button>
+
     </div>
 
-    <!-- Produto 19 -->
-    <div class="card-produto" data-categoria="blocos" data-nome="bloco de anotacoes tudo cre">
+
+
+    <div class="produto" data-categoria="bloco" data-maisvendido="sim" onclick="window.location.href='produto-bloco-de-anotações-tudo-crê.html'">
+
       <img src="BOdeAnotaçõesTudoCrê.png" alt="Bloco de Anotações Tudo Crê">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Bloco de Anotações Tudo Crê</div>
-          <div class="card-preco">R$ 14,00</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Bloco de Anotações Tudo Crê')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Bloco de Anotações Tudo Crê', 14.00)">Adicionar</button>
-        </div>
-      </div>
+
+      <h2>Bloco de Anotações Tudo Crê</h2>
+
+      <p>R$ 14,99</p>
+
+      <button onclick="event.stopPropagation(); add('Bloco de Anotações Tudo Crê',14.99,'encomenda')">Encomendar</button>
+
+      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+
     </div>
 
-    <!-- Produto 20 -->
-    <div class="card-produto" data-categoria="blocos" data-nome="bloco de anotacoes flor">
+
+
+    <div class="produto" data-categoria="bloco" onclick="window.location.href='produto-bloco-de-anotações-flor.html'">
+
       <img src="BOdeAnotaçõesFlor.png" alt="Bloco de Anotações Flor">
-      <div class="card-conteudo">
-        <div>
-          <div class="card-titulo">Bloco de Anotações Flor</div>
-          <div class="card-preco">R$ 14,00</div>
-        </div>
-        <div class="card-botoes">
-          <button class="btn-card btn-encomendar" onclick="encomendarItem('Bloco de Anotações Flor')">Encomendar</button>
-          <button class="btn-card btn-adicionar" onclick="adicionarAoCarrinho('Bloco de Anotações Flor', 14.00)">Adicionar</button>
-        </div>
-      </div>
+
+      <h2>Bloco de Anotações Flor</h2>
+
+      <p>R$ 14,99</p>
+
+      <button onclick="event.stopPropagation(); add('Bloco de Anotações Flor',14.99,'encomenda')">Encomendar</button>
+
+      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+
     </div>
 
   </div>
-</div>
 
-<!-- GAVETA LATERAL DO CARRINHO -->
-<div class="carrinho-overlay" id="carrinhoOverlay" onclick="toggleCarrinho()"></div>
-<div class="carrinho-lateral" id="carrinhoLateral">
-  <div class="carrinho-header">
-    <h2>Seu Carrinho</h2>
-    <button class="btn-fechar-carrinho" onclick="toggleCarrinho()">&times;</button>
-  </div>
-  <div class="carrinho-corpo" id="carrinhoCorpo">
-    <div class="carrinho-vazio">Seu carrinho está vazio.</div>
-  </div>
-  <div class="carrinho-footer">
-    <div class="carrinho-total">
-      <span>Total:</span>
-      <span id="carrinhoTotalValor">R$ 0,00</span>
+
+
+  <div class="carrinho">
+
+    <h3 id="tituloCarrinho">Carrinho (0)</h3>
+
+    <div id="lista">Vazio</div>
+
+    <p id="total">Total: R$ 0,00</p>
+
+
+
+    <button id="btnFinalizar" class="finalizar" onclick="enviar()" disabled>
+
+      Finalizar compra
+
+    </button>
+
+
+
+    <div class="sugestoes">
+
+      <h3>Sugira um produto</h3>
+
+      <input type="text" id="nomeCliente" placeholder="Seu nome (opcional)">
+
+      <select id="tipoProduto">
+
+        <option value="" disabled selected>Tipo de produto</option>
+
+        <option value="Livro">Livro</option>
+
+        <option value="Curso">Curso</option>
+
+        <option value="Pdf">Pdf</option>
+
+        <option value="Outro">Outro</option>
+
+      </select>
+
+      <textarea id="sugestaoInput" placeholder="Ex: Bíblia de estudo, livro..."></textarea>
+
+      <button onclick="enviarSugestao()">Quero que vocês vendam isso</button>
+
     </div>
-    <button class="btn-finalizar" onclick="finalizarCompraWhatsapp()">Finalizar Compra</button>
+
   </div>
-</div>
+
+
+
+</div> 
+
+
 
 <footer>
+
   <p class="copyright">© 2026 SIGA-ME STORE</p>
+
 </footer>
 
-<!-- SCRIPT DE INTERATIVIDADE -->
+  
+
 <script>
-  let carrinho = [];
 
-  function toggleCarrinho() {
-    const gaveta = document.getElementById('carrinhoLateral');
-    const overlay = document.getElementById('carrinhoOverlay');
-    gaveta.classList.toggle('ativo');
-    if (gaveta.classList.contains('ativo')) {
-      overlay.style.display = 'block';
+let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+
+
+function add(nome, preco, tipo = "pronta_entrega"){
+
+  carrinho.push({nome, preco, tipo});
+
+  mostrarToast();
+
+  atualizar();
+
+}
+
+
+
+function mostrarToast(){
+
+  let toast = document.getElementById("toast");
+
+  toast.style.opacity = "1";
+
+  toast.style.transform = "translateY(0)";
+
+  setTimeout(() => {
+
+    toast.style.opacity = "0";
+
+    toast.style.transform = "translateY(20px)";
+
+  }, 2000);
+
+}
+
+
+
+function atualizar(){
+
+  document.getElementById("tituloCarrinho").innerHTML = "Carrinho (" + carrinho.length + ")";
+
+  let lista = document.getElementById("lista");
+
+  lista.innerHTML = "";
+
+  let total = 0;
+
+
+
+  carrinho.forEach((item, i) => {
+
+    lista.innerHTML += `
+
+      <p>
+
+        ${item.nome}
+
+        ${item.tipo === "encomenda" ? " 📦(Encomenda)" : ""}
+
+        - R$ ${item.preco.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+
+        <button class='remover' onclick='remover(${i})'>X</button>
+
+      </p>`;
+
+    total += item.preco;
+
+  });
+
+
+
+  if(carrinho.length === 0){
+
+    lista.innerHTML = "Vazio";
+
+    document.getElementById("btnFinalizar").disabled = true;
+
+  } else {
+
+    document.getElementById("btnFinalizar").disabled = false;
+
+  }
+
+
+
+  document.getElementById("total").innerHTML = "Total: R$ " + total.toLocaleString("pt-BR", { minimumFractionDigits: 2 });
+
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+}
+
+
+
+function remover(i){
+
+  carrinho.splice(i, 1);
+
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+  atualizar();
+
+}
+
+
+
+function enviar(){
+
+  if(carrinho.length === 0){
+
+    alert("Seu carrinho está vazio!");
+
+    return;
+
+  }
+
+
+
+  let msg = "🛒 *NOVO PEDIDO*\n\n";
+
+  let total = 0;
+
+
+
+  const prontaEntrega = carrinho.filter(item => item.tipo === "pronta_entrega");
+
+  const encomendas = carrinho.filter(item => item.tipo === "encomenda");
+
+
+
+  if(prontaEntrega.length > 0){
+
+    msg += "✅ *PRONTA ENTREGA*\n";
+
+    prontaEntrega.forEach(item => {
+
+      msg += `${item.nome} - R$ ${item.preco.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}\n`;
+
+      total += item.preco;
+
+    });
+
+    msg += "\n";
+
+  }
+
+
+
+  if(encomendas.length > 0){
+
+    msg += "📦 *ENCOMENDAS*\n";
+
+    encomendas.forEach(item => {
+
+      msg += `${item.nome} - R$ ${item.preco.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}\n`;
+
+      total += item.preco;
+
+    });
+
+    msg += "\n";
+
+  }
+
+
+
+  msg += `💰 *Total:* R$ ${total.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}\n\n🏦`;
+
+
+
+  window.open("https://wa.me/5574999019805?text=" + encodeURIComponent(msg), "_blank");
+
+
+
+  carrinho = [];
+
+  localStorage.removeItem("carrinho");
+
+  atualizar();
+
+}
+
+
+
+function enviarSugestao(){
+
+  let nome = document.getElementById("nomeCliente").value || "Anônimo";
+
+  let tipo = document.getElementById("tipoProduto").value;
+
+  let sugestao = document.getElementById("sugestaoInput").value;
+
+
+
+  if(sugestao.trim() === "" || tipo === ""){
+
+    alert("Preencha o tipo e a sugestão!");
+
+    return;
+
+  }
+
+
+
+  let msg = `💡 Sugestão de Produto:\n👤 Nome: ${nome}\n📦 Tipo: ${tipo}\n📝 Sugestão: ${sugestao}`;
+
+
+
+  window.open("https://wa.me/5574999019805?text=" + encodeURIComponent(msg), "_blank");
+
+}
+
+
+
+/* PESQUISA */
+
+function filtrarProdutos() {
+
+  let filtro = document.getElementById("pesquisa").value.toLowerCase();
+
+  let produtos = document.querySelectorAll(".produto");
+
+
+
+  produtos.forEach(produto => {
+
+    let nome = produto.querySelector("h2").textContent.toLowerCase();
+
+    if (nome.includes(filtro)) {
+
+      produto.style.display = "";
+
     } else {
-      overlay.style.display = 'none';
+
+      produto.style.display = "none";
+
     }
-  }
 
-  function adicionarAoCarrinho(nome, preco) {
-    const itemExistente = carrinho.find(item => item.name === nome);
-    if (itemExistente) {
-      itemExistente.qtd += 1;
-    } else {
-      carrinho.push({ name: nome, price: preco, qtd: 1 });
-    }
-    atualizarCarrinhoUI();
-    toggleCarrinho();
-  }
+  });
 
-  function removerDoCarrinho(nome) {
-    carrinho = carrinho.filter(item => item.name !== nome);
-    atualizarCarrinhoUI();
-  }
+}
 
-  function atualizarCarrinhoUI() {
-    const corpo = document.getElementById('carrinhoCorpo');
-    const contador = document.getElementById('contador-carrinho');
-    const totalValor = document.getElementById('carrinhoTotalValor');
 
-    const totalItens = carrinho.reduce((sum, item) => sum + item.qtd, 0);
-    contador.innerText = totalItens;
 
-    if (carrinho.length === 0) {
-      corpo.innerHTML = '<div class="carrinho-vazio">Seu carrinho está vazio.</div>';
-      totalValor.innerText = 'R$ 0,00';
+function filtrarCategoria(categoria){
+
+  let produtos = document.querySelectorAll(".produto");
+
+  produtos.forEach(produto => {
+
+    if(categoria === "todos"){
+
+      produto.style.display = "";
+
       return;
+
     }
 
-    let html = '';
-    let total = 0;
 
-    carrinho.forEach(item => {
-      let subtotal = item.price * item.qtd;
-      total += subtotal;
-      html += `
-        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;">
-          <div>
-            <div style="font-weight: 600; font-size: 13px;">${item.name}</div>
-            <div style="font-size: 12px; color: #aaa;">Qtd: ${item.qtd} x R$ ${item.price.toFixed(2).replace('.', ',')}</div>
-          </div>
-          <button onclick="removerDoCarrinho('${item.name}')" style="background: none; border: none; color: #ff5c5c; cursor: pointer; font-size: 16px;">🗑️</button>
-        </div>
-      `;
-    });
 
-    corpo.innerHTML = html;
-    totalValor.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
-  }
+    if(categoria === "maisvendido"){
 
-  function encomendarItem(nomeProduto) {
-    const mensagem = encodeURIComponent(`Olá! Gostaria de encomendar o produto: *${nomeProduto}*`);
-    window.open(`https://wa.me/5574999019805?text=${mensagem}`, '_blank');
-  }
+      produto.style.display = produto.dataset.maisvendido === "sim" ? "" : "none";
 
-  function finalizarCompraWhatsapp() {
-    if (carrinho.length === 0) {
-      alert('Seu carrinho está vazio!');
       return;
+
     }
 
-    let mensagem = 'Olá! Gostaria de finalizar o pedido:\n\n';
-    let total = 0;
+      
 
-    carrinho.forEach(item => {
-      let subtotal = item.price * item.qtd;
-      total += subtotal;
-      mensagem += `• ${item.qtd}x ${item.name} (R$ ${subtotal.toFixed(2).replace('.', ',')})\n`;
-    });
+    produto.style.display = produto.dataset.categoria === categoria ? "" : "none";
 
-    mensagem += `\n*Total:* R$ ${total.toFixed(2).replace('.', ',')}`;
-    const url = `https://wa.me/5574999019805?text=${encodeURIComponent(mensagem)}`;
-    window.open(url, '_blank');
-  }
+  });
 
-  function filtrarProdutos() {
-    let termo = document.getElementById('inputBusca').value.toLowerCase();
-    let cards = document.querySelectorAll('.card-produto');
+}
 
-    cards.forEach(card => {
-      let nome = card.getAttribute('data-nome');
-      if (nome.includes(termo)) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  }
 
-  function filtrarCategoria(categoria, botaoEl) {
-    document.querySelectorAll('.filtro-btn').forEach(btn => btn.classList.remove('ativo'));
-    botaoEl.classList.add('ativo');
 
-    let cards = document.querySelectorAll('.card-produto');
-    cards.forEach(card => {
-      let catCard = card.getAttribute('data-categoria');
-      if (categoria === 'todos' || catCard === categoria) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  }
+atualizar();
+
 </script>
 
+
+
 </body>
+
 </html>

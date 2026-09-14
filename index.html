@@ -1,430 +1,312 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
 <meta charset="UTF-8">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SIGA-ME STORE</title>
 
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-body{
-
-    background:url("Fundo2.png");
-    background-size:cover;
-    background-position:center;
-    background-attachment:fixed;
-
-    color:white;
+body {
+  background: url("Fundo2.png") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
 }
 
-body::before{
-    content:"";
-
-    position:fixed;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100%;
-
-    background:rgba(0,0,0,.45);
-
-    z-index:-1;
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.45);
+  z-index: -1;
 }
 
-.hero{
-    min-height:30vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:20px;
+.hero {
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
 }
 
-.hero img{
-    width:150px;
-    margin-bottom:30px;
+.hero img {
+  width: 150px;
+  margin-bottom: 30px;
 }
 
-.hero h1{
-    font-size:90px;
-    font-weight:900;
-    letter-spacing:-3px;
-    margin-bottom:20px;
+.hero h1 {
+  font-size: 90px;
+  font-weight: 900;
+  letter-spacing: -3px;
+  margin-bottom: 20px;
 }
 
-.hero p{
-
-    font-size:24px;
-    max-width:800px;
-    line-height:1.6;
-    margin-bottom:40px;
-    opacity:.95;
+.hero p {
+  font-size: 24px;
+  max-width: 800px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  opacity: .95;
 }
 
-.acoes{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
-    justify-content:center;
+.acoes {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.botao{
-
-    background:white;
-    color:black;
-    padding:18px 42px;
-    border-radius:999px;
-    text-decoration:none;
-    font-weight:700;
-    transition:.3s;
-    display:inline-block;
+.botao {
+  background: white;
+  color: black;
+  padding: 18px 42px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: .3s;
+  display: inline-block;
 }
 
-.botao:hover{
-
-    transform:translateY(-5px);
-    box-shadow:
-    0 15px 40px rgba(255,255,255,.25);
+.botao:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255,255,255,.25);
 }
 
-.botaoSecundario{
-
-    background:transparent;
-    color:white;
-    border:1px solid white;
-    padding:18px 42px;
-    border-radius:999px;
-    text-decoration:none;
-    font-weight:700;
-    transition:.3s;
-    display:inline-block;
+.suporte {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  background: rgba(255,255,255,.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,.15);
+  color: white;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: .3s;
+  z-index: 9999;
 }
 
-.botaoSecundario:hover{
-
-    background:white;
-    color:black;
-    transform:translateY(-5px);
-}
-    
-@media(max-width:768px){
-    .hero h1{
-        font-size:50px;
-    }
-    .hero p{
-        font-size:16px;
-    }
-    .acoes{
-        flex-direction:column;
-    }
+.suporte:hover {
+  background: white;
+  color: black;
+  transform: translateY(-3px);
 }
 
-.suporte{
-    position:fixed;
-    bottom:25px;
-    right:25px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:14px 24px;
-    background:rgba(255,255,255,.1);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,.15);
-    color:white;
-    text-decoration:none;
-    border-radius:999px;
-    font-weight:700;
-    transition:.3s;
-    z-index:9999;
+.indicadores {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 10px 10px 30px;
 }
 
-.suporte:hover{
-    background:white;
-    color:black;
-    transform:translateY(-3px);
+.indicador {
+  min-width: 180px;
 }
 
-    .indicadores{
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:30px;
-    flex-wrap:wrap;
-    text-align:center;
-    padding:10px 10px 30px;
+.indicador h2 {
+  font-size: 60px;
+  font-weight: 900;
+  margin-bottom: 10px;
 }
 
-.indicador{
-
-    min-width:180px;
+.indicador p {
+  font-size: 18px;
+  opacity: .8;
 }
 
-.indicador h2{
-
-    font-size:60px;
-    font-weight:900;
-    margin-bottom:10px;
+.carrossel {
+  padding: 30px 0;
+  overflow: hidden;
+  width: 100%;
 }
 
-.indicador p{
-
-    font-size:18px;
-    opacity:.8;
+.slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
-.carrossel{
-    padding:30px 0 30px;
-    overflow:hidden;
-    width:100%;
+.slide-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: scroll 60s linear infinite;
 }
 
-.carrossel h2{
-    text-align:center;
-    font-size:50px;
-    margin-bottom:40px;
-}
-
-.slider{
-    width:100%;
-    overflow:hidden;
-    position:relative;
-}
-
-.slide-track img{
-    width:220px;
-    height:320px;
-    object-fit:cover;
-    border-radius:20px;
-    flex-shrink:0;
-
-    margin-right:0;
-}
-
-.slide-track{
-    display:flex;
-    gap:20px;
-    width:max-content;
-    animation:scroll 60s linear infinite;
+.slide-track img {
+  width: 220px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 20px;
+  flex-shrink: 0;
 }
 
 @keyframes scroll {
-
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-50%);
-    }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .slider::before,
-.slider::after{
-    content:"";
-    position:absolute;
-    top:0;
-    width:150px;
-    height:100%;
-    z-index:10;
+.slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 10;
 }
 
-.slider::before{
-    left:0;
-    background:linear-gradient(
-        to right,
-        rgba(0,0,0,1),
-        transparent
-    );
+.slider::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(0,0,0,1), transparent);
 }
 
-.slider::after{
-    right:0;
-    background:linear-gradient(
-        to left,
-        rgba(0,0,0,1),
-        transparent
-    );
+.slider::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(0,0,0,1), transparent);
 }
 
-.divisoria{
-    width:100vw;
-    height:3px;
-    margin:0;
-    margin-left:calc(50% - 50vw);
-    background:white;
-    box-shadow:
-        0 0 15px rgba(255,255,255,.8),
-        0 0 30px rgba(255,255,255,.4);
-}
-    
-footer{
-    background: rgba(0,0,0,.95);
-    padding:40px 20px;
-    margin-top:50px;
+.divisoria {
+  width: 100vw;
+  height: 3px;
+  margin-left: calc(50% - 50vw);
+  background: white;
+  box-shadow: 0 0 15px rgba(255,255,255,.8), 0 0 30px rgba(255,255,255,.4);
 }
 
-.footer-grid{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:150px;
-    text-align:center;
-    flex-wrap:wrap;
-    max-width:1200px;
-    margin:0 auto;
+footer {
+  background: rgba(0,0,0,.95);
+  padding: 40px 20px;
+  margin-top: 50px;
+  text-align: center;
 }
 
-.footer-grid div{
-    text-align:center;
+.copyright {
+  margin-top: 30px;
+  opacity: .8;
 }
 
-.footer-grid h4{
-    color:#fff;
-    margin-bottom:8px;
+@media(max-width: 768px) {
+  .hero h1 { font-size: 50px; }
+  .hero p { font-size: 16px; }
+  .acoes { flex-direction: column; }
 }
-
-.footer-grid p{
-    line-height:1.8;
-}
-
-.copyright{
-    text-align:center;
-    margin-top:30px;
-    opacity:.8;
-}
-    
 </style>
 </head>
 <body>
 
-<a href="https://wa.me/5574999019805"
-   class="suporte"
-   target="_blank">
-
-    💬 Suporte
-
-</a>
+<a href="https://wa.me/5574999019805" class="suporte" target="_blank">💬 Suporte</a>
     
 <section class="hero">
-
-    <img src="Logo.png">
-    <h1>SIGA-ME STORE</h1>
-    <p>
-        Mais do que um negócio, um propósito.
-    </p>
-    <a href="loja.html" class="botao">
-        VER PRODUTOS
-    </a>
-
+  <img src="Logo.png" alt="SIGA-ME STORE Logo">
+  <h1>SIGA-ME STORE</h1>
+  <p>Mais do que um negócio, um propósito.</p>
+  <div class="acoes">
+    <a href="loja.html" class="botao">VER PRODUTOS</a>
+  </div>
 </section>
 
 <section class="indicadores">
-    <div class="indicador">
-        <h2>20+</h2>
-        <p>Produtos</p>
-    </div>
-
-    <div class="indicador">
-        <h2>100%</h2>
-        <p>Pagamento Seguro</p>
-    </div>
-
-    <div class="indicador">
-        <h2>🚚</h2>
-        <p>Entrega Local</p>
-    </div>
-
-    <div class="indicador">
-        <h2>💬</h2>
-        <p>Atendimento</p>
-    </div>
+  <div class="indicador">
+    <h2>20+</h2>
+    <p>Produtos</p>
+  </div>
+  <div class="indicador">
+    <h2>100%</h2>
+    <p>Pagamento Seguro</p>
+  </div>
+  <div class="indicador">
+    <h2>🚚</h2>
+    <p>Entrega Local</p>
+  </div>
+  <div class="indicador">
+    <h2>💬</h2>
+    <p>Atendimento</p>
+  </div>
 </section>
 
 <div class="divisoria"></div>
     
 <section class="carrossel">
+  <div class="slider">
+    <div class="slide-track">
+      <img src="BOdeAnotaçõesEleRessuscitou.png" alt="Produto">
+      <img src="BOdeAnotaçõesEleVive.png" alt="Produto">
+      <img src="BOdeAnotaçõesFlor.png" alt="Produto">
+      <img src="BOdeAnotaçõesTudoCrê.png" alt="Produto">
+      <img src="BOdeanotacoescorrenteza.png" alt="Produto">
+      <img src="Bemquadrinhos.png" alt="Produto">
+      <img src="Bfloreça.png" alt="Produto">
+      <img src="Bide.png" alt="Produto">
+      <img src="Bnadaseracapaz.png" alt="Produto">
+      <img src="Braizdedavi.png" alt="Produto">
+      <img src="Brujaoleaodejuda.png" alt="Produto">
+      <img src="Btuagraça.png" alt="Produto">
+      <img src="Doideussoueudenovo.png" alt="Produto">
+      <img src="Lcartasdeumdiaboaseuaprendiz.png" alt="Produto">
+      <img src="Lcombo.png" alt="Produto">
+      <img src="Lcomosetornarumcristaoinutil.png" alt="Produto">
+      <img src="Legotransformado.png" alt="Produto">
+      <img src="Lhumildade.png" alt="Produto">
+      <img src="Lodeusquedestroisonhos.png" alt="Produto">
+      <img src="Lumavidacompropositos.png" alt="Produto">
 
-    <div class="slider">
-
-        <div class="slide-track">
-
-<img src=BOdeAnotaçõesEleRessuscitou.png>
-<img src=BOdeAnotaçõesEleVive.png>
-<img src=BOdeAnotaçõesFlor.png>
-<img src=BOdeAnotaçõesTudoCrê.png>
-<img src=BOdeanotacoescorrenteza.png>
-<img src=Bemquadrinhos.png>
-<img src=Bfloreça.png>
-<img src=Bide.png>
-<img src=Bnadaseracapaz.png>
-<img src=Braizdedavi.png>
-<img src=Brujaoleaodejuda.png>
-<img src=Btuagraça.png>
-<img src=Doideussoueudenovo.png>
-<img src=Lcartasdeumdiaboaseuaprendiz.png>
-<img src=Lcombo.png>
-<img src=Lcomosetornarumcristaoinutil.png>
-<img src=Legotransformado.png>
-<img src=Lhumildade.png>
-<img src=Lodeusquedestroisonhos.png>
-<img src=Lumavidacompropositos.png>
-
-            <!-- Repetição para efeito infinito -->
-            
-<img src=BOdeAnotaçõesEleRessuscitou.png>
-<img src=BOdeAnotaçõesEleVive.png>
-<img src=BOdeAnotaçõesFlor.png>
-<img src=BOdeAnotaçõesTudoCrê.png>
-<img src=BOdeanotacoescorrenteza.png>
-<img src=Bemquadrinhos.png>
-<img src=Bfloreça.png>
-<img src=Bide.png>
-<img src=Bnadaseracapaz.png>
-<img src=Braizdedavi.png>
-<img src=Brujaoleaodejuda.png>
-<img src=Btuagraça.png>
-<img src=Doideussoueudenovo.png>
-<img src=Lcartasdeumdiaboaseuaprendiz.png>
-<img src=Lcombo.png>
-<img src=Lcomosetornarumcristaoinutil.png>
-<img src=Legotransformado.png>
-<img src=Lhumildade.png>
-<img src=Lodeusquedestroisonhos.png>
-<img src=Lumavidacompropositos.png>
-
-        </div>
+      <!-- Repetição para efeito infinito -->
+      <img src="BOdeAnotaçõesEleRessuscitou.png" alt="Produto">
+      <img src="BOdeAnotaçõesEleVive.png" alt="Produto">
+      <img src="BOdeAnotaçõesFlor.png" alt="Produto">
+      <img src="BOdeAnotaçõesTudoCrê.png" alt="Produto">
+      <img src="BOdeanotacoescorrenteza.png" alt="Produto">
+      <img src="Bemquadrinhos.png" alt="Produto">
+      <img src="Bfloreça.png" alt="Produto">
+      <img src="Bide.png" alt="Produto">
+      <img src="Bnadaseracapaz.png" alt="Produto">
+      <img src="Braizdedavi.png" alt="Produto">
+      <img src="Brujaoleaodejuda.png" alt="Produto">
+      <img src="Btuagraça.png" alt="Produto">
+      <img src="Doideussoueudenovo.png" alt="Produto">
+      <img src="Lcartasdeumdiaboaseuaprendiz.png" alt="Produto">
+      <img src="Lcombo.png" alt="Produto">
+      <img src="Lcomosetornarumcristaoinutil.png" alt="Produto">
+      <img src="Legotransformado.png" alt="Produto">
+      <img src="Lhumildade.png" alt="Produto">
+      <img src="Lodeusquedestroisonhos.png" alt="Produto">
+      <img src="Lumavidacompropositos.png" alt="Produto">
     </div>
+  </div>
 </section>
 
 <div class="divisoria"></div>
 
-<section id="sobre" style="padding:30px 20px;text-align:center;max-width:900px;margin:auto;">
-<h2 style="font-size:50px;margin-bottom:30px;">
-SOBRE A SIGA-ME STORE
-</h2>
-
-<p style="font-size:22px;line-height:1.8;">
-Oferecemos produtos selecionados com foco em qualidade, confiança e satisfação, 
-buscando proporcionar a melhor experiência para cada cliente.
-</p>
-
- <p class="copyright">
-        © 2026 SIGA-ME STORE
-</p>
-    
+<section id="sobre" style="padding: 30px 20px; text-align: center; max-width: 900px; margin: auto;">
+  <h2 style="font-size: 50px; margin-bottom: 30px;">SOBRE A SIGA-ME STORE</h2>
+  <p style="font-size: 22px; line-height: 1.8;">
+    Oferecemos produtos selecionados com foco em qualidade, confiança e satisfação, buscando proporcionar a melhor experiência para cada cliente.
+  </p>
 </section>
+
+<footer>
+  <p class="copyright">© 2026 SIGA-ME STORE</p>
+</footer>
     
 </body>
 </html>

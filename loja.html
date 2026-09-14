@@ -1,1389 +1,818 @@
 <!DOCTYPE html>
-
 <html lang="pt-br">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>SIGA-ME STORE</title>
 
-
-
 <style>
-
 body {
-
   margin: 0;
-
   background: url("Fundo.png") no-repeat center center fixed;
-
   background-size: cover;
-
   color: white;
-
   font-family: Arial, sans-serif;
-
 }
-
-
 
 header {
-
   text-align: center;
-
   padding: 20px;
-
 }
-
-
 
 header img {
-
   width: 150px;
-
 }
-
-
 
 /* BARRA DE PESQUISA */
-
 .pesquisa {
-
   width: 400px;
-
   max-width: 90%;
-
   display: block;
-
   margin: 20px auto;
-
   padding: 12px;
-
   font-size: 16px;
-
   border: none;
-
   border-radius: 8px;
-
   outline: none;
-
   box-sizing: border-box;
-
 }
-
-
 
 .main {
-
   display: flex;
-
   flex-wrap: wrap;
-
 }
-
-
 
 .container {
-
   flex: 3;
-
   display: grid;
-
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-
   gap: 20px;
-
   padding: 20px;
-
 }
-
-
 
 .produto {
-
   background: white;
-
   color: black;
-
   padding: 15px;
-
   border-radius: 20px;
-
   text-align: center;
-
+  overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,.15);
-
   transition: all .4s ease;
-
   animation: aparecer .7s ease;
 
-
-
   /* ESTRUTURA FLEX PARA ALINHAR TUDO DE CIMA PARA BAIXO */
-
   display: flex;
-
   flex-direction: column;
-
-  justify-content: flex-start;
-
   height: 100%;
-
   box-sizing: border-box;
-
 }
-
-
 
 .produto:hover {
-
   transform: translateY(-10px);
-
   box-shadow: 0 20px 40px rgba(0,0,0,.25);
-
 }
-
-
 
 .produto img {
-
   width: 100%;
-
   height: 240px;
-
   object-fit: cover;
-
   border-radius: 10px;
-
   transition: .5s;
-
 }
-
-
 
 .produto:hover img {
-
   transform: scale(1.05);
-
 }
-
-
 
 .produto h2 {
-
   font-size: 15px;
-
   margin: 12px 0 8px;
-
   min-height: 40px;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   line-height: 1.3;
-
 }
-
-
 
 .produto p {
-
   font-weight: bold;
-
-  margin: 0 0 15px 0;
-
+  margin: 0 0 12px 0;
 }
 
+/* CONTAINER DOS BOTÕES DO CARD */
+.produto-botoes {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
 
+/* LINHA SUPERIOR PARA ADICIONAR / ENCOMENDAR LADO A LADO */
+.botoes-principais {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
 
 button {
-
   background: #111;
-
   border: none;
-
-  padding: 12px;
-
+  padding: 10px 6px;
   color: white;
-
-  border-radius: 30px;
-
+  border-radius: 20px;
   cursor: pointer;
-
   font-weight: bold;
-
+  font-size: 12px;
   transition: all .3s ease;
-
+  text-align: center;
 }
 
-
-
-.produto button {
-
+.produto-botoes button {
   width: 100%;
-
-  margin-top: auto;
-
 }
-
-
-
-.produto button + button {
-
-  margin-top: 6px;
-
-}
-
-
 
 button:hover {
-
   background: white;
-
   color: black;
-
-  transform: translateY(-3px);
-
-  box-shadow: 0 10px 25px rgba(255,255,255,.25);
-
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255,255,255,.25);
 }
-
-
 
 .remover {
-
   background: red;
-
   margin-left: 10px;
-
   padding: 4px 8px;
-
   border-radius: 5px;
-
+  font-size: 14px;
 }
-
-
 
 .carrinho {
-
   flex: 1;
-
   min-width: 280px;
-
   background: white;
-
   color: black;
-
   padding: 20px;
-
   border-radius: 20px;
-
   position: sticky;
-
   top: 20px;
-
   align-self: flex-start;
-
   max-height: calc(100vh - 40px);
-
   overflow-y: auto;
-
 }
-
-
 
 .finalizar {
-
   width: 100%;
-
   padding: 16px;
-
   font-size: 18px;
-
   font-weight: bold;
-
   background: #111;
-
   border: none;
-
   border-radius: 8px;
-
   color: white;
-
   cursor: pointer;
-
 }
-
-
 
 .finalizar:hover {
-
   background: #00a844;
-
   transform: scale(1.03);
-
 }
-
-
 
 .finalizar:disabled {
-
   background: #777;
-
   cursor: not-allowed;
-
   opacity: .7;
-
 }
-
-
 
 .finalizar:disabled:hover {
-
   background: #777;
-
   transform: none;
-
 }
-
-
 
 .sugestoes {
-
   margin-top: 20px;
-
   background: #111;
-
   padding: 15px;
-
   border-radius: 10px;
-
   display: flex;
-
   flex-direction: column;
-
 }
-
-
 
 .sugestoes input,
-
 .sugestoes select,
-
 .sugestoes textarea {
-
   width: 100%;
-
   box-sizing: border-box;
-
   margin: 6px 0;
-
   padding: 10px;
-
   border-radius: 5px;
-
   border: none;
-
 }
-
-
 
 .sugestoes textarea {
-
   height: 80px;
-
   resize: none;
-
 }
-
-
 
 .sugestoes button {
-
   width: 100%;
-
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 30px;
 }
-
-
 
 #sugestaoInput::placeholder {
-
   font-family: 'Trebuchet MS', sans-serif;
-
   font-size: 15px;
-
   color: #888;
-
   font-style: normal;
-
   font-weight: 500;
-
 }
-
-
 
 .esgotadoBtn {
-
   width: 100%;
-
   background: #777;
-
   color: white;
-
   cursor: not-allowed;
-
 }
-
-
 
 .esgotadoBtn:hover {
-
   background: #777;
-
   transform: none;
-
   box-shadow: none;
-
   color: white;
-
 }
-
-
 
 footer {
-
   background: rgba(0,0,0,.95);
-
   padding: 40px 20px;
-
   margin-top: 50px;
-
   border-top: 2px solid #fff;
-
 }
-
-
 
 .copyright {
-
   text-align: center;
-
   opacity: .8;
-
 }
-
-
 
 .abas {
-
   display: flex;
-
   justify-content: center;
-
   gap: 10px;
-
   margin: 20px 0;
-
   flex-wrap: wrap;
-
 }
-
-
 
 .abas button {
-
   background: white;
-
   color: black;
-
   border: none;
-
   padding: 12px 25px;
-
   border-radius: 999px;
-
   font-weight: bold;
-
+  font-size: 14px;
   transition: .3s;
-
 }
-
-
 
 .abas button:hover {
-
   background: black;
-
   color: white;
-
   transform: translateY(-3px);
-
 }
-
-
 
 @keyframes aparecer {
-
   from {
-
     opacity: 0;
-
     transform: translateY(30px);
-
   }
-
   to {
-
     opacity: 1;
-
     transform: translateY(0);
-
   }
-
 }
-
-
 
 #toast {
-
   position: fixed;
-
   bottom: 90px;
-
   right: 25px;
-
   background: white;
-
   color: black;
-
   padding: 16px 22px;
-
   border-radius: 16px;
-
   border: 1px solid rgba(0,0,0,.15);
-
   backdrop-filter: blur(15px);
-
   box-shadow: 0 10px 30px rgba(0,0,0,.25);
-
   opacity: 0;
-
   transform: translateY(20px);
-
   transition: .35s;
-
   z-index: 9999;
-
   font-weight: 600;
-
 }
-
-
 
 .suporte {
-
   position: fixed;
-
   bottom: 25px;
-
   right: 25px;
-
   display: flex;
-
   align-items: center;
-
   gap: 8px;
-
   padding: 14px 24px;
-
   background: rgba(255,255,255,.1);
-
   backdrop-filter: blur(15px);
-
   border: 1px solid rgba(255,255,255,.15);
-
   color: white;
-
   text-decoration: none;
-
   border-radius: 999px;
-
   font-weight: 700;
-
   transition: .3s;
-
   z-index: 9999;
-
 }
-
-
 
 .suporte:hover {
-
   background: white;
-
   color: black;
-
   transform: translateY(-3px);
-
 }
-
-
 
 #tipoProduto {
-
   font-family: Arial, sans-serif;
-
   font-size: 16px;
-
   font-weight: 700;
-
+  color: black;
 }
-
-
 
 @media (max-width: 900px) {
-
   .main {
-
     flex-direction: column;
-
   }
-
   .carrinho {
-
     position: static;
-
     width: auto;
-
     max-height: none;
-
   }
-
   .container {
-
     grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
-
   }
-
 }
-
 </style>
-
 </head>
-
-
 
 <body>
 
-
-
 <a href="https://wa.me/5574999019805" class="suporte" target="_blank">
-
   💬 Suporte
-
 </a>
-
   
-
 <div id="toast">
-
   🛒 Produto adicionado ao carrinho
-
 </div>
-
-
 
 <header>
-
   <img src="Logo.png" alt="SIGA-ME STORE Logo">
-
   <h1>SIGA-ME STORE</h1>
-
 </header>
 
-
-
 <!-- BARRA DE PESQUISA -->
-
 <input type="text" id="pesquisa" class="pesquisa" placeholder="Pesquisar produtos..." onkeyup="filtrarProdutos()">
 
-
-
 <div class="abas">
-
   <button onclick="filtrarCategoria('todos')">Todos</button>
-
   <button onclick="filtrarCategoria('livro')">Livros</button>
-
   <button onclick="filtrarCategoria('maisvendido')">Mais Vendidos</button>
-
   <button onclick="filtrarCategoria('biblia')">Bíblias</button>
-
   <button onclick="filtrarCategoria('bloco')">Blocos</button>
-
 </div>
-
   
-
 <div class="main">
 
-
-
   <div class="container">
-
     <div class="produto" data-categoria="livro" onclick="window.location.href='produto-o-deus-que-destroi-sonhos.html'">
-
       <img src="Lodeusquedestroisonhos.png" alt="O Deus que Destrói Sonhos">
-
       <h2>O Deus que Destrói Sonhos</h2>
-
       <p>R$ 39,99</p>
-
-      <button onclick="event.stopPropagation(); add('O Deus que Destrói Sonhos',39.99,'encomenda')">Encomendar</button>
-
-      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('O Deus que Destrói Sonhos',39.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('O Deus que Destrói Sonhos',39.99,'encomenda')">Encomendar</button>
+        </div>
+        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+      </div>
     </div>
-
     
-
     <div class="produto" data-categoria="livro" data-maisvendido="sim" onclick="window.location.href='produto-como-se-tornar-um-cristão-inútil.html'">
-
       <img src="Lcomosetornarumcristaoinutil.png" alt="Como Se Tornar um Cristão Inútil">
-
       <h2>Como Se Tornar um Cristão Inútil</h2>
-
       <p>R$ 44,99</p>
-
-      <button onclick="event.stopPropagation(); add('Como Se Tornar um Cristão Inútil',44.99)">Adicionar</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Como Se Tornar um Cristão Inútil',44.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Como Se Tornar um Cristão Inútil',44.99,'encomenda')">Encomendar</button>
+        </div>
+      </div>
     </div>
-
    
-
     <div class="produto" data-categoria="livro" onclick="window.location.href='produto-combo-rodrigo-bibo.html'">
-
       <img src="Lcombo.png" alt="Combo Rodrigo Bibo">
-
       <h2>Combo Rodrigo Bibo</h2>
-
       <p>R$ 69,99</p>
-
-      <button onclick="event.stopPropagation(); add('Combo Rodrigo Bibo',69.99,'encomenda')">Encomendar</button>
-
-      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Combo Rodrigo Bibo',69.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Combo Rodrigo Bibo',69.99,'encomenda')">Encomendar</button>
+        </div>
+        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+      </div>
     </div>
-
-
 
     <div class="produto" data-categoria="livro" onclick="window.location.href='produto-uma-vida-com-propósitos.html'">
-
       <img src="Lumavidacompropositos.png" alt="Uma Vida com Propósitos">
-
       <h2>Uma Vida com Propósitos</h2>
-
       <p>R$ 59,99</p>
-
-      <button onclick="event.stopPropagation(); add('Uma Vida com Propósitos',59.99)">Adicionar</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Uma Vida com Propósitos',59.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Uma Vida com Propósitos',59.99,'encomenda')">Encomendar</button>
+        </div>
+      </div>
     </div>
-
-
 
     <div class="produto" data-categoria="livro" onclick="window.location.href='produto-ego-transformado.html'">
-
       <img src="Legotransformado.png" alt="Ego Transformado">
-
       <h2>Ego Transformado</h2>
-
       <p>R$ 24,99</p>
-
-      <button onclick="event.stopPropagation(); add('Ego Transformado',24.99)">Adicionar</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Ego Transformado',24.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Ego Transformado',24.99,'encomenda')">Encomendar</button>
+        </div>
+      </div>
     </div>
-
-
 
     <div class="produto" data-categoria="livro" onclick="window.location.href='produto-cartas-de-um-diabo-a-seu-aprendiz.html'">
-
       <img src="Lcartasdeumdiaboaseuaprendiz.png" alt="Cartas de um Diabo a seu aprendiz">
-
       <h2>Cartas de um Diabo a seu aprendiz</h2>
-
       <p>R$ 54,99</p>
-
-      <button onclick="event.stopPropagation(); add('Cartas de um Diabo',54.99,'encomenda')">Encomendar</button>
-
-      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Cartas de um Diabo',54.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Cartas de um Diabo',54.99,'encomenda')">Encomendar</button>
+        </div>
+        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+      </div>
     </div>
-
-
 
     <div class="produto" data-categoria="livro" onclick="window.location.href='produto-humildade.html'">
-
       <img src="Lhumildade.png" alt="Humildade">
-
       <h2>Humildade</h2>
-
       <p>R$ 19,99</p>
-
-      <button onclick="event.stopPropagation(); add('Humildade',19.99,'encomenda')">Encomendar</button>
-
-      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Humildade',19.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Humildade',19.99,'encomenda')">Encomendar</button>
+        </div>
+        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+      </div>
     </div>
-
-
 
     <div class="produto" data-categoria="livro" onclick="window.location.href='produto-devocional-oi-deus-sou-eu-de-novo.html'">
-
       <img src="Doideussoueudenovo.png" alt="Devocional Oi Deus sou eu de novo">
-
       <h2>Devocional Oi Deus sou eu de novo</h2>
-
       <p>R$ 59,99</p>
-
-      <button onclick="event.stopPropagation(); add('Oi Deus sou eu de novo',59.99)">Adicionar</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Oi Deus sou eu de novo',59.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Oi Deus sou eu de novo',59.99,'encomenda')">Encomendar</button>
+        </div>
+      </div>
     </div>
-
-
 
     <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-tua-graça.html'">
-
       <img src="Btuagraça.png" alt="Bíblia Tua Graça">
-
       <h2>Bíblia Tua Graça</h2>
-
       <p>R$ 29,99</p>
-
-      <button onclick="event.stopPropagation(); add('Bíblia Tua Graça',29.99,'encomenda')">Encomendar</button>
-
-      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Bíblia Tua Graça',29.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Bíblia Tua Graça',29.99,'encomenda')">Encomendar</button>
+        </div>
+        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+      </div>
     </div>
-
-
 
     <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-ide.html'">
-
       <img src="Bide.png" alt="Bíblia Ide">
-
       <h2>Bíblia Ide</h2>
-
       <p>R$ 34,99</p>
-
-      <button onclick="event.stopPropagation(); add('Bíblia Ide',34.99,'encomenda')">Encomendar</button>
-
-      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Bíblia Ide',34.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Bíblia Ide',34.99,'encomenda')">Encomendar</button>
+        </div>
+        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+      </div>
     </div>
-
-
 
     <div class="produto" data-categoria="biblia" data-maisvendido="sim" onclick="window.location.href='produto-bíblia-floreça.html'">
-
       <img src="Bfloreça.png" alt="Bíblia Floreça">
-
       <h2>Bíblia Floreça</h2>
-
       <p>R$ 44,99</p>
-
-      <button onclick="event.stopPropagation(); add('Bíblia Floreça',44.99,'encomenda')">Encomendar</button>
-
-      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Bíblia Floreça',44.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Bíblia Floreça',44.99,'encomenda')">Encomendar</button>
+        </div>
+        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+      </div>
     </div>
-
-
 
     <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-leão-de-judá.html'">
-
       <img src="Brujaoleaodejuda.png" alt="Bíblia Leão de Judá">
-
       <h2>Bíblia Leão de Judá</h2>
-
       <p>R$ 29,99</p>
-
-      <button onclick="event.stopPropagation(); add('Bíblia Leão de Judá',29.99)">Adicionar</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Bíblia Leão de Judá',29.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Bíblia Leão de Judá',29.99,'encomenda')">Encomendar</button>
+        </div>
+      </div>
     </div>
-
-
 
     <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-nada-será-capaz.html'">
-
       <img src="Bnadaseracapaz.png" alt="Bíblia Nada Será Capaz">
-
       <h2>Bíblia Nada Será Capaz</h2>
-
       <p>R$ 24,99</p>
-
-      <button onclick="event.stopPropagation(); add('Bíblia Nada Será Capaz',24.99)">Adicionar</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Bíblia Nada Será Capaz',24.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Bíblia Nada Será Capaz',24.99,'encomenda')">Encomendar</button>
+        </div>
+      </div>
     </div>
-
-
 
     <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-raiz-de-davi.html'">
-
       <img src="Braizdedavi.png" alt="Bíblia Raiz de Davi">
-
       <h2>Bíblia Raiz de Davi</h2>
-
       <p>R$ 24,99</p>
-
-      <button onclick="event.stopPropagation(); add('Bíblia Raiz de Davi',24.99)">Adicionar</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Bíblia Raiz de Davi',24.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Bíblia Raiz de Davi',24.99,'encomenda')">Encomendar</button>
+        </div>
+      </div>
     </div>
-
-
 
     <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-em-quadrinhos.html'">
-
       <img src="Bemquadrinhos.png" alt="Bíblia em Quadrinhos">
-
       <h2>Bíblia em Quadrinhos</h2>
-
       <p>R$ 59,99</p>
-
-      <button onclick="event.stopPropagation(); add('Bíblia em Quadrinhos',59.99,'encomenda')">Encomendar</button>
-
-      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Bíblia em Quadrinhos',59.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Bíblia em Quadrinhos',59.99,'encomenda')">Encomendar</button>
+        </div>
+        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+      </div>
     </div>
-
-
 
     <div class="produto" data-categoria="bloco" onclick="window.location.href='produto-bloco-de-anotações-ele-vive.html'">
-
       <img src="BOdeAnotaçõesEleVive.png" alt="Bloco de Anotações Ele Vive">
-
       <h2>Bloco de Anotações Ele Vive</h2>
-
       <p>R$ 14,99</p>
-
-      <button onclick="event.stopPropagation(); add('Bloco de Anotações Ele Vive',14.99)">Adicionar</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Bloco de Anotações Ele Vive',14.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Bloco de Anotações Ele Vive',14.99,'encomenda')">Encomendar</button>
+        </div>
+      </div>
     </div>
-
-
 
     <div class="produto" data-categoria="bloco" onclick="window.location.href='produto-bloco-de-anotações-ele-ressuscitou.html'">
-
       <img src="BOdeAnotaçõesEleRessuscitou.png" alt="Bloco de Anotações Ele Ressuscitou">
-
       <h2>Bloco de Anotações Ele Ressuscitou</h2>
-
       <p>R$ 14,99</p>
-
-      <button onclick="event.stopPropagation(); add('Bloco de Anotações Ele Ressuscitou',14.99)">Adicionar</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Bloco de Anotações Ele Ressuscitou',14.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Bloco de Anotações Ele Ressuscitou',14.99,'encomenda')">Encomendar</button>
+        </div>
+      </div>
     </div>
-
-
 
     <div class="produto" data-categoria="bloco" onclick="window.location.href='produto-bloco-de-anotações-correnteza.html'">
-
       <img src="BOdeanotacoescorrenteza.png" alt="Bloco de Anotações Correnteza">
-
       <h2>Bloco de Anotações Correnteza</h2>
-
       <p>R$ 14,99</p>
-
-      <button onclick="event.stopPropagation(); add('Bloco de Anotações Correnteza',14.99)">Adicionar</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Bloco de Anotações Correnteza',14.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Bloco de Anotações Correnteza',14.99,'encomenda')">Encomendar</button>
+        </div>
+      </div>
     </div>
-
-
 
     <div class="produto" data-categoria="bloco" data-maisvendido="sim" onclick="window.location.href='produto-bloco-de-anotações-tudo-crê.html'">
-
       <img src="BOdeAnotaçõesTudoCrê.png" alt="Bloco de Anotações Tudo Crê">
-
       <h2>Bloco de Anotações Tudo Crê</h2>
-
       <p>R$ 14,99</p>
-
-      <button onclick="event.stopPropagation(); add('Bloco de Anotações Tudo Crê',14.99,'encomenda')">Encomendar</button>
-
-      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Bloco de Anotações Tudo Crê',14.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Bloco de Anotações Tudo Crê',14.99,'encomenda')">Encomendar</button>
+        </div>
+        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+      </div>
     </div>
-
-
 
     <div class="produto" data-categoria="bloco" onclick="window.location.href='produto-bloco-de-anotações-flor.html'">
-
       <img src="BOdeAnotaçõesFlor.png" alt="Bloco de Anotações Flor">
-
       <h2>Bloco de Anotações Flor</h2>
-
       <p>R$ 14,99</p>
-
-      <button onclick="event.stopPropagation(); add('Bloco de Anotações Flor',14.99,'encomenda')">Encomendar</button>
-
-      <button class="esgotadoBtn" disabled>❌ Esgotado</button>
-
+      <div class="produto-botoes">
+        <div class="botoes-principais">
+          <button onclick="event.stopPropagation(); add('Bloco de Anotações Flor',14.99)">Adicionar</button>
+          <button onclick="event.stopPropagation(); add('Bloco de Anotações Flor',14.99,'encomenda')">Encomendar</button>
+        </div>
+        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
+      </div>
     </div>
-
   </div>
-
-
 
   <div class="carrinho">
-
     <h3 id="tituloCarrinho">Carrinho (0)</h3>
-
     <div id="lista">Vazio</div>
-
     <p id="total">Total: R$ 0,00</p>
 
-
-
     <button id="btnFinalizar" class="finalizar" onclick="enviar()" disabled>
-
       Finalizar compra
-
     </button>
 
-
-
     <div class="sugestoes">
-
       <h3>Sugira um produto</h3>
-
       <input type="text" id="nomeCliente" placeholder="Seu nome (opcional)">
-
       <select id="tipoProduto">
-
         <option value="" disabled selected>Tipo de produto</option>
-
         <option value="Livro">Livro</option>
-
         <option value="Curso">Curso</option>
-
         <option value="Pdf">Pdf</option>
-
         <option value="Outro">Outro</option>
-
       </select>
-
       <textarea id="sugestaoInput" placeholder="Ex: Bíblia de estudo, livro..."></textarea>
-
       <button onclick="enviarSugestao()">Quero que vocês vendam isso</button>
-
     </div>
-
   </div>
-
-
 
 </div> 
 
-
-
 <footer>
-
   <p class="copyright">© 2026 SIGA-ME STORE</p>
-
 </footer>
-
   
-
 <script>
-
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-
-
 function add(nome, preco, tipo = "pronta_entrega"){
-
   carrinho.push({nome, preco, tipo});
-
   mostrarToast();
-
   atualizar();
-
 }
-
-
 
 function mostrarToast(){
-
   let toast = document.getElementById("toast");
-
   toast.style.opacity = "1";
-
   toast.style.transform = "translateY(0)";
-
   setTimeout(() => {
-
     toast.style.opacity = "0";
-
     toast.style.transform = "translateY(20px)";
-
   }, 2000);
-
 }
-
-
 
 function atualizar(){
-
   document.getElementById("tituloCarrinho").innerHTML = "Carrinho (" + carrinho.length + ")";
-
   let lista = document.getElementById("lista");
-
   lista.innerHTML = "";
-
   let total = 0;
-
-
 
   carrinho.forEach((item, i) => {
-
     lista.innerHTML += `
-
       <p>
-
         ${item.nome}
-
         ${item.tipo === "encomenda" ? " 📦(Encomenda)" : ""}
-
         - R$ ${item.preco.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
-
         <button class='remover' onclick='remover(${i})'>X</button>
-
       </p>`;
-
     total += item.preco;
-
   });
 
-
-
   if(carrinho.length === 0){
-
     lista.innerHTML = "Vazio";
-
     document.getElementById("btnFinalizar").disabled = true;
-
   } else {
-
     document.getElementById("btnFinalizar").disabled = false;
-
   }
-
-
 
   document.getElementById("total").innerHTML = "Total: R$ " + total.toLocaleString("pt-BR", { minimumFractionDigits: 2 });
-
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
 }
-
-
 
 function remover(i){
-
   carrinho.splice(i, 1);
-
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
   atualizar();
-
 }
 
-
-
 function enviar(){
-
   if(carrinho.length === 0){
-
     alert("Seu carrinho está vazio!");
-
     return;
-
   }
-
-
 
   let msg = "🛒 *NOVO PEDIDO*\n\n";
-
   let total = 0;
 
-
-
   const prontaEntrega = carrinho.filter(item => item.tipo === "pronta_entrega");
-
   const encomendas = carrinho.filter(item => item.tipo === "encomenda");
 
-
-
   if(prontaEntrega.length > 0){
-
     msg += "✅ *PRONTA ENTREGA*\n";
-
     prontaEntrega.forEach(item => {
-
       msg += `${item.nome} - R$ ${item.preco.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}\n`;
-
       total += item.preco;
-
     });
-
     msg += "\n";
-
   }
-
-
 
   if(encomendas.length > 0){
-
     msg += "📦 *ENCOMENDAS*\n";
-
     encomendas.forEach(item => {
-
       msg += `${item.nome} - R$ ${item.preco.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}\n`;
-
       total += item.preco;
-
     });
-
     msg += "\n";
-
   }
-
-
 
   msg += `💰 *Total:* R$ ${total.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}\n\n🏦`;
 
-
-
   window.open("https://wa.me/5574999019805?text=" + encodeURIComponent(msg), "_blank");
 
-
-
   carrinho = [];
-
   localStorage.removeItem("carrinho");
-
   atualizar();
-
 }
 
-
-
 function enviarSugestao(){
-
   let nome = document.getElementById("nomeCliente").value || "Anônimo";
-
   let tipo = document.getElementById("tipoProduto").value;
-
   let sugestao = document.getElementById("sugestaoInput").value;
 
-
-
   if(sugestao.trim() === "" || tipo === ""){
-
     alert("Preencha o tipo e a sugestão!");
-
     return;
-
   }
-
-
 
   let msg = `💡 Sugestão de Produto:\n👤 Nome: ${nome}\n📦 Tipo: ${tipo}\n📝 Sugestão: ${sugestao}`;
 
-
-
   window.open("https://wa.me/5574999019805?text=" + encodeURIComponent(msg), "_blank");
-
 }
-
-
 
 /* PESQUISA */
-
 function filtrarProdutos() {
-
   let filtro = document.getElementById("pesquisa").value.toLowerCase();
-
   let produtos = document.querySelectorAll(".produto");
 
-
-
   produtos.forEach(produto => {
-
     let nome = produto.querySelector("h2").textContent.toLowerCase();
-
     if (nome.includes(filtro)) {
-
       produto.style.display = "";
-
     } else {
-
       produto.style.display = "none";
-
     }
-
   });
-
 }
-
-
 
 function filtrarCategoria(categoria){
-
   let produtos = document.querySelectorAll(".produto");
-
   produtos.forEach(produto => {
-
     if(categoria === "todos"){
-
       produto.style.display = "";
-
       return;
-
     }
-
-
 
     if(categoria === "maisvendido"){
-
       produto.style.display = produto.dataset.maisvendido === "sim" ? "" : "none";
-
       return;
-
     }
 
+    if(categoria === "5estrelas"){
+      produto.style.display = produto.dataset.cincoestrelas === "sim" ? "" : "none";
+      return;
+    }
       
-
     produto.style.display = produto.dataset.categoria === categoria ? "" : "none";
-
   });
-
 }
 
-
-
 atualizar();
-
 </script>
 
-
-
 </body>
-
 </html>

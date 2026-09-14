@@ -23,18 +23,32 @@ header img {
   width: 150px;
 }
 
-/* BARRA DE PESQUISA */
+/* BARRA DE PESQUISA ESTILIZADA */
 .pesquisa {
-  width: 400px;
+  width: 450px;
   max-width: 90%;
   display: block;
   margin: 20px auto;
-  padding: 12px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 999px;
   outline: none;
   box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  text-align: center;
+  transition: .3s;
+}
+
+.pesquisa::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.pesquisa:focus {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .main {
@@ -61,7 +75,6 @@ header img {
   transition: all .4s ease;
   animation: aparecer .7s ease;
 
-  /* ESTRUTURA FLEX PARA ALINHAR TUDO DE CIMA PARA BAIXO */
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -108,7 +121,6 @@ header img {
   gap: 6px;
 }
 
-/* LINHA SUPERIOR PARA ADICIONAR / ENCOMENDAR LADO A LADO */
 .botoes-principais {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -264,19 +276,20 @@ footer {
 }
 
 .abas button {
-  background: white;
-  color: black;
-  border: none;
-  padding: 12px 25px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 10px 22px;
   border-radius: 999px;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 13px;
   transition: .3s;
 }
 
 .abas button:hover {
-  background: black;
-  color: white;
+  background: white;
+  color: black;
   transform: translateY(-3px);
 }
 
@@ -376,263 +389,274 @@ footer {
 <input type="text" id="pesquisa" class="pesquisa" placeholder="Pesquisar produtos..." onkeyup="filtrarProdutos()">
 
 <div class="abas">
-  <button onclick="filtrarCategoria('todos')">Todos</button>
-  <button onclick="filtrarCategoria('livro')">Livros</button>
-  <button onclick="filtrarCategoria('maisvendido')">Mais Vendidos</button>
-  <button onclick="filtrarCategoria('biblia')">Bíblias</button>
-  <button onclick="filtrarCategoria('bloco')">Blocos</button>
+  <button onclick="filtrarCategoria('todos')">TODOS</button>
+  <button onclick="filtrarCategoria('livro')">LIVROS</button>
+  <button onclick="filtrarCategoria('maisvendido')">MAIS VENDIDOS</button>
+  <button onclick="filtrarCategoria('biblia')">BÍBLIAS</button>
+  <button onclick="filtrarCategoria('bloco')">BLOCOS DE ANOTAÇÕES</button>
+  <button onclick="filtrarCategoria('outro')">OUTROS</button>
 </div>
   
 <div class="main">
 
   <div class="container">
+    <!-- Produto 1 -->
     <div class="produto" data-categoria="livro" onclick="window.location.href='produto-o-deus-que-destroi-sonhos.html'">
       <img src="Lodeusquedestroisonhos.png" alt="O Deus que Destrói Sonhos">
       <h2>O Deus que Destrói Sonhos</h2>
       <p>R$ 39,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('O Deus que Destrói Sonhos',39.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('O Deus que Destrói Sonhos',39.99,'encomenda')">Encomendar</button>
+          <button class="esgotadoBtn" disabled>❌ Esgotado</button>
         </div>
-        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
       </div>
     </div>
     
+    <!-- Produto 2 -->
     <div class="produto" data-categoria="livro" data-maisvendido="sim" onclick="window.location.href='produto-como-se-tornar-um-cristão-inútil.html'">
       <img src="Lcomosetornarumcristaoinutil.png" alt="Como Se Tornar um Cristão Inútil">
       <h2>Como Se Tornar um Cristão Inútil</h2>
       <p>R$ 44,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Como Se Tornar um Cristão Inútil',44.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Como Se Tornar um Cristão Inútil',44.99,'encomenda')">Encomendar</button>
+          <button onclick="event.stopPropagation(); add('Como Se Tornar um Cristão Inútil',44.99)">Adicionar</button>
         </div>
       </div>
     </div>
    
+    <!-- Produto 3 -->
     <div class="produto" data-categoria="livro" onclick="window.location.href='produto-combo-rodrigo-bibo.html'">
       <img src="Lcombo.png" alt="Combo Rodrigo Bibo">
       <h2>Combo Rodrigo Bibo</h2>
       <p>R$ 69,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Combo Rodrigo Bibo',69.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Combo Rodrigo Bibo',69.99,'encomenda')">Encomendar</button>
+          <button class="esgotadoBtn" disabled>❌ Esgotado</button>
         </div>
-        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
       </div>
     </div>
 
+    <!-- Produto 4 -->
     <div class="produto" data-categoria="livro" onclick="window.location.href='produto-uma-vida-com-propósitos.html'">
       <img src="Lumavidacompropositos.png" alt="Uma Vida com Propósitos">
       <h2>Uma Vida com Propósitos</h2>
       <p>R$ 59,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Uma Vida com Propósitos',59.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Uma Vida com Propósitos',59.99,'encomenda')">Encomendar</button>
+          <button onclick="event.stopPropagation(); add('Uma Vida com Propósitos',59.99)">Adicionar</button>
         </div>
       </div>
     </div>
 
+    <!-- Produto 5 -->
     <div class="produto" data-categoria="livro" onclick="window.location.href='produto-ego-transformado.html'">
       <img src="Legotransformado.png" alt="Ego Transformado">
       <h2>Ego Transformado</h2>
       <p>R$ 24,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Ego Transformado',24.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Ego Transformado',24.99,'encomenda')">Encomendar</button>
+          <button onclick="event.stopPropagation(); add('Ego Transformado',24.99)">Adicionar</button>
         </div>
       </div>
     </div>
 
+    <!-- Produto 6 -->
     <div class="produto" data-categoria="livro" onclick="window.location.href='produto-cartas-de-um-diabo-a-seu-aprendiz.html'">
       <img src="Lcartasdeumdiaboaseuaprendiz.png" alt="Cartas de um Diabo a seu aprendiz">
       <h2>Cartas de um Diabo a seu aprendiz</h2>
       <p>R$ 54,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Cartas de um Diabo',54.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Cartas de um Diabo',54.99,'encomenda')">Encomendar</button>
+          <button class="esgotadoBtn" disabled>❌ Esgotado</button>
         </div>
-        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
       </div>
     </div>
 
+    <!-- Produto 7 -->
     <div class="produto" data-categoria="livro" onclick="window.location.href='produto-humildade.html'">
       <img src="Lhumildade.png" alt="Humildade">
       <h2>Humildade</h2>
       <p>R$ 19,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Humildade',19.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Humildade',19.99,'encomenda')">Encomendar</button>
+          <button class="esgotadoBtn" disabled>❌ Esgotado</button>
         </div>
-        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
       </div>
     </div>
 
+    <!-- Produto 8 -->
     <div class="produto" data-categoria="livro" onclick="window.location.href='produto-devocional-oi-deus-sou-eu-de-novo.html'">
       <img src="Doideussoueudenovo.png" alt="Devocional Oi Deus sou eu de novo">
       <h2>Devocional Oi Deus sou eu de novo</h2>
       <p>R$ 59,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Oi Deus sou eu de novo',59.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Oi Deus sou eu de novo',59.99,'encomenda')">Encomendar</button>
+          <button onclick="event.stopPropagation(); add('Oi Deus sou eu de novo',59.99)">Adicionar</button>
         </div>
       </div>
     </div>
 
+    <!-- Produto 9 -->
     <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-tua-graça.html'">
       <img src="Btuagraça.png" alt="Bíblia Tua Graça">
       <h2>Bíblia Tua Graça</h2>
       <p>R$ 29,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Bíblia Tua Graça',29.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Bíblia Tua Graça',29.99,'encomenda')">Encomendar</button>
+          <button class="esgotadoBtn" disabled>❌ Esgotado</button>
         </div>
-        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
       </div>
     </div>
 
+    <!-- Produto 10 -->
     <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-ide.html'">
       <img src="Bide.png" alt="Bíblia Ide">
       <h2>Bíblia Ide</h2>
       <p>R$ 34,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Bíblia Ide',34.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Bíblia Ide',34.99,'encomenda')">Encomendar</button>
+          <button class="esgotadoBtn" disabled>❌ Esgotado</button>
         </div>
-        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
       </div>
     </div>
 
+    <!-- Produto 11 -->
     <div class="produto" data-categoria="biblia" data-maisvendido="sim" onclick="window.location.href='produto-bíblia-floreça.html'">
       <img src="Bfloreça.png" alt="Bíblia Floreça">
       <h2>Bíblia Floreça</h2>
       <p>R$ 44,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Bíblia Floreça',44.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Bíblia Floreça',44.99,'encomenda')">Encomendar</button>
+          <button class="esgotadoBtn" disabled>❌ Esgotado</button>
         </div>
-        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
       </div>
     </div>
 
+    <!-- Produto 12 -->
     <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-leão-de-judá.html'">
       <img src="Brujaoleaodejuda.png" alt="Bíblia Leão de Judá">
       <h2>Bíblia Leão de Judá</h2>
       <p>R$ 29,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Bíblia Leão de Judá',29.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Bíblia Leão de Judá',29.99,'encomenda')">Encomendar</button>
+          <button onclick="event.stopPropagation(); add('Bíblia Leão de Judá',29.99)">Adicionar</button>
         </div>
       </div>
     </div>
 
+    <!-- Produto 13 -->
     <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-nada-será-capaz.html'">
       <img src="Bnadaseracapaz.png" alt="Bíblia Nada Será Capaz">
       <h2>Bíblia Nada Será Capaz</h2>
       <p>R$ 24,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Bíblia Nada Será Capaz',24.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Bíblia Nada Será Capaz',24.99,'encomenda')">Encomendar</button>
+          <button onclick="event.stopPropagation(); add('Bíblia Nada Será Capaz',24.99)">Adicionar</button>
         </div>
       </div>
     </div>
 
+    <!-- Produto 14 -->
     <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-raiz-de-davi.html'">
       <img src="Braizdedavi.png" alt="Bíblia Raiz de Davi">
       <h2>Bíblia Raiz de Davi</h2>
       <p>R$ 24,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Bíblia Raiz de Davi',24.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Bíblia Raiz de Davi',24.99,'encomenda')">Encomendar</button>
+          <button onclick="event.stopPropagation(); add('Bíblia Raiz de Davi',24.99)">Adicionar</button>
         </div>
       </div>
     </div>
 
+    <!-- Produto 15 -->
     <div class="produto" data-categoria="biblia" onclick="window.location.href='produto-bíblia-em-quadrinhos.html'">
       <img src="Bemquadrinhos.png" alt="Bíblia em Quadrinhos">
       <h2>Bíblia em Quadrinhos</h2>
       <p>R$ 59,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Bíblia em Quadrinhos',59.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Bíblia em Quadrinhos',59.99,'encomenda')">Encomendar</button>
+          <button class="esgotadoBtn" disabled>❌ Esgotado</button>
         </div>
-        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
       </div>
     </div>
 
+    <!-- Produto 16 -->
     <div class="produto" data-categoria="bloco" onclick="window.location.href='produto-bloco-de-anotações-ele-vive.html'">
       <img src="BOdeAnotaçõesEleVive.png" alt="Bloco de Anotações Ele Vive">
       <h2>Bloco de Anotações Ele Vive</h2>
       <p>R$ 14,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Bloco de Anotações Ele Vive',14.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Bloco de Anotações Ele Vive',14.99,'encomenda')">Encomendar</button>
+          <button onclick="event.stopPropagation(); add('Bloco de Anotações Ele Vive',14.99)">Adicionar</button>
         </div>
       </div>
     </div>
 
+    <!-- Produto 17 -->
     <div class="produto" data-categoria="bloco" onclick="window.location.href='produto-bloco-de-anotações-ele-ressuscitou.html'">
       <img src="BOdeAnotaçõesEleRessuscitou.png" alt="Bloco de Anotações Ele Ressuscitou">
       <h2>Bloco de Anotações Ele Ressuscitou</h2>
       <p>R$ 14,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Bloco de Anotações Ele Ressuscitou',14.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Bloco de Anotações Ele Ressuscitou',14.99,'encomenda')">Encomendar</button>
+          <button onclick="event.stopPropagation(); add('Bloco de Anotações Ele Ressuscitou',14.99)">Adicionar</button>
         </div>
       </div>
     </div>
 
+    <!-- Produto 18 -->
     <div class="produto" data-categoria="bloco" onclick="window.location.href='produto-bloco-de-anotações-correnteza.html'">
       <img src="BOdeanotacoescorrenteza.png" alt="Bloco de Anotações Correnteza">
       <h2>Bloco de Anotações Correnteza</h2>
       <p>R$ 14,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Bloco de Anotações Correnteza',14.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Bloco de Anotações Correnteza',14.99,'encomenda')">Encomendar</button>
+          <button onclick="event.stopPropagation(); add('Bloco de Anotações Correnteza',14.99)">Adicionar</button>
         </div>
       </div>
     </div>
 
+    <!-- Produto 19 -->
     <div class="produto" data-categoria="bloco" data-maisvendido="sim" onclick="window.location.href='produto-bloco-de-anotações-tudo-crê.html'">
       <img src="BOdeAnotaçõesTudoCrê.png" alt="Bloco de Anotações Tudo Crê">
       <h2>Bloco de Anotações Tudo Crê</h2>
       <p>R$ 14,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Bloco de Anotações Tudo Crê',14.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Bloco de Anotações Tudo Crê',14.99,'encomenda')">Encomendar</button>
+          <button class="esgotadoBtn" disabled>❌ Esgotado</button>
         </div>
-        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
       </div>
     </div>
 
+    <!-- Produto 20 -->
     <div class="produto" data-categoria="bloco" onclick="window.location.href='produto-bloco-de-anotações-flor.html'">
       <img src="BOdeAnotaçõesFlor.png" alt="Bloco de Anotações Flor">
       <h2>Bloco de Anotações Flor</h2>
       <p>R$ 14,99</p>
       <div class="produto-botoes">
         <div class="botoes-principais">
-          <button onclick="event.stopPropagation(); add('Bloco de Anotações Flor',14.99)">Adicionar</button>
           <button onclick="event.stopPropagation(); add('Bloco de Anotações Flor',14.99,'encomenda')">Encomendar</button>
+          <button class="esgotadoBtn" disabled>❌ Esgotado</button>
         </div>
-        <button class="esgotadoBtn" disabled>❌ Esgotado</button>
       </div>
     </div>
   </div>
@@ -799,11 +823,6 @@ function filtrarCategoria(categoria){
 
     if(categoria === "maisvendido"){
       produto.style.display = produto.dataset.maisvendido === "sim" ? "" : "none";
-      return;
-    }
-
-    if(categoria === "5estrelas"){
-      produto.style.display = produto.dataset.cincoestrelas === "sim" ? "" : "none";
       return;
     }
       

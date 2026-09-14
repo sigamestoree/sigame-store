@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SIGA-ME STORE</title>
 
 <style>
@@ -44,7 +45,7 @@ header img {
 .container {
   flex: 3;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
   padding: 20px;
 }
@@ -59,22 +60,41 @@ header img {
   box-shadow: 0 10px 30px rgba(0,0,0,.15);
   transition: all .4s ease;
   animation: aparecer .7s ease;
+
+  /* ALINHAMENTO IGUAL PARA TODOS OS CARDS */
+  display: flex;
+  flex-direction: column;
 }
 
 .produto:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(0,0,0,.25);
 }
-  
+
 .produto img {
   width: 100%;
-  height: 300px;
+  height: 280px;
   object-fit: cover;
+  border-radius: 10px;
   transition: .5s;
 }
 
 .produto:hover img {
-  transform: scale(1.08);
+  transform: scale(1.05);
+}
+
+.produto h2 {
+  font-size: 16px;
+  margin: 10px 0 5px;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.produto p {
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 button {
@@ -90,7 +110,11 @@ button {
 
 .produto > button {
   width: 100%;
-  margin-top: 8px;
+  margin-top: auto; /* EMPURRA O BOTÃO PARA O FUNDO */
+}
+
+.produto > button + button {
+  margin-top: 6px; /* ESPAÇAMENTO ENTRE OS BOTÕES CASO HAJA MAIS DE UM */
 }
 
 button:hover {
@@ -107,7 +131,7 @@ button:hover {
 
 .carrinho {
   flex: 1;
-  min-width: 250px;
+  min-width: 280px;
   background: white;
   color: black;
   padding: 20px;
@@ -130,7 +154,7 @@ button:hover {
   color: white;
   cursor: pointer;
 }
- 
+
 .finalizar:hover {
   background: #00a844;
   transform: scale(1.03);
@@ -189,7 +213,6 @@ button:hover {
   background: #777;
   color: white;
   cursor: not-allowed;
-  margin-top: 8px;
 }
 
 .esgotadoBtn:hover {
@@ -203,27 +226,8 @@ footer {
   border-top: 2px solid #fff;
 }
 
-.footer-grid {
-  max-width: 1200px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  text-align: left;
-}
-
-.footer-grid h4 {
-  color: #fff;
-  margin-bottom: 10px;
-}
-
-.footer-grid p {
-  line-height: 1.8;
-}
-
 .copyright {
   text-align: center;
-  margin-top: 30px;
   opacity: .8;
 }
 
@@ -262,23 +266,6 @@ footer {
   }
 }
 
-.selo {
-  background: #ff5722;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
-  display: inline-block;
-  font-size: 12px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.avaliacao {
-  color: #ffb800;
-  font-size: 14px;
-  margin: 5px 0;
-}
-
 #toast {
   position: fixed;
   bottom: 90px;
@@ -295,12 +282,6 @@ footer {
   transition: .35s;
   z-index: 9999;
   font-weight: 600;
-}
-
-.preco-antigo {
-  text-decoration: line-through;
-  opacity: .7;
-  font-size: 14px;
 }
 
 .suporte {

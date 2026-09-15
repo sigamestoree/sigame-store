@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SIGA-ME STORE</title>
+<title>SIGA-ME STORE - Loja</title>
 
 <!-- Fontes Modernas -->
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -594,7 +594,7 @@ footer {
   font-family: 'Outfit', sans-serif;
 }
 
-/* BOTÃO FLUTUANTE DO CARRINHO */
+/* BOTÃO FLUTUANTE DO CARRINHO (Lado Esquerdo principal) */
 .botao-carrinho-flutuante {
   position: fixed;
   bottom: 20px;
@@ -621,6 +621,65 @@ footer {
   transform: translateY(-2px);
 }
 
+/* BOTÃO DE VOLTAR PARA O INÍCIO (index.html) AO LADO DO CARRINHO */
+.botao-inicio-flutuante {
+  position: fixed;
+  bottom: 20px;
+  left: 155px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+  transition: .3s;
+  z-index: 9997;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  font-family: 'Outfit', sans-serif;
+}
+
+.botao-inicio-flutuante:hover {
+  background: white;
+  color: black;
+  transform: translateY(-2px);
+}
+
+/* BOTÃO DE SUBIR AO TOPO AO LADO DO INÍCIO */
+.botao-topo-flutuante {
+  position: fixed;
+  bottom: 20px;
+  left: 238px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  cursor: pointer;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+  transition: .3s;
+  z-index: 9997;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  font-family: 'Outfit', sans-serif;
+}
+
+.botao-topo-flutuante:hover {
+  background: white;
+  color: black;
+  transform: translateY(-2px);
+}
+
+/* BOTÃO DE SUPORTE (Lado Direito) */
 .suporte {
   position: fixed;
   bottom: 20px;
@@ -660,11 +719,20 @@ footer {
 
 <body>
 
-<!-- BOTÕES FLUTUANTES -->
+<!-- BOTÕES FLUTUANTES DO LADO ESQUERDO -->
 <button class="botao-carrinho-flutuante" onclick="toggleCarrinho()">
   🛒 <span id="contadorFlutuante">Carrinho (0)</span>
 </button>
 
+<a href="index.html" class="botao-inicio-flutuante" title="Voltar para a página inicial">
+  🏠 Início
+</a>
+
+<button class="botao-topo-flutuante" onclick="voltarAoTopo()" title="Subir ao topo">
+  ⬆️ Topo
+</button>
+
+<!-- BOTÃO DE SUPORTE (Lado Direito) -->
 <a href="https://wa.me/5574999019805" class="suporte" target="_blank">
   💬 Suporte
 </a>
@@ -1012,6 +1080,13 @@ function toggleCarrinho() {
   overlay.classList.toggle("ativo");
 }
 
+function voltarAoTopo() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
 function add(nome, preco, tipo = "pronta_entrega"){
   let itemExistente = carrinho.find(item => item.nome === nome && item.tipo === tipo);
   if(itemExistente){
@@ -1044,11 +1119,11 @@ function mostrarToast(){
 function aplicarCupom(){
   let codigo = document.getElementById("inputCupom").value.trim().toUpperCase();
   if(codigo === "SIGAME10"){
-    descontoAplicado = 0.10; // 10% de desconto
+    descontoAplicado = 0.10;
     nomeCupomUsado = codigo;
     alert("Cupom aplicado com sucesso! 10% de desconto.");
   } else if(codigo === "SIGAME5") {
-    descontoAplicado = 5; // R$ 5 de desconto fixo
+    descontoAplicado = 5;
     nomeCupomUsado = codigo;
     alert("Cupom aplicado com sucesso! R$ 5,00 de desconto.");
   } else {
@@ -1094,7 +1169,6 @@ function atualizar(){
     document.getElementById("btnFinalizar").disabled = false;
   }
 
-  // Cálculo de Desconto
   let valorDesconto = 0;
   if(descontoAplicado > 0 && descontoAplicado < 1) {
     valorDesconto = subtotal * descontoAplicado;
@@ -1105,7 +1179,6 @@ function atualizar(){
 
   let subtotalComDesconto = subtotal - valorDesconto;
 
-  // Cálculo de Frete
   let selectFrete = document.getElementById("escolhaFrete");
   let valorFrete = 0;
   let selecaoFreteVal = selectFrete.value;

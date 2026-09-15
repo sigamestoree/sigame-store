@@ -267,22 +267,10 @@ button:hover {
   background: #333;
 }
 
-.remover {
-  background: #111;
-  margin-left: 10px;
-  padding: 2px 8px;
-  border-radius: 6px;
-  font-size: 11px;
-}
-
-.remover:hover {
-  background: #d32f2f;
-}
-
 /* CARRINHO */
 .carrinho {
   flex: 1;
-  min-width: 300px;
+  min-width: 320px;
   background: white;
   color: #111;
   padding: 24px;
@@ -304,6 +292,70 @@ button:hover {
   margin-top: 0;
 }
 
+/* CONTROLE DE QUANTIDADE NO CARRINHO */
+.item-carrinho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin: 10px 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.controles-qtd {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.controles-qtd button {
+  padding: 2px 8px;
+  font-size: 12px;
+  background: #eee;
+  color: #111;
+  border-radius: 6px;
+}
+
+.controles-qtd button:hover {
+  background: #111;
+  color: white;
+}
+
+/* OPÇÕES DE FRETE E CUPOM */
+.secao-carrinho-extras {
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.secao-carrinho-extras select,
+.secao-carrinho-extras input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 13px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: #fcfcfc;
+  box-sizing: border-box;
+}
+
+.cupom-box {
+  display: flex;
+  gap: 6px;
+}
+
+.cupom-box input {
+  flex: 1;
+}
+
+.cupom-box button {
+  padding: 10px 14px;
+  font-size: 12px;
+}
+
 .finalizar {
   width: 100%;
   padding: 14px;
@@ -316,6 +368,7 @@ button:hover {
   cursor: pointer;
   transition: background 0.2s;
   font-family: 'Outfit', sans-serif;
+  margin-top: 10px;
 }
 
 .finalizar:hover {
@@ -371,12 +424,6 @@ button:hover {
   padding: 12px;
   border-radius: 12px;
   background: #111;
-}
-
-#tipoProduto {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 13px;
-  color: #111;
 }
 
 footer {
@@ -741,7 +788,25 @@ footer {
   <div class="carrinho">
     <h3 id="tituloCarrinho">Carrinho (0)</h3>
     <div id="lista">Vazio</div>
-    <p id="total" style="font-family:'Outfit', sans-serif; font-weight:700; font-size:16px; margin: 15px 0;">Total: R$ 0,00</p>
+
+    <!-- EXTRAS DO CARRINHO (Frete e Cupom) -->
+    <div class="secao-carrinho-extras">
+      <select id="escolhaFrete" onchange="atualizar()">
+        <option value="0">Selecione o bairro (Frete)</option>
+        <option value="8">Vila Santana - R$ 8,00</option>
+        <option value="7">Vila São Francisco - R$ 7,00</option>
+        <option value="6">Vila São Joaquim - R$ 6,00</option>
+        <option value="combinar">Fora de Sobradinho (Combinar frete)</option>
+      </select>
+
+      <div class="cupom-box">
+        <input type="text" id="inputCupom" placeholder="Cupom de desconto">
+        <button onclick="aplicarCupom()">Aplicar</button>
+      </div>
+    </div>
+
+    <div id="resumoValores" style="font-size: 13px; margin: 10px 0; color: #555;"></div>
+    <p id="total" style="font-family:'Outfit', sans-serif; font-weight:700; font-size:16px; margin: 10px 0;">Total: R$ 0,00</p>
 
     <button id="btnFinalizar" class="finalizar" onclick="enviar()" disabled>
       Finalizar compra
@@ -770,10 +835,25 @@ footer {
   
 <script>
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+let descontoAplicado = 0;
+let nomeCupomUsado = "";
 
 function add(nome, preco, tipo = "pronta_entrega"){
-  carrinho.push({nome, preco, tipo});
+  let itemExistente = carrinho.find(item => item.nome === nome && item.tipo === tipo);
+  if(itemExistente){
+    itemExistente.qtd += 1;
+  } else {
+    carrinho.push({nome, preco, tipo, qtd: 1});
+  }
   mostrarToast();
+  atualizar();
+}
+
+function alterarQtd(i, delta){
+  carrinho[i].qtd += delta;
+  if(carrinho[i].qtd <= 0){
+    carrinho.splice(i, 1);
+  }
   atualizar();
 }
 
@@ -787,36 +867,93 @@ function mostrarToast(){
   }, 2000);
 }
 
+function aplicarCupom(){
+  let codigo = document.getElementById("inputCupom").value.trim().toUpperCase();
+  if(codigo === "SIGAME10"){
+    descontoAplicado = 0.10; // 10% de desconto
+    nomeCupomUsado = codigo;
+    alert("Cupom aplicado com sucesso! 10% de desconto.");
+  } else if(codigo === "SIGAME5") {
+    descontoAplicado = 5; // R$ 5 de desconto fixo
+    nomeCupomUsado = codigo;
+    alert("Cupom aplicado com sucesso! R$ 5,00 de desconto.");
+  } else {
+    alert("Cupom inválido!");
+    descontoAplicado = 0;
+    nomeCupomUsado = "";
+  }
+  atualizar();
+}
+
 function atualizar(){
-  document.getElementById("tituloCarrinho").innerHTML = "Carrinho (" + carrinho.length + ")";
+  let totalItensCount = carrinho.reduce((sum, item) => sum + item.qtd, 0);
+  document.getElementById("tituloCarrinho").innerHTML = "Carrinho (" + totalItensCount + ")";
   let lista = document.getElementById("lista");
   lista.innerHTML = "";
-  let total = 0;
+  let subtotal = 0;
 
   carrinho.forEach((item, i) => {
+    let subtotalItem = item.preco * item.qtd;
+    subtotal += subtotalItem;
     lista.innerHTML += `
-      <p style="font-size: 13px; margin: 8px 0; display: flex; justify-content: space-between; align-items: center;">
-        <span>${item.nome} ${item.tipo === "encomenda" ? " 📦(Enc.)" : ""} - R$ ${item.preco.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}</span>
-        <button class='remover' onclick='remover(${i})'>X</button>
-      </p>`;
-    total += item.preco;
+      <div class="item-carrinho">
+        <div>
+          <strong>${item.nome}</strong> ${item.tipo === "encomenda" ? "📦(Enc.)" : ""}<br>
+          R$ ${item.preco.toLocaleString("pt-BR", { minimumFractionDigits: 2 })} x ${item.qtd}
+        </div>
+        <div class="controles-qtd">
+          <button onclick="alterarQtd(${i}, -1)">-</button>
+          <span>${item.qtd}</span>
+          <button onclick="alterarQtd(${i}, 1)">+</button>
+        </div>
+      </div>`;
   });
 
   if(carrinho.length === 0){
     lista.innerHTML = "Vazio";
     document.getElementById("btnFinalizar").disabled = true;
+    descontoAplicado = 0;
+    nomeCupomUsado = "";
   } else {
     document.getElementById("btnFinalizar").disabled = false;
   }
 
-  document.getElementById("total").innerHTML = "Total: R$ " + total.toLocaleString("pt-BR", { minimumFractionDigits: 2 });
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-}
+  // Cálculo de Desconto
+  let valorDesconto = 0;
+  if(descontoAplicado > 0 && descontoAplicado < 1) {
+    valorDesconto = subtotal * descontoAplicado;
+  } else if(descontoAplicado >= 1) {
+    valorDesconto = descontoAplicado;
+  }
+  if(valorDesconto > subtotal) valorDesconto = subtotal;
 
-function remover(i){
-  carrinho.splice(i, 1);
+  let subtotalComDesconto = subtotal - valorDesconto;
+
+  // Cálculo de Frete
+  let selectFrete = document.getElementById("escolhaFrete");
+  let valorFrete = 0;
+  let selecaoFreteVal = selectFrete.value;
+
+  if(selecaoFreteVal !== "combinar" && selecaoFreteVal !== "0") {
+    valorFrete = parseFloat(selecaoFreteVal);
+  }
+
+  let nomeBairro = selectFrete.options[selectFrete.selectedIndex].text;
+  let totalGeral = subtotalComDesconto + valorFrete;
+
+  let resumoHTML = `Subtotal: R$ ${subtotal.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
+  if(valorDesconto > 0) {
+    resumoHTML += `<br>Desconto (${nomeCupomUsado}): - R$ ${valorDesconto.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
+  }
+  if(selecaoFreteVal === "combinar") {
+    resumoHTML += `<br>Entrega: ${nomeBairro}`;
+  } else if(valorFrete > 0) {
+    resumoHTML += `<br>Frete (${nomeBairro.split('-')[0]}): + R$ ${valorFrete.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
+  }
+  document.getElementById("resumoValores").innerHTML = resumoHTML;
+
+  document.getElementById("total").innerHTML = "Total: R$ " + totalGeral.toLocaleString("pt-BR", { minimumFractionDigits: 2 }) + (selecaoFreteVal === "combinar" ? " *" : "");
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
-  atualizar();
 }
 
 function enviar(){
@@ -825,8 +962,20 @@ function enviar(){
     return;
   }
 
-  let msg = "🛒 *NOVO PEDIDO*\n\n";
-  let total = 0;
+  let selectFrete = document.getElementById("escolhaFrete");
+  let selecaoFreteVal = selectFrete.value;
+  let nomeBairro = selectFrete.options[selectFrete.selectedIndex].text;
+  let valorFrete = 0;
+
+  if(selecaoFreteVal === "0") {
+    let confirmar = confirm("Você não selecionou o bairro para entrega. Deseja prosseguir sem taxa de frete?");
+    if(!confirmar) return;
+  } else if(selecaoFreteVal !== "combinar") {
+    valorFrete = parseFloat(selecaoFreteVal);
+  }
+
+  let msg = "🛒 *NOVO PEDIDO - SIGA-ME STORE*\n\n";
+  let subtotal = 0;
 
   const prontaEntrega = carrinho.filter(item => item.tipo === "pronta_entrega");
   const encomendas = carrinho.filter(item => item.tipo === "encomenda");
@@ -834,8 +983,8 @@ function enviar(){
   if(prontaEntrega.length > 0){
     msg += "✅ *PRONTA ENTREGA*\n";
     prontaEntrega.forEach(item => {
-      msg += `${item.nome} - R$ ${item.preco.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}\n`;
-      total += item.preco;
+      msg += `- ${item.qtd}x ${item.nome} (R$ ${(item.preco * item.qtd).toLocaleString("pt-BR", { minimumFractionDigits: 2 })})\n`;
+      subtotal += item.preco * item.qtd;
     });
     msg += "\n";
   }
@@ -843,13 +992,32 @@ function enviar(){
   if(encomendas.length > 0){
     msg += "📦 *ENCOMENDAS*\n";
     encomendas.forEach(item => {
-      msg += `${item.nome} - R$ ${item.preco.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}\n`;
-      total += item.preco;
+      msg += `- ${item.qtd}x ${item.nome} (R$ ${(item.preco * item.qtd).toLocaleString("pt-BR", { minimumFractionDigits: 2 })})\n`;
+      subtotal += item.preco * item.qtd;
     });
     msg += "\n";
   }
 
-  msg += `💰 *Total:* R$ ${total.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}\n\n🏦`;
+  let valorDesconto = 0;
+  if(descontoAplicado > 0 && descontoAplicado < 1) {
+    valorDesconto = subtotal * descontoAplicado;
+  } else if(descontoAplicado >= 1) {
+    valorDesconto = descontoAplicado;
+  }
+  let subtotalComDesconto = subtotal - valorDesconto;
+  let totalGeral = subtotalComDesconto + valorFrete;
+
+  if(valorDesconto > 0) {
+    msg += `🏷️ *Desconto:* - R$ ${valorDesconto.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}\n`;
+  }
+  
+  if(selecaoFreteVal === "combinar") {
+    msg += `🚚 *Entrega:* Fora de Sobradinho (Combinar frete)\n`;
+  } else if(valorFrete > 0) {
+    msg += `🚚 *Entrega:* ${nomeBairro}\n`;
+  }
+
+  msg += `💰 *Total dos Produtos:* R$ ${totalGeral.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}${selecaoFreteVal === "combinar" ? " (Mais frete a combinar)" : ""}\n\n🏦`;
 
   window.open("https://wa.me/5574999019805?text=" + encodeURIComponent(msg), "_blank");
 
@@ -898,7 +1066,7 @@ function salvarTermo(termo) {
   let historico = JSON.parse(localStorage.getItem("historicoBuscas")) || [];
   if (!historico.includes(termo)) {
     historico.unshift(termo);
-    if (historico.length > 5) historico.pop(); // Mantém os últimos 5
+    if (historico.length > 5) historico.pop();
     localStorage.setItem("historicoBuscas", JSON.stringify(historico));
   }
 }
@@ -937,7 +1105,6 @@ function limparHistorico() {
   document.getElementById("historico-box").style.display = "none";
 }
 
-// Fechar histórico ao clicar fora
 document.addEventListener("click", function(e) {
   let wrapper = document.querySelector(".pesquisa-wrapper");
   if (!wrapper.contains(e.target)) {

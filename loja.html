@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SIGA-ME STORE</title>
 
-<!-- Importando fonte moderna estilo o exemplo -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Nova fonte moderna e estilizada (Outfit e Plus Jakarta Sans) -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -14,78 +14,79 @@ body {
   background: url("Fundo.png") no-repeat center center fixed;
   background-size: cover;
   color: white;
-  font-family: 'Inter', Arial, sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   overflow-x: hidden;
 }
 
 header {
   text-align: center;
-  padding: 20px 20px 10px 20px;
+  padding: 30px 20px 10px 20px;
 }
 
 header img {
-  width: 120px;
+  width: 110px;
 }
 
 header h1 {
-  font-size: 32px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 34px;
   margin-top: 10px;
   font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
-/* BARRA DE PESQUISA ESTILIZADA */
+/* BARRA DE PESQUISA */
 .pesquisa {
   width: 90%;
-  max-width: 450px;
+  max-width: 480px;
   display: block;
-  margin: 15px auto;
-  padding: 12px 20px;
+  margin: 20px auto;
+  padding: 14px 24px;
   font-size: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
   color: white;
-  border-radius: 999px;
+  border-radius: 16px;
   outline: none;
   box-sizing: border-box;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   text-align: center;
   transition: .3s;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .pesquisa::placeholder {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .pesquisa:focus {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
   border-color: rgba(255, 255, 255, 0.4);
 }
 
-/* ABAS CENTRALIZADAS E ALINHADAS */
+/* ABAS DE NAVEGAÇÃO */
 .abas {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 8px;
-  margin: 20px auto;
+  gap: 10px;
+  margin: 25px auto;
   padding: 0 15px;
-  max-width: 800px;
+  max-width: 900px;
 }
 
 .abas button {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: white;
-  padding: 10px 18px;
-  border-radius: 999px;
+  padding: 10px 20px;
+  border-radius: 14px;
   font-weight: 600;
   font-size: 13px;
-  white-space: nowrap;
   cursor: pointer;
   transition: .3s;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Outfit', sans-serif;
 }
 
 .abas button:hover {
@@ -97,73 +98,73 @@ header h1 {
 .main {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 10px;
-  max-width: 1200px;
+  padding: 0 15px;
+  max-width: 1250px;
   margin: 0 auto;
 }
 
 .container {
   flex: 3;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
   padding: 10px;
 }
 
-/* ESTILO DOS CARDS EM PRETO E BRANCO */
+/* NOVO FORMATO DOS CARDS (Mais arredondados e elegantes) */
 .produto {
   background: white;
   color: #111;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 16px;
+  border-radius: 20px;
   text-align: left;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: all .2s ease;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  transition: all .3s ease;
   display: flex;
   flex-direction: column;
   height: 100%;
   box-sizing: border-box;
-  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(0,0,0,0.05);
   cursor: pointer;
 }
 
 .produto:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  border-color: #111;
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
 }
 
 .produto img {
   width: 100%;
-  height: 190px;
+  height: 180px;
   object-fit: contain;
-  background: #fdfdfd;
-  border-radius: 4px;
-  margin-bottom: 8px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin-bottom: 12px;
 }
 
 .produto h2 {
-  font-size: 13px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
   color: #111;
   margin: 6px 0;
-  min-height: 32px;
+  min-height: 36px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   line-height: 1.3;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .produto p {
+  font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  margin: 4px 0 10px 0;
-  font-size: 16px;
+  margin: 6px 0 12px 0;
+  font-size: 17px;
   color: #111;
 }
 
-/* CONTAINER DOS BOTÕES DO CARD */
 .produto-botoes {
   margin-top: auto;
   display: flex;
@@ -178,17 +179,17 @@ header h1 {
 }
 
 button {
-  background: #111; /* Botões em preto sólido */
+  background: #111;
   border: none;
-  padding: 10px 6px;
+  padding: 12px 8px;
   color: white;
-  border-radius: 6px;
+  border-radius: 12px;
   cursor: pointer;
   font-weight: 600;
   font-size: 13px;
   transition: all .2s ease;
   text-align: center;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Outfit', sans-serif;
 }
 
 .produto-botoes button {
@@ -202,73 +203,78 @@ button:hover {
 .remover {
   background: #111;
   margin-left: 10px;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 11px;
 }
 
 .remover:hover {
   background: #d32f2f;
 }
 
+/* CARRINHO REDESENHADO */
 .carrinho {
   flex: 1;
-  min-width: 280px;
+  min-width: 300px;
   background: white;
   color: #111;
-  padding: 20px;
-  border-radius: 12px;
+  padding: 24px;
+  border-radius: 24px;
   margin: 10px;
   position: sticky;
   top: 20px;
   align-self: flex-start;
   max-height: calc(100vh - 40px);
   overflow-y: auto;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-  border: 1px solid #e5e5e5;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
 .carrinho h3 {
+  font-family: 'Outfit', sans-serif;
   font-weight: 700;
+  font-size: 18px;
+  margin-top: 0;
 }
 
 .finalizar {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   font-size: 15px;
   font-weight: 600;
-  background: #111; /* Preto total */
+  background: #111;
   border: none;
-  border-radius: 6px;
+  border-radius: 14px;
   color: white;
   cursor: pointer;
   transition: background 0.2s;
+  font-family: 'Outfit', sans-serif;
 }
 
 .finalizar:hover {
   background: #333;
-  transform: none;
 }
 
 .finalizar:disabled {
-  background: #ccc;
+  background: #e0e0e0;
+  color: #888;
   cursor: not-allowed;
-  opacity: .7;
 }
 
 .sugestoes {
-  margin-top: 20px;
-  background: #f9f9f9;
-  padding: 15px;
-  border-radius: 8px;
+  margin-top: 25px;
+  background: #f8f9fa;
+  padding: 18px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   color: #111;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #eee;
 }
 
 .sugestoes h3 {
-  font-size: 14px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
   margin-top: 0;
 }
 
@@ -277,46 +283,47 @@ button:hover {
 .sugestoes textarea {
   width: 100%;
   box-sizing: border-box;
-  margin: 6px 0;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
   background: white;
   color: #111;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
 }
 
 .sugestoes textarea {
-  height: 70px;
+  height: 75px;
   resize: none;
 }
 
 .sugestoes button {
   width: 100%;
   font-size: 13px;
-  padding: 10px;
-  border-radius: 6px;
+  padding: 12px;
+  border-radius: 12px;
   background: #111;
 }
 
 #tipoProduto {
-  font-family: 'Inter', Arial, sans-serif;
-  font-size: 14px;
-  font-weight: normal;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
   color: #111;
 }
 
 footer {
-  background: rgba(0,0,0,.95);
-  padding: 30px 20px;
-  margin-top: 40px;
-  border-top: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.95);
+  padding: 35px 20px;
+  margin-top: 50px;
+  border-top: 1px solid rgba(255,255,255,0.1);
   text-align: center;
 }
 
 .copyright {
-  opacity: .8;
-  font-size: 14px;
+  opacity: .7;
+  font-size: 13px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 #toast {
@@ -325,9 +332,9 @@ footer {
   right: 20px;
   background: white;
   color: #111;
-  padding: 12px 18px;
-  border-radius: 8px;
-  box-shadow: 0 5px 20px rgba(0,0,0,.25);
+  padding: 14px 20px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.25);
   opacity: 0;
   transform: translateY(20px);
   transition: .35s;
@@ -335,6 +342,7 @@ footer {
   font-weight: 600;
   font-size: 13px;
   border-left: 4px solid #111;
+  font-family: 'Outfit', sans-serif;
 }
 
 .suporte {
@@ -343,11 +351,11 @@ footer {
   right: 20px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 10px 18px;
-  background: rgba(255,255,255,.15);
+  gap: 8px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
   backdrop-filter: blur(15px);
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid rgba(255,255,255,0.2);
   color: white;
   text-decoration: none;
   border-radius: 999px;
@@ -356,6 +364,7 @@ footer {
   transition: .3s;
   z-index: 9999;
   box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  font-family: 'Outfit', sans-serif;
 }
 
 .suporte:hover {
@@ -375,11 +384,8 @@ footer {
   }
   .container {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 12px;
     padding: 5px;
-  }
-  .abas {
-    justify-content: center;
   }
 }
 </style>
@@ -658,7 +664,7 @@ footer {
   <div class="carrinho">
     <h3 id="tituloCarrinho">Carrinho (0)</h3>
     <div id="lista">Vazio</div>
-    <p id="total">Total: R$ 0,00</p>
+    <p id="total" style="font-family:'Outfit', sans-serif; font-weight:700; font-size:16px; margin: 15px 0;">Total: R$ 0,00</p>
 
     <button id="btnFinalizar" class="finalizar" onclick="enviar()" disabled>
       Finalizar compra

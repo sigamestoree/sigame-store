@@ -163,19 +163,16 @@ header h1 {
 }
 
 .main {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 15px;
   max-width: 1250px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
 .container {
-  flex: 3;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
-  padding: 10px;
+  padding: 10px 0;
 }
 
 /* CARDS DE PRODUTO */
@@ -267,29 +264,78 @@ button:hover {
   background: #333;
 }
 
-/* CARRINHO */
+/* OVERLAY DO CARRINHO (FUNDO ESCURO) */
+.carrinho-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.carrinho-overlay.ativo {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* GAVETA DO CARRINHO (SIDEBAR) */
 .carrinho {
-  flex: 1;
-  min-width: 320px;
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 100%;
+  max-width: 380px;
+  height: 100%;
   background: white;
   color: #111;
   padding: 24px;
-  border-radius: 24px;
-  margin: 10px;
-  position: sticky;
-  top: 20px;
-  align-self: flex-start;
-  max-height: calc(100vh - 40px);
+  box-sizing: border-box;
+  z-index: 9999;
+  box-shadow: -10px 0 35px rgba(0,0,0,0.3);
+  transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
-  box-shadow: 0 10px 35px rgba(0,0,0,0.15);
-  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.carrinho.ativo {
+  right: 0;
+}
+
+.carrinho-header-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 12px;
+  margin-bottom: 15px;
 }
 
 .carrinho h3 {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
   font-size: 18px;
-  margin-top: 0;
+  margin: 0;
+}
+
+.fechar-carrinho {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #111;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.fechar-carrinho:hover {
+  background: #f1f1f1;
 }
 
 /* CONTROLE DE QUANTIDADE NO CARRINHO */
@@ -459,6 +505,33 @@ footer {
   font-family: 'Outfit', sans-serif;
 }
 
+/* BOTÃO FLUTUANTE DO CARRINHO */
+.botao-carrinho-flutuante {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  cursor: pointer;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+  transition: .3s;
+  z-index: 9997;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+  font-family: 'Outfit', sans-serif;
+}
+
+.botao-carrinho-flutuante:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
 .suporte {
   position: fixed;
   bottom: 20px;
@@ -476,7 +549,7 @@ footer {
   font-weight: 600;
   font-size: 13px;
   transition: .3s;
-  z-index: 9999;
+  z-index: 9997;
   box-shadow: 0 5px 20px rgba(0,0,0,0.3);
   font-family: 'Outfit', sans-serif;
 }
@@ -487,25 +560,21 @@ footer {
 }
 
 @media (max-width: 900px) {
-  .main {
-    flex-direction: column;
-  }
-  .carrinho {
-    position: static;
-    width: auto;
-    max-height: none;
-    margin: 15px 10px;
-  }
   .container {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    padding: 5px;
+    padding: 5px 0;
   }
 }
 </style>
 </head>
 
 <body>
+
+<!-- BOTÕES FLUTUANTES -->
+<button class="botao-carrinho-flutuante" onclick="toggleCarrinho()">
+  🛒 <span id="contadorFlutuante">Carrinho (0)</span>
+</button>
 
 <a href="https://wa.me/5574999019805" class="suporte" target="_blank">
   💬 Suporte
@@ -541,8 +610,7 @@ footer {
   <button onclick="filtrarCategoria('bloco')">BLOCOS DE ANOTAÇÕES</button>
 </div>
   
-<div class="main">
-
+<main class="main">
   <div class="container">
     <!-- Produto 1 -->
     <div class="produto" data-categoria="livro" onclick="window.location.href='produto-o-deus-que-destroi-sonhos.html'">
@@ -784,50 +852,56 @@ footer {
       </div>
     </div>
   </div>
+</main>
 
-  <div class="carrinho">
+<!-- OVERLAY E GAVETA LATERAL DO CARRINHO -->
+<div class="carrinho-overlay" id="carrinhoOverlay" onclick="toggleCarrinho()"></div>
+
+<div class="carrinho" id="carrinhoGaveta">
+  <div class="carrinho-header-topo">
     <h3 id="tituloCarrinho">Carrinho (0)</h3>
-    <div id="lista">Vazio</div>
+    <button class="fechar-carrinho" onclick="toggleCarrinho()">✕</button>
+  </div>
+  
+  <div id="lista" style="flex: 1; overflow-y: auto;">Vazio</div>
 
-    <!-- EXTRAS DO CARRINHO (Frete e Cupom) -->
-    <div class="secao-carrinho-extras">
-      <select id="escolhaFrete" onchange="atualizar()">
-        <option value="0">Selecione o bairro (Frete)</option>
-        <option value="8">Vila Santana - R$ 8,00</option>
-        <option value="7">Vila São Francisco - R$ 7,00</option>
-        <option value="6">Vila São Joaquim - R$ 6,00</option>
-        <option value="combinar">Fora de Sobradinho (Combinar frete)</option>
-      </select>
+  <!-- EXTRAS DO CARRINHO (Frete e Cupom) -->
+  <div class="secao-carrinho-extras">
+    <select id="escolhaFrete" onchange="atualizar()">
+      <option value="0">Selecione o bairro (Frete)</option>
+      <option value="8">Vila Santana - R$ 8,00</option>
+      <option value="7">Vila São Francisco - R$ 7,00</option>
+      <option value="6">Vila São Joaquim - R$ 6,00</option>
+      <option value="combinar">Fora de Sobradinho (Combinar frete)</option>
+    </select>
 
-      <div class="cupom-box">
-        <input type="text" id="inputCupom" placeholder="Cupom de desconto">
-        <button onclick="aplicarCupom()">Aplicar</button>
-      </div>
-    </div>
-
-    <div id="resumoValores" style="font-size: 13px; margin: 10px 0; color: #555;"></div>
-    <p id="total" style="font-family:'Outfit', sans-serif; font-weight:700; font-size:16px; margin: 10px 0;">Total: R$ 0,00</p>
-
-    <button id="btnFinalizar" class="finalizar" onclick="enviar()" disabled>
-      Finalizar compra
-    </button>
-
-    <div class="sugestoes">
-      <h3>Sugira um produto</h3>
-      <input type="text" id="nomeCliente" placeholder="Seu nome (opcional)">
-      <select id="tipoProduto">
-        <option value="" disabled selected>Tipo de produto</option>
-        <option value="Livro">Livro</option>
-        <option value="Curso">Curso</option>
-        <option value="Pdf">Pdf</option>
-        <option value="Outro">Outro</option>
-      </select>
-      <textarea id="sugestaoInput" placeholder="Ex: Bíblia de estudo, livro..."></textarea>
-      <button onclick="enviarSugestao()">Quero que vocês vendam isso</button>
+    <div class="cupom-box">
+      <input type="text" id="inputCupom" placeholder="Cupom de desconto">
+      <button onclick="aplicarCupom()">Aplicar</button>
     </div>
   </div>
 
-</div> 
+  <div id="resumoValores" style="font-size: 13px; margin: 10px 0; color: #555;"></div>
+  <p id="total" style="font-family:'Outfit', sans-serif; font-weight:700; font-size:16px; margin: 10px 0;">Total: R$ 0,00</p>
+
+  <button id="btnFinalizar" class="finalizar" onclick="enviar()" disabled>
+    Finalizar compra
+  </button>
+
+  <div class="sugestoes">
+    <h3>Sugira um produto</h3>
+    <input type="text" id="nomeCliente" placeholder="Seu nome (opcional)">
+    <select id="tipoProduto">
+      <option value="" disabled selected>Tipo de produto</option>
+      <option value="Livro">Livro</option>
+      <option value="Curso">Curso</option>
+      <option value="Pdf">Pdf</option>
+      <option value="Outro">Outro</option>
+    </select>
+    <textarea id="sugestaoInput" placeholder="Ex: Bíblia de estudo, livro..."></textarea>
+    <button onclick="enviarSugestao()">Quero que vocês vendam isso</button>
+  </div>
+</div>
 
 <footer>
   <p class="copyright">© 2026 SIGA-ME STORE</p>
@@ -837,6 +911,13 @@ footer {
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 let descontoAplicado = 0;
 let nomeCupomUsado = "";
+
+function toggleCarrinho() {
+  let gaveta = document.getElementById("carrinhoGaveta");
+  let overlay = document.getElementById("carrinhoOverlay");
+  gaveta.classList.toggle("ativo");
+  overlay.classList.toggle("ativo");
+}
 
 function add(nome, preco, tipo = "pronta_entrega"){
   let itemExistente = carrinho.find(item => item.nome === nome && item.tipo === tipo);
@@ -888,6 +969,8 @@ function aplicarCupom(){
 function atualizar(){
   let totalItensCount = carrinho.reduce((sum, item) => sum + item.qtd, 0);
   document.getElementById("tituloCarrinho").innerHTML = "Carrinho (" + totalItensCount + ")";
+  document.getElementById("contadorFlutuante").innerHTML = "Carrinho (" + totalItensCount + ")";
+  
   let lista = document.getElementById("lista");
   lista.innerHTML = "";
   let subtotal = 0;
@@ -1023,6 +1106,7 @@ function enviar(){
 
   carrinho = [];
   localStorage.removeItem("carrinho");
+  toggleCarrinho();
   atualizar();
 }
 

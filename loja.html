@@ -284,13 +284,13 @@ button:hover {
   visibility: visible;
 }
 
-/* GAVETA DO CARRINHO (SIDEBAR) */
+/* GAVETA DO CARRINHO (SIDEBAR) REFINADA */
 .carrinho {
   position: fixed;
   top: 0;
   right: -420px;
   width: 100%;
-  max-width: 380px;
+  max-width: 400px;
   height: 100%;
   background: white;
   color: #111;
@@ -301,7 +301,6 @@ button:hover {
   transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
 }
 
 .carrinho.ativo {
@@ -312,55 +311,99 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 12px;
-  margin-bottom: 15px;
+  border-bottom: 1px solid #edf2f7;
+  padding-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .carrinho h3 {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 19px;
   margin: 0;
+  color: #1a202c;
 }
 
 .fechar-carrinho {
-  background: none;
+  background: #f7fafc;
   border: none;
-  font-size: 20px;
-  color: #111;
+  font-size: 16px;
+  color: #4a5568;
   cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
 }
 
 .fechar-carrinho:hover {
-  background: #f1f1f1;
+  background: #edf2f7;
+  color: #111;
 }
 
-/* CONTROLE DE QUANTIDADE NO CARRINHO */
+/* ÁREA DE ITENS COM SCROLL SUAVE */
+#lista {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+  margin-bottom: 10px;
+}
+
 .item-carrinho {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #f8fafc;
+  padding: 12px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  border: 1px solid #edf2f7;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  max-width: 210px;
+}
+
+.item-info strong {
+  font-family: 'Outfit', sans-serif;
   font-size: 13px;
-  margin: 10px 0;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 8px;
+  color: #2d3748;
+  line-height: 1.2;
+}
+
+.item-info span {
+  font-size: 12px;
+  color: #718096;
+  font-weight: 600;
 }
 
 .controles-qtd {
   display: flex;
   align-items: center;
-  gap: 6px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 2px;
+  gap: 4px;
 }
 
 .controles-qtd button {
-  padding: 2px 8px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
   font-size: 12px;
-  background: #eee;
-  color: #111;
+  background: #edf2f7;
+  color: #2d3748;
   border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .controles-qtd button:hover {
@@ -368,29 +411,40 @@ button:hover {
   color: white;
 }
 
+.controles-qtd span {
+  font-size: 12px;
+  font-weight: 600;
+  width: 18px;
+  text-align: center;
+  color: #2d3748;
+}
+
 /* OPÇÕES DE FRETE E CUPOM */
 .secao-carrinho-extras {
-  margin: 15px 0;
+  margin: 10px 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border-top: 1px solid #edf2f7;
+  padding-top: 12px;
 }
 
 .secao-carrinho-extras select,
 .secao-carrinho-extras input {
   width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e0;
   font-size: 13px;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  background: #fcfcfc;
+  background: #f8fafc;
+  color: #2d3748;
   box-sizing: border-box;
 }
 
 .cupom-box {
   display: flex;
-  gap: 6px;
+  gap: 8px;
 }
 
 .cupom-box input {
@@ -398,8 +452,40 @@ button:hover {
 }
 
 .cupom-box button {
-  padding: 10px 14px;
+  padding: 11px 16px;
   font-size: 12px;
+  border-radius: 12px;
+}
+
+#resumoValores {
+  font-size: 13px;
+  margin: 8px 0;
+  color: #4a5568;
+  line-height: 1.5;
+}
+
+.total-box {
+  background: #f7fafc;
+  padding: 12px 14px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0 12px 0;
+  border: 1px solid #e2e8f0;
+}
+
+.total-box span {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: #4a5568;
+  font-weight: 600;
+}
+
+.total-box strong {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  color: #111;
 }
 
 .finalizar {
@@ -414,7 +500,6 @@ button:hover {
   cursor: pointer;
   transition: background 0.2s;
   font-family: 'Outfit', sans-serif;
-  margin-top: 10px;
 }
 
 .finalizar:hover {
@@ -422,26 +507,29 @@ button:hover {
 }
 
 .finalizar:disabled {
-  background: #e0e0e0;
-  color: #888;
+  background: #e2e8f0;
+  color: #a0aec0;
   cursor: not-allowed;
 }
 
+/* ÁREA DE SUGESTÕES RETRÁTIL/COMPACTA */
 .sugestoes {
-  margin-top: 25px;
-  background: #f8f9fa;
-  padding: 18px;
-  border-radius: 16px;
+  margin-top: 15px;
+  background: #f8fafc;
+  padding: 14px;
+  border-radius: 14px;
   display: flex;
   flex-direction: column;
   color: #111;
-  border: 1px solid #eee;
+  border: 1px solid #edf2f7;
 }
 
 .sugestoes h3 {
   font-family: 'Outfit', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   margin-top: 0;
+  margin-bottom: 6px;
+  color: #2d3748;
 }
 
 .sugestoes input,
@@ -449,27 +537,28 @@ button:hover {
 .sugestoes textarea {
   width: 100%;
   box-sizing: border-box;
-  margin: 8px 0;
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid #ddd;
+  margin: 5px 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e0;
   background: white;
-  color: #111;
+  color: #2d3748;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .sugestoes textarea {
-  height: 75px;
+  height: 60px;
   resize: none;
 }
 
 .sugestoes button {
   width: 100%;
-  font-size: 13px;
-  padding: 12px;
-  border-radius: 12px;
+  font-size: 12px;
+  padding: 10px;
+  border-radius: 10px;
   background: #111;
+  margin-top: 4px;
 }
 
 footer {
@@ -863,7 +952,7 @@ footer {
     <button class="fechar-carrinho" onclick="toggleCarrinho()">✕</button>
   </div>
   
-  <div id="lista" style="flex: 1; overflow-y: auto;">Vazio</div>
+  <div id="lista">Vazio</div>
 
   <!-- EXTRAS DO CARRINHO (Frete e Cupom) -->
   <div class="secao-carrinho-extras">
@@ -881,8 +970,12 @@ footer {
     </div>
   </div>
 
-  <div id="resumoValores" style="font-size: 13px; margin: 10px 0; color: #555;"></div>
-  <p id="total" style="font-family:'Outfit', sans-serif; font-weight:700; font-size:16px; margin: 10px 0;">Total: R$ 0,00</p>
+  <div id="resumoValores"></div>
+  
+  <div class="total-box">
+    <span>Total</span>
+    <strong id="total">R$ 0,00</strong>
+  </div>
 
   <button id="btnFinalizar" class="finalizar" onclick="enviar()" disabled>
     Finalizar compra
@@ -980,9 +1073,9 @@ function atualizar(){
     subtotal += subtotalItem;
     lista.innerHTML += `
       <div class="item-carrinho">
-        <div>
-          <strong>${item.nome}</strong> ${item.tipo === "encomenda" ? "📦(Enc.)" : ""}<br>
-          R$ ${item.preco.toLocaleString("pt-BR", { minimumFractionDigits: 2 })} x ${item.qtd}
+        <div class="item-info">
+          <strong>${item.nome} ${item.tipo === "encomenda" ? "📦(Enc.)" : ""}</strong>
+          <span>R$ ${item.preco.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}</span>
         </div>
         <div class="controles-qtd">
           <button onclick="alterarQtd(${i}, -1)">-</button>
@@ -993,7 +1086,7 @@ function atualizar(){
   });
 
   if(carrinho.length === 0){
-    lista.innerHTML = "Vazio";
+    lista.innerHTML = "<div style='text-align:center; color:#a0aec0; padding: 20px;'>Seu carrinho está vazio</div>";
     document.getElementById("btnFinalizar").disabled = true;
     descontoAplicado = 0;
     nomeCupomUsado = "";
@@ -1035,7 +1128,7 @@ function atualizar(){
   }
   document.getElementById("resumoValores").innerHTML = resumoHTML;
 
-  document.getElementById("total").innerHTML = "Total: R$ " + totalGeral.toLocaleString("pt-BR", { minimumFractionDigits: 2 }) + (selecaoFreteVal === "combinar" ? " *" : "");
+  document.getElementById("total").innerHTML = "R$ " + totalGeral.toLocaleString("pt-BR", { minimumFractionDigits: 2 }) + (selecaoFreteVal === "combinar" ? " *" : "");
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
 }
 

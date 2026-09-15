@@ -17,30 +17,6 @@ body{
     font-family:Arial,sans-serif;
 }
 
-/* --- BOTÃO DE VOLTAR MELHORADO --- */
-.voltar{
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(0, 0, 0, 0.4); /* Fundo escuro translúcido elegante */
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 18px;
-    border-radius: 30px; /* Formato de pílula */
-    backdrop-filter: blur(5px); /* Efeito vidro fosco moderno */
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-    margin-bottom: 10px;
-}
-
-.voltar:hover {
-    background: #ff5722; /* Muda para a cor de destaque da loja */
-    border-color: #ff5722;
-    transform: translateX(-4px); /* Pequeno movimento para a esquerda indicando retorno */
-}
-/* --------------------------------- */
-
 .container{
     max-width:1400px;
     margin:30px auto;
@@ -84,6 +60,29 @@ body{
     padding:25px;
     border-radius:20px;
 }
+
+/* --- NOVO ESTILO: BOTÃO DE VOLTAR DENTRO DO CARD --- */
+.voltar-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding: 6px 12px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.voltar-card:hover {
+    background: #ff5722;
+    color: white;
+    transform: translateX(-3px);
+}
+/* -------------------------------------------------- */
 
 .info h1{
     margin-top:0;
@@ -204,10 +203,6 @@ ul{
 
 <body>
 
-<a class="voltar" href="loja.html">
-    ← Voltar para a loja
-</a>
-
 <div id="toast">
 🛒 Encomenda adicionada ao carrinho!
 </div>
@@ -236,6 +231,11 @@ alt="Bloco de Anotações Flor">
 </div>
 
 <div class="info">
+<!-- Botão posicionado estrategicamente no topo do card de informações -->
+<a class="voltar-card" href="loja.html">
+    ← Voltar para a loja
+</a>
+
 <h1>Bloco de Anotações Flor</h1>
 
 <p>Papelaria Cristã • Bloco de Anotações</p>

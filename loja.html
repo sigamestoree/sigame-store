@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SIGA-ME STORE</title>
 
-<!-- Nova fonte moderna e estilizada (Outfit e Plus Jakarta Sans) -->
+<!-- Fontes Modernas -->
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -35,12 +35,16 @@ header h1 {
   letter-spacing: -0.5px;
 }
 
-/* BARRA DE PESQUISA */
-.pesquisa {
+/* ÁREA DA BARRA DE PESQUISA E HISTÓRICO */
+.pesquisa-wrapper {
+  position: relative;
   width: 90%;
   max-width: 480px;
-  display: block;
   margin: 20px auto;
+}
+
+.pesquisa {
+  width: 100%;
   padding: 14px 24px;
   font-size: 15px;
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -62,6 +66,69 @@ header h1 {
 .pesquisa:focus {
   background: rgba(255, 255, 255, 0.15);
   border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* CAIXA DE HISTÓRICO DE PESQUISA */
+#historico-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: rgba(20, 20, 20, 0.95);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  margin-top: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  display: none;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.historico-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-family: 'Outfit', sans-serif;
+}
+
+.limpar-historico {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+}
+
+.limpar-historico:hover {
+  color: #ff5252;
+  background: none;
+}
+
+.historico-lista {
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+}
+
+.historico-lista li {
+  padding: 10px 16px;
+  font-size: 13px;
+  cursor: pointer;
+  color: white;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.historico-lista li:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* ABAS DE NAVEGAÇÃO */
@@ -111,7 +178,7 @@ header h1 {
   padding: 10px;
 }
 
-/* NOVO FORMATO DOS CARDS (Mais arredondados e elegantes) */
+/* CARDS DE PRODUTO */
 .produto {
   background: white;
   color: #111;
@@ -212,7 +279,7 @@ button:hover {
   background: #d32f2f;
 }
 
-/* CARRINHO REDESENHADO */
+/* CARRINHO */
 .carrinho {
   flex: 1;
   min-width: 300px;
@@ -406,8 +473,18 @@ footer {
   <h1>SIGA-ME STORE</h1>
 </header>
 
-<!-- BARRA DE PESQUISA -->
-<input type="text" id="pesquisa" class="pesquisa" placeholder="Pesquisar produtos..." onkeyup="filtrarProdutos()">
+<!-- BARRA DE PESQUISA COM HISTÓRICO -->
+<div class="pesquisa-wrapper">
+  <input type="text" id="pesquisa" class="pesquisa" placeholder="Pesquisar produtos..." onkeyup="filtrarProdutos()" onfocus="mostrarHistorico()" autocomplete="off">
+  
+  <div id="historico-box">
+    <div class="historico-header">
+      <span>Buscas recentes</span>
+      <button class="limpar-historico" onclick="limparHistorico()">Limpar</button>
+    </div>
+    <ul id="historico-lista" class="historico-lista"></ul>
+  </div>
+</div>
 
 <div class="abas">
   <button onclick="filtrarCategoria('todos')">TODOS</button>
@@ -796,9 +873,10 @@ function enviarSugestao(){
   window.open("https://wa.me/5574999019805?text=" + encodeURIComponent(msg), "_blank");
 }
 
-/* PESQUISA */
+/* PESQUISA E HISTÓRICO */
 function filtrarProdutos() {
-  let filtro = document.getElementById("pesquisa").value.toLowerCase();
+  let input = document.getElementById("pesquisa");
+  let filtro = input.value.toLowerCase().trim();
   let produtos = document.querySelectorAll(".produto");
 
   produtos.forEach(produto => {
@@ -809,7 +887,63 @@ function filtrarProdutos() {
       produto.style.display = "none";
     }
   });
+
+  if (filtro.length > 1) {
+    salvarHistorico(input.value.trim());
+  }
 }
+
+function salvarTermo(termo) {
+  if (!termo) return;
+  let historico = JSON.parse(localStorage.getItem("historicoBuscas")) || [];
+  if (!historico.includes(termo)) {
+    historico.unshift(termo);
+    if (historico.length > 5) historico.pop(); // Mantém os últimos 5
+    localStorage.setItem("historicoBuscas", JSON.stringify(historico));
+  }
+}
+
+function salvarHistorico(termo) {
+  salvarTermo(termo);
+}
+
+function mostrarHistorico() {
+  let historico = JSON.parse(localStorage.getItem("historicoBuscas")) || [];
+  let box = document.getElementById("historico-box");
+  let lista = document.getElementById("historico-lista");
+  
+  if (historico.length === 0) {
+    box.style.display = "none";
+    return;
+  }
+
+  lista.innerHTML = "";
+  historico.forEach(termo => {
+    lista.innerHTML += `<li onclick="usarHistorico('${termo}')">🕒 ${termo}</li>`;
+  });
+
+  box.style.display = "block";
+}
+
+function usarHistorico(termo) {
+  let input = document.getElementById("pesquisa");
+  input.value = termo;
+  filtrarProdutos();
+  document.getElementById("historico-box").style.display = "none";
+}
+
+function limparHistorico() {
+  localStorage.removeItem("historicoBuscas");
+  document.getElementById("historico-box").style.display = "none";
+}
+
+// Fechar histórico ao clicar fora
+document.addEventListener("click", function(e) {
+  let wrapper = document.querySelector(".pesquisa-wrapper");
+  if (!wrapper.contains(e.target)) {
+    document.getElementById("historico-box").style.display = "none";
+  }
+});
 
 function filtrarCategoria(categoria){
   let produtos = document.querySelectorAll(".produto");

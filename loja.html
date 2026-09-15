@@ -5,13 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SIGA-ME STORE</title>
 
+<!-- Importando fonte moderna estilo o exemplo -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 body {
   margin: 0;
   background: url("Fundo.png") no-repeat center center fixed;
   background-size: cover;
   color: white;
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
   overflow-x: hidden;
 }
 
@@ -27,6 +30,7 @@ header img {
 header h1 {
   font-size: 32px;
   margin-top: 10px;
+  font-weight: 700;
 }
 
 /* BARRA DE PESQUISA ESTILIZADA */
@@ -46,6 +50,7 @@ header h1 {
   backdrop-filter: blur(10px);
   text-align: center;
   transition: .3s;
+  font-family: 'Inter', sans-serif;
 }
 
 .pesquisa::placeholder {
@@ -75,11 +80,12 @@ header h1 {
   color: white;
   padding: 10px 18px;
   border-radius: 999px;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 13px;
   white-space: nowrap;
   cursor: pointer;
   transition: .3s;
+  font-family: 'Inter', sans-serif;
 }
 
 .abas button:hover {
@@ -104,10 +110,10 @@ header h1 {
   padding: 10px;
 }
 
-/* ESTILO DOS CARDS TIPO MERCADO LIVRE */
+/* ESTILO DOS CARDS EM PRETO E BRANCO */
 .produto {
   background: white;
-  color: #333;
+  color: #111;
   padding: 12px;
   border-radius: 8px;
   text-align: left;
@@ -118,14 +124,14 @@ header h1 {
   flex-direction: column;
   height: 100%;
   box-sizing: border-box;
-  border: 1px solid #eee;
+  border: 1px solid #e5e5e5;
   cursor: pointer;
 }
 
 .produto:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  border-color: #ddd;
+  border-color: #111;
 }
 
 .produto img {
@@ -135,12 +141,11 @@ header h1 {
   background: #fdfdfd;
   border-radius: 4px;
   margin-bottom: 8px;
-  transition: .3s;
 }
 
 .produto h2 {
   font-size: 13px;
-  color: #333;
+  color: #111;
   margin: 6px 0;
   min-height: 32px;
   display: -webkit-box;
@@ -148,13 +153,13 @@ header h1 {
   -webkit-box-orient: vertical;
   overflow: hidden;
   line-height: 1.3;
-  font-weight: normal;
+  font-weight: 500;
 }
 
 .produto p {
-  font-weight: bold;
+  font-weight: 700;
   margin: 4px 0 10px 0;
-  font-size: 18px;
+  font-size: 16px;
   color: #111;
 }
 
@@ -173,16 +178,17 @@ header h1 {
 }
 
 button {
-  background: #3483fa; /* Azul padrão estilo e-commerce moderno */
+  background: #111; /* Botões em preto sólido */
   border: none;
   padding: 10px 6px;
   color: white;
   border-radius: 6px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 13px;
   transition: all .2s ease;
   text-align: center;
+  font-family: 'Inter', sans-serif;
 }
 
 .produto-botoes button {
@@ -190,23 +196,26 @@ button {
 }
 
 button:hover {
-  background: #2968c8;
-  transform: none;
+  background: #333;
 }
 
 .remover {
-  background: #ff5722;
+  background: #111;
   margin-left: 10px;
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 12px;
 }
 
+.remover:hover {
+  background: #d32f2f;
+}
+
 .carrinho {
   flex: 1;
   min-width: 280px;
   background: white;
-  color: black;
+  color: #111;
   padding: 20px;
   border-radius: 12px;
   margin: 10px;
@@ -216,14 +225,19 @@ button:hover {
   max-height: calc(100vh - 40px);
   overflow-y: auto;
   box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  border: 1px solid #e5e5e5;
+}
+
+.carrinho h3 {
+  font-weight: 700;
 }
 
 .finalizar {
   width: 100%;
   padding: 12px;
   font-size: 15px;
-  font-weight: bold;
-  background: #00a650; /* Verde estilo Mercado Livre */
+  font-weight: 600;
+  background: #111; /* Preto total */
   border: none;
   border-radius: 6px;
   color: white;
@@ -232,7 +246,7 @@ button:hover {
 }
 
 .finalizar:hover {
-  background: #008f43;
+  background: #333;
   transform: none;
 }
 
@@ -244,13 +258,18 @@ button:hover {
 
 .sugestoes {
   margin-top: 20px;
-  background: #f5f5f5;
+  background: #f9f9f9;
   padding: 15px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  color: #333;
-  border: 1px solid #e0e0e0;
+  color: #111;
+  border: 1px solid #e5e5e5;
+}
+
+.sugestoes h3 {
+  font-size: 14px;
+  margin-top: 0;
 }
 
 .sugestoes input,
@@ -263,7 +282,8 @@ button:hover {
   border-radius: 6px;
   border: 1px solid #ccc;
   background: white;
-  color: #333;
+  color: #111;
+  font-family: 'Inter', sans-serif;
 }
 
 .sugestoes textarea {
@@ -276,14 +296,14 @@ button:hover {
   font-size: 13px;
   padding: 10px;
   border-radius: 6px;
-  background: #3483fa;
+  background: #111;
 }
 
 #tipoProduto {
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
   font-size: 14px;
   font-weight: normal;
-  color: #333;
+  color: #111;
 }
 
 footer {
@@ -304,7 +324,7 @@ footer {
   bottom: 80px;
   right: 20px;
   background: white;
-  color: black;
+  color: #111;
   padding: 12px 18px;
   border-radius: 8px;
   box-shadow: 0 5px 20px rgba(0,0,0,.25);
@@ -314,7 +334,7 @@ footer {
   z-index: 9999;
   font-weight: 600;
   font-size: 13px;
-  border-left: 4px solid #00a650;
+  border-left: 4px solid #111;
 }
 
 .suporte {
@@ -331,7 +351,7 @@ footer {
   color: white;
   text-decoration: none;
   border-radius: 999px;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 13px;
   transition: .3s;
   z-index: 9999;

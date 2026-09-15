@@ -594,11 +594,10 @@ footer {
   font-family: 'Outfit', sans-serif;
 }
 
-/* PADRÃO UNIFICADO PARA OS BOTÕES FLUTUANTES (ESTÉTICA IDÊNTICA) */
+/* PADRÃO UNIFICADO PARA CARRINHO, INÍCIO E TOPO */
 .botao-carrinho-flutuante,
 .botao-inicio-flutuante,
-.botao-topo-flutuante,
-.suporte {
+.botao-topo-flutuante {
   position: fixed;
   bottom: 20px;
   display: flex;
@@ -621,11 +620,38 @@ footer {
 
 .botao-carrinho-flutuante:hover,
 .botao-inicio-flutuante:hover,
-.botao-topo-flutuante:hover,
-.suporte:hover {
+.botao-topo-flutuante:hover {
   background: #333;
   transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* BOTÃO DE SUPORTE NO ESTILO ORIGINAL (Lado Direito) */
+.suporte {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+  transition: .3s;
+  z-index: 9997;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  font-family: 'Outfit', sans-serif;
+}
+
+.suporte:hover {
+  background: white;
+  color: black;
 }
 
 /* POSICIONAMENTO COMPUTADOR (Lado Esquerdo com bom espaçamento) */
@@ -641,12 +667,7 @@ footer {
   left: 265px;
 }
 
-/* BOTÃO DE SUPORTE (Lado Direito) */
-.suporte {
-  right: 20px;
-}
-
-/* AJUSTE RESPONSIVO PARA CELULARES (Evita sobreposição e desalinhamento) */
+/* AJUSTE RESPONSIVO PARA CELULARES */
 @media (max-width: 900px) {
   .container {
     grid-template-columns: repeat(2, 1fr);
@@ -687,7 +708,7 @@ footer {
   ⬆️ Topo
 </button>
 
-<!-- BOTÃO DE SUPORTE (Lado Direito) -->
+<!-- BOTÃO DE SUPORTE (Lado Direito - Estilo Original) -->
 <a href="https://wa.me/5574999019805" class="suporte" target="_blank">
   💬 Suporte
 </a>

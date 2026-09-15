@@ -57,19 +57,15 @@ header h1 {
   border-color: rgba(255, 255, 255, 0.4);
 }
 
-/* ABAS COM ROLAGEM HORIZONTAL NO CELULAR */
+/* ABAS CENTRALIZADAS E ALINHADAS */
 .abas {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 8px;
-  margin: 15px 0;
-  padding: 0 15px 10px 15px;
-  overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
-}
-
-.abas::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  margin: 20px auto;
+  padding: 0 15px;
+  max-width: 800px;
 }
 
 .abas button {
@@ -96,58 +92,70 @@ header h1 {
   display: flex;
   flex-wrap: wrap;
   padding: 0 10px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .container {
   flex: 3;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
   padding: 10px;
 }
 
+/* ESTILO DOS CARDS TIPO MERCADO LIVRE */
 .produto {
   background: white;
-  color: black;
+  color: #333;
   padding: 12px;
-  border-radius: 16px;
-  text-align: center;
+  border-radius: 8px;
+  text-align: left;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,.15);
-  transition: all .4s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all .2s ease;
   display: flex;
   flex-direction: column;
   height: 100%;
   box-sizing: border-box;
+  border: 1px solid #eee;
+  cursor: pointer;
 }
 
 .produto:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0,0,0,.25);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  border-color: #ddd;
 }
 
 .produto img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-  transition: .5s;
+  height: 190px;
+  object-fit: contain;
+  background: #fdfdfd;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  transition: .3s;
 }
 
 .produto h2 {
-  font-size: 14px;
-  margin: 10px 0 6px;
-  min-height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1.2;
+  font-size: 13px;
+  color: #333;
+  margin: 6px 0;
+  min-height: 32px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.3;
+  font-weight: normal;
 }
 
 .produto p {
   font-weight: bold;
-  margin: 0 0 10px 0;
-  font-size: 14px;
+  margin: 4px 0 10px 0;
+  font-size: 18px;
+  color: #111;
 }
 
 /* CONTAINER DOS BOTÕES DO CARD */
@@ -165,15 +173,15 @@ header h1 {
 }
 
 button {
-  background: #111;
+  background: #3483fa; /* Azul padrão estilo e-commerce moderno */
   border: none;
   padding: 10px 6px;
   color: white;
-  border-radius: 20px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 12px;
-  transition: all .3s ease;
+  font-size: 13px;
+  transition: all .2s ease;
   text-align: center;
 }
 
@@ -182,13 +190,12 @@ button {
 }
 
 button:hover {
-  background: white;
-  color: black;
-  transform: translateY(-2px);
+  background: #2968c8;
+  transform: none;
 }
 
 .remover {
-  background: red;
+  background: #ff5722;
   margin-left: 10px;
   padding: 2px 6px;
   border-radius: 4px;
@@ -201,46 +208,49 @@ button:hover {
   background: white;
   color: black;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 12px;
   margin: 10px;
   position: sticky;
   top: 20px;
   align-self: flex-start;
   max-height: calc(100vh - 40px);
   overflow-y: auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
 .finalizar {
   width: 100%;
-  padding: 14px;
-  font-size: 16px;
+  padding: 12px;
+  font-size: 15px;
   font-weight: bold;
-  background: #111;
+  background: #00a650; /* Verde estilo Mercado Livre */
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   color: white;
   cursor: pointer;
+  transition: background 0.2s;
 }
 
 .finalizar:hover {
-  background: #00a844;
-  transform: scale(1.02);
+  background: #008f43;
+  transform: none;
 }
 
 .finalizar:disabled {
-  background: #777;
+  background: #ccc;
   cursor: not-allowed;
   opacity: .7;
 }
 
 .sugestoes {
   margin-top: 20px;
-  background: #111;
+  background: #f5f5f5;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  color: white;
+  color: #333;
+  border: 1px solid #e0e0e0;
 }
 
 .sugestoes input,
@@ -250,8 +260,10 @@ button:hover {
   box-sizing: border-box;
   margin: 6px 0;
   padding: 10px;
-  border-radius: 5px;
-  border: none;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: white;
+  color: #333;
 }
 
 .sugestoes textarea {
@@ -263,14 +275,15 @@ button:hover {
   width: 100%;
   font-size: 13px;
   padding: 10px;
-  border-radius: 30px;
+  border-radius: 6px;
+  background: #3483fa;
 }
 
 #tipoProduto {
   font-family: Arial, sans-serif;
   font-size: 14px;
-  font-weight: 700;
-  color: black;
+  font-weight: normal;
+  color: #333;
 }
 
 footer {
@@ -293,14 +306,15 @@ footer {
   background: white;
   color: black;
   padding: 12px 18px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0,0,0,.25);
   opacity: 0;
   transform: translateY(20px);
   transition: .35s;
   z-index: 9999;
   font-weight: 600;
   font-size: 13px;
+  border-left: 4px solid #00a650;
 }
 
 .suporte {
@@ -345,7 +359,7 @@ footer {
     padding: 5px;
   }
   .abas {
-    justify-content: flex-start;
+    justify-content: center;
   }
 }
 </style>

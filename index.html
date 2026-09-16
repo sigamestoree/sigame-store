@@ -133,6 +133,44 @@ body::before {
   background: #f8fafc;
 }
 
+/* BOTÃO DE SUPORTE FLUTUANTE (SEMPRE FIXO NO CANTO DA TELA) */
+.suporte-flutuante {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+  z-index: 99999;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  font-family: 'Outfit', sans-serif;
+  backdrop-filter: blur(10px);
+  animation: flutuar 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+@keyframes flutuar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.suporte-flutuante:hover {
+  background: #1a1a1a;
+  border-color: #ffffff;
+  transform: scale(1.05) translateY(-4px);
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
+}
+
 /* SEÇÃO DE CATEGORIAS DIRECIONADAS */
 .categorias-secao {
   max-width: 1100px;
@@ -183,12 +221,12 @@ body::before {
   line-height: 1.4;
 }
 
-/* INDICADORES E BOTÃO DE SUPORTE NO FLUXO */
+/* INDICADORES */
 .indicadores {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 15px;
-  max-width: 1000px;
+  max-width: 800px;
   margin: 40px auto;
   text-align: center;
   padding: 0 20px;
@@ -214,36 +252,6 @@ body::before {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.6);
   font-weight: 500;
-}
-
-/* CARD DE SUPORTE INTERATIVO NO GRID */
-.card-suporte {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.card-suporte:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #ffffff;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-.card-suporte h2 {
-  font-size: 32px;
-  margin-bottom: 4px;
-}
-
-.card-suporte p {
-  color: #ffffff;
-  font-weight: 600;
 }
 
 /* CARROSSEL */
@@ -413,6 +421,9 @@ footer {
 </head>
 <body>
 
+<!-- BOTÃO DE SUPORTE FLUTUANTE (FIXO NO CANTO DA TELA O TEMPO TODO) -->
+<a href="https://wa.me/5574999019805" class="suporte-flutuante" target="_blank">💬 Suporte</a>
+  
 <section class="hero">
   <div class="badge-destaque">✨ A curadoria cristã que transforma</div>
   <img src="Logo.png" alt="SIGA-ME STORE Logo">
@@ -444,7 +455,7 @@ footer {
   </div>
 </section>
 
-<!-- INDICADORES E BOTÃO DE SUPORTE INTEGRADO -->
+<!-- INDICADORES (LIMPOS, APENAS AS 3 VANTAGENS) -->
 <section class="indicadores">
   <div class="indicador">
     <h2>20+</h2>
@@ -458,10 +469,6 @@ footer {
     <h2>🚚</h2>
     <p>Entrega Local Ágil</p>
   </div>
-  <a href="https://wa.me/5574999019805" class="indicador card-suporte" target="_blank">
-    <h2>💬</h2>
-    <p>Suporte Dedicado</p>
-  </a>
 </section>
 
 <div class="divisoria"></div>

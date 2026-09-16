@@ -23,7 +23,7 @@ body {
   overflow-x: hidden;
 }
 
-/* CAMADA ESCURA COM LUZES DE FUNDO SUTIS */
+/* FUNDO DINÂMICO COM LUZ ANIMADA (EFEITO INTUITIVO) */
 body::before {
   content: "";
   position: fixed;
@@ -31,8 +31,14 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 50% 20%, rgba(40, 40, 60, 0.4) 0%, rgba(10, 10, 10, 0.85) 80%);
+  background: radial-gradient(circle at 50% 20%, rgba(60, 60, 90, 0.35) 0%, rgba(10, 10, 10, 0.9) 85%);
   z-index: -1;
+  animation: fundoPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes fundoPulse {
+  0% { opacity: 0.8; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.05); }
 }
 
 /* HERO SECTION CINEMATOGRÁFICA */
@@ -83,6 +89,13 @@ body::before {
   line-height: 1.6;
   margin-bottom: 30px;
   color: rgba(255, 255, 255, 0.75);
+}
+
+.acoes {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .botao-principal {
@@ -136,7 +149,7 @@ body::before {
   border-color: rgba(255, 255, 255, 0.4);
 }
 
-/* SEÇÃO DE CATEGORIAS RÁPIDAS (NOVO) */
+/* SEÇÃO DE CATEGORIAS DIRECIONADAS */
 .categorias-secao {
   max-width: 1100px;
   margin: 40px auto;
@@ -279,7 +292,7 @@ body::before {
   background: linear-gradient(to left, rgba(10,10,10,0.95), transparent);
 }
 
-/* DEPOIMENTOS / PROVA SOCIAL (NOVO) */
+/* DEPOIMENTOS / PROVA SOCIAL */
 .depoimentos-secao {
   max-width: 1100px;
   margin: 50px auto;
@@ -357,18 +370,19 @@ body::before {
   color: rgba(255, 255, 255, 0.7);
 }
 
+/* RODAPÉ FINO E ELEGANTE IGUAL À LOJA */
 footer {
   background: rgba(10, 10, 10, 0.95);
   backdrop-filter: blur(12px);
-  padding: 25px 20px;
-  margin-top: 40px;
+  padding: 15px 20px;
+  margin-top: 30px;
   text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .copyright {
   color: rgba(255, 255, 255, 0.5);
-  font-size: 13px;
+  font-size: 12px;
   font-family: 'Outfit', sans-serif;
 }
 
@@ -400,24 +414,24 @@ footer {
   <h1>SIGA-ME STORE</h1>
   <p>Mais do que um negócio, um propósito. Encontre leituras e materiais que edificam a sua jornada espiritual.</p>
   <div class="acoes">
-    <a href="loja.html" class="botao-principal">ACESSAR CATÁLOGO ➔</a>
+    <a href="loja.html" class="botao-principal">ACESSAR CATÁLOGO COMPLETO ➔</a>
   </div>
 </section>
 
-<!-- SEÇÃO DE CATEGORIAS RÁPIDAS -->
+<!-- SEÇÃO DE CATEGORIAS DIRECIONADAS -->
 <section class="categorias-secao">
   <div class="grid-categorias">
-    <a href="loja.html" class="card-categoria">
+    <a href="loja.html#livros" class="card-categoria">
       <span>📖</span>
       <h3>Livros e Devocionais</h3>
       <p>Obras essenciais para o seu crescimento na fé e estudo diário.</p>
     </a>
-    <a href="loja.html" class="card-categoria">
+    <a href="loja.html#biblias" class="card-categoria">
       <span>✝️</span>
       <h3>Bíblias Exclusivas</h3>
       <p>Edições especiais e inspiradoras para a Palavra de Deus.</p>
     </a>
-    <a href="loja.html" class="card-categoria">
+    <a href="loja.html#blocos" class="card-categoria">
       <span>📓</span>
       <h3>Blocos de Anotações</h3>
       <p>Perfeitos para registrar seus estudos bíblicos e orações.</p>
@@ -497,7 +511,6 @@ footer {
 
 <div class="divisoria"></div>
 
-<!-- SEÇÃO DE DEPOIMENTOS / PROVA SOCIAL -->
 <section class="depoimentos-secao">
   <h2>O QUE NOSSOS CLIENTES DIZEM</h2>
   <div class="grid-depoimentos">

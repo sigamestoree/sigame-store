@@ -133,44 +133,6 @@ body::before {
   background: #f8fafc;
 }
 
-/* BOTÃO DE SUPORTE FIXO E SEMPRE VISÍVEL NO CANTO DA TELA */
-.suporte {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 22px;
-  background: #000;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 13px;
-  z-index: 9999;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  font-family: 'Outfit', sans-serif;
-  backdrop-filter: blur(10px);
-  animation: flutuar 3s ease-in-out infinite;
-  transition: all 0.3s ease;
-}
-
-@keyframes flutuar {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0); }
-}
-
-.suporte:hover {
-  background: #1a1a1a;
-  border-color: #ffffff;
-  transform: scale(1.05) translateY(-4px);
-  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
-}
-
 /* SEÇÃO DE CATEGORIAS DIRECIONADAS */
 .categorias-secao {
   max-width: 1100px;
@@ -221,12 +183,12 @@ body::before {
   line-height: 1.4;
 }
 
-/* INDICADORES */
+/* INDICADORES E BOTÃO DE SUPORTE NO FLUXO */
 .indicadores {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 40px auto;
   text-align: center;
   padding: 0 20px;
@@ -252,6 +214,36 @@ body::before {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.6);
   font-weight: 500;
+}
+
+/* CARD DE SUPORTE INTERATIVO NO GRID */
+.card-suporte {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card-suporte:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.card-suporte h2 {
+  font-size: 32px;
+  margin-bottom: 4px;
+}
+
+.card-suporte p {
+  color: #ffffff;
+  font-weight: 600;
 }
 
 /* CARROSSEL */
@@ -415,25 +407,12 @@ footer {
 @media(min-width: 768px) {
   .hero h1 { font-size: 60px; }
   .hero p { font-size: 19px; }
-  .indicadores {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  .indicador {
-    flex: 1;
-    padding: 30px;
-  }
-  .indicador h2 { font-size: 44px; }
   .slide-track img { width: 220px; height: 310px; }
 }
 </style>
 </head>
 <body>
 
-<!-- BOTÃO DE SUPORTE FIXO (SEMPRE VISÍVEL NA TELA) -->
-<a href="https://wa.me/5574999019805" class="suporte" target="_blank">💬 Suporte</a>
-  
 <section class="hero">
   <div class="badge-destaque">✨ A curadoria cristã que transforma</div>
   <img src="Logo.png" alt="SIGA-ME STORE Logo">
@@ -444,7 +423,7 @@ footer {
   </div>
 </section>
 
-<!-- SEÇÃO DE CATEGORIAS DIRECIONADAS COM OS HASHES CORRETOS -->
+<!-- SEÇÃO DE CATEGORIAS DIRECIONADAS -->
 <section class="categorias-secao">
   <div class="grid-categorias">
     <a href="loja.html#livro" class="card-categoria">
@@ -465,6 +444,7 @@ footer {
   </div>
 </section>
 
+<!-- INDICADORES E BOTÃO DE SUPORTE INTEGRADO -->
 <section class="indicadores">
   <div class="indicador">
     <h2>20+</h2>
@@ -478,10 +458,10 @@ footer {
     <h2>🚚</h2>
     <p>Entrega Local Ágil</p>
   </div>
-  <div class="indicador">
+  <a href="https://wa.me/5574999019805" class="indicador card-suporte" target="_blank">
     <h2>💬</h2>
     <p>Suporte Dedicado</p>
-  </div>
+  </a>
 </section>
 
 <div class="divisoria"></div>
@@ -558,7 +538,7 @@ footer {
   </div>
 </section>
 
-<div class="divisoria"></div>
+<div class="divisioria"></div>
 
 <section id="sobre">
   <h2>SOBRE A SIGA-ME STORE</h2>

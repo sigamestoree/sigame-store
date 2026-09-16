@@ -16,10 +16,10 @@ body {
   color: white;
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow-x: hidden;
-  padding-top: 55px; /* Espaço para a barra fixa no topo não cobrir o header */
+  padding-top: 55px; /* Espaço para a barra fixa no topo */
 }
 
-/* NOVA BARRA FIXA NO TOPO (INÍCIO E TOPO) */
+/* BARRA FIXA NO TOPO */
 .barra-topo-fixa {
   position: fixed;
   top: 0;
@@ -174,7 +174,7 @@ header h1 {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* ABAS DE NAVEGAÇÃO (ESTILO ORIGINAL) */
+/* ABAS DE NAVEGAÇÃO */
 .abas {
   display: flex;
   justify-content: center;
@@ -307,8 +307,8 @@ button:hover {
   background: #333;
 }
 
-/* OVERLAY DO CARRINHO (FUNDO ESCURO) */
-.carrinho-overlay {
+/* OVERLAYS E MODAIS */
+.carrinho-overlay, .sugestao-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -322,12 +322,12 @@ button:hover {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.carrinho-overlay.ativo {
+.carrinho-overlay.ativo, .sugestao-overlay.ativo {
   opacity: 1;
   visibility: visible;
 }
 
-/* GAVETA DO CARRINHO (SIDEBAR) REFINADA */
+/* GAVETA DO CARRINHO */
 .carrinho {
   position: fixed;
   top: 0;
@@ -350,16 +350,42 @@ button:hover {
   right: 0;
 }
 
+/* MODAL DE SUGESTÃO (CENTRALIZADO) */
+.sugestao-modal-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 90%;
+  max-width: 400px;
+  background: white;
+  color: #111;
+  padding: 24px;
+  border-radius: 20px;
+  z-index: 9999;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.sugestao-modal-box.ativo {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
 .carrinho-header-topo {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #edf2f7;
   padding-bottom: 14px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
-.carrinho h3 {
+.carrinho h3, .sugestao-modal-box h3 {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
   font-size: 19px;
@@ -387,12 +413,39 @@ button:hover {
   color: #111;
 }
 
-/* ÁREA DE ITENS COM SCROLL SUAVE */
+/* CAMPOS DO MODAL DE SUGESTÃO */
+.sugestao-modal-box input,
+.sugestao-modal-box select,
+.sugestao-modal-box textarea {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 6px 0 12px 0;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e0;
+  background: #f8fafc;
+  color: #2d3748;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  outline: none;
+}
+
+.sugestao-modal-box textarea {
+  height: 80px;
+  resize: none;
+}
+
+.sugestao-modal-box button.finalizar {
+  margin-top: 6px;
+}
+
+/* ÁREA DE ITENS DO CARRINHO */
 #lista {
   flex: 1;
   overflow-y: auto;
   padding-right: 4px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  max-height: 45vh;
 }
 
 .item-carrinho {
@@ -400,24 +453,25 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   background: #f8fafc;
-  padding: 12px;
+  padding: 12px 14px;
   border-radius: 14px;
   margin-bottom: 10px;
   border: 1px solid #edf2f7;
+  gap: 10px;
 }
 
 .item-info {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  max-width: 210px;
+  gap: 4px;
 }
 
 .item-info strong {
   font-family: 'Outfit', sans-serif;
   font-size: 13px;
   color: #2d3748;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .item-info span {
@@ -434,11 +488,12 @@ button:hover {
   border-radius: 10px;
   padding: 2px;
   gap: 4px;
+  flex-shrink: 0;
 }
 
 .controles-qtd button {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   padding: 0;
   font-size: 12px;
   background: #edf2f7;
@@ -457,7 +512,7 @@ button:hover {
 .controles-qtd span {
   font-size: 12px;
   font-weight: 600;
-  width: 18px;
+  width: 20px;
   text-align: center;
   color: #2d3748;
 }
@@ -469,7 +524,7 @@ button:hover {
   flex-direction: column;
   gap: 10px;
   border-top: 1px solid #edf2f7;
-  padding-top: 12px;
+  padding-top: 14px;
 }
 
 .secao-carrinho-extras select,
@@ -514,7 +569,7 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 8px 0 12px 0;
+  margin: 8px 0 14px 0;
   border: 1px solid #e2e8f0;
 }
 
@@ -553,55 +608,6 @@ button:hover {
   background: #e2e8f0;
   color: #a0aec0;
   cursor: not-allowed;
-}
-
-/* ÁREA DE SUGESTÕES RETRÁTIL/COMPACTA */
-.sugestoes {
-  margin-top: 15px;
-  background: #f8fafc;
-  padding: 14px;
-  border-radius: 14px;
-  display: flex;
-  flex-direction: column;
-  color: #111;
-  border: 1px solid #edf2f7;
-}
-
-.sugestoes h3 {
-  font-family: 'Outfit', sans-serif;
-  font-size: 14px;
-  margin-top: 0;
-  margin-bottom: 6px;
-  color: #2d3748;
-}
-
-.sugestoes input,
-.sugestoes select,
-.sugestoes textarea {
-  width: 100%;
-  box-sizing: border-box;
-  margin: 5px 0;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid #cbd5e0;
-  background: white;
-  color: #2d3748;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 12px;
-}
-
-.sugestoes textarea {
-  height: 60px;
-  resize: none;
-}
-
-.sugestoes button {
-  width: 100%;
-  font-size: 12px;
-  padding: 10px;
-  border-radius: 10px;
-  background: #111;
-  margin-top: 4px;
 }
 
 footer {
@@ -706,10 +712,11 @@ footer {
 
 <body>
 
-<!-- BARRA FIXA NO TOPO (Início e Topo) -->
+<!-- BARRA FIXA NO TOPO COM O BOTÃO DE SUGESTÃO -->
 <nav class="barra-topo-fixa">
   <a href="index.html" title="Voltar para a página inicial">🏠 Início</a>
   <button onclick="voltarAoTopo()" title="Subir ao topo">⬆️ Topo</button>
+  <button onclick="toggleSugestaoModal()" title="Sugerir um produto">💡 Sugerir</button>
 </nav>
 
 <!-- BOTÃO FLUTUANTE DO CARRINHO (Lado Esquerdo) -->
@@ -744,7 +751,7 @@ footer {
   </div>
 </div>
 
-<!-- ABAS DE CATEGORIAS (IGUAIS AO ORIGINAL) -->
+<!-- ABAS DE CATEGORIAS -->
 <div class="abas">
   <button onclick="filtrarCategoria('todos')">TODOS</button>
   <button onclick="filtrarCategoria('livro')">LIVROS</button>
@@ -997,6 +1004,27 @@ footer {
   </div>
 </main>
 
+<!-- MODAL DE SUGESTÃO (ABERTO PELA BARRA DO TOPO) -->
+<div class="sugestao-overlay" id="sugestaoOverlay" onclick="toggleSugestaoModal()"></div>
+
+<div class="sugestao-modal-box" id="sugestaoModalBox">
+  <div class="carrinho-header-topo">
+    <h3>💡 Sugira um produto</h3>
+    <button class="fechar-carrinho" onclick="toggleSugestaoModal()">✕</button>
+  </div>
+  
+  <input type="text" id="nomeCliente" placeholder="Seu nome (opcional)">
+  <select id="tipoProduto">
+    <option value="" disabled selected>Tipo de produto</option>
+    <option value="Livro">Livro</option>
+    <option value="Curso">Curso</option>
+    <option value="Pdf">Pdf</option>
+    <option value="Outro">Outro</option>
+  </select>
+  <textarea id="sugestaoInput" placeholder="Ex: Bíblia de estudo, livro..."></textarea>
+  <button class="finalizar" onclick="enviarSugestao()">Quero que vocês vendam isso</button>
+</div>
+
 <!-- OVERLAY E GAVETA LATERAL DO CARRINHO -->
 <div class="carrinho-overlay" id="carrinhoOverlay" onclick="toggleCarrinho()"></div>
 
@@ -1034,20 +1062,6 @@ footer {
   <button id="btnFinalizar" class="finalizar" onclick="enviar()" disabled>
     Finalizar compra
   </button>
-
-  <div class="sugestoes">
-    <h3>Sugira um produto</h3>
-    <input type="text" id="nomeCliente" placeholder="Seu nome (opcional)">
-    <select id="tipoProduto">
-      <option value="" disabled selected>Tipo de produto</option>
-      <option value="Livro">Livro</option>
-      <option value="Curso">Curso</option>
-      <option value="Pdf">Pdf</option>
-      <option value="Outro">Outro</option>
-    </select>
-    <textarea id="sugestaoInput" placeholder="Ex: Bíblia de estudo, livro..."></textarea>
-    <button onclick="enviarSugestao()">Quero que vocês vendam isso</button>
-  </div>
 </div>
 
 <footer>
@@ -1063,6 +1077,13 @@ function toggleCarrinho() {
   let gaveta = document.getElementById("carrinhoGaveta");
   let overlay = document.getElementById("carrinhoOverlay");
   gaveta.classList.toggle("ativo");
+  overlay.classList.toggle("ativo");
+}
+
+function toggleSugestaoModal() {
+  let modal = document.getElementById("sugestaoModalBox");
+  let overlay = document.getElementById("sugestaoOverlay");
+  modal.classList.toggle("ativo");
   overlay.classList.toggle("ativo");
 }
 
@@ -1275,6 +1296,7 @@ function enviarSugestao(){
   let msg = `💡 Sugestão de Produto:\n👤 Nome: ${nome}\n📦 Tipo: ${tipo}\n📝 Sugestão: ${sugestao}`;
 
   window.open("https://wa.me/5574999019805?text=" + encodeURIComponent(msg), "_blank");
+  toggleSugestaoModal();
 }
 
 /* PESQUISA E HISTÓRICO */

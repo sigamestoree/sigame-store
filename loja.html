@@ -610,18 +610,22 @@ button:hover {
   cursor: not-allowed;
 }
 
+/* RODAPÉ FININHO E EMBUTIDO */
 footer {
-  background: rgba(0,0,0,0.95);
-  padding: 35px 20px;
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 12px 20px;
   margin-top: 50px;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
 }
 
 .copyright {
-  opacity: .7;
-  font-size: 13px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  opacity: 0.6;
+  font-size: 11px;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 0.5px;
+  margin: 0;
 }
 
 #toast {
@@ -1004,7 +1008,7 @@ footer {
   </div>
 </main>
 
-<!-- MODAL DE SUGESTÃO (ABERTO PELA BARRA DO TOPO) -->
+<!-- MODAL DE SUGESTÃO -->
 <div class="sugestao-overlay" id="sugestaoOverlay" onclick="toggleSugestaoModal()"></div>
 
 <div class="sugestao-modal-box" id="sugestaoModalBox">
@@ -1025,7 +1029,7 @@ footer {
   <button class="finalizar" onclick="enviarSugestao()">Quero que vocês vendam isso</button>
 </div>
 
-<!-- OVERLAY E GAVETA LATERAL DO CARRINHO -->
+<!-- GAVETA LATERAL DO CARRINHO -->
 <div class="carrinho-overlay" id="carrinhoOverlay" onclick="toggleCarrinho()"></div>
 
 <div class="carrinho" id="carrinhoGaveta">
@@ -1036,7 +1040,6 @@ footer {
   
   <div id="lista">Vazio</div>
 
-  <!-- EXTRAS DO CARRINHO (Frete e Cupom) -->
   <div class="secao-carrinho-extras">
     <select id="escolhaFrete" onchange="atualizar()">
       <option value="0">Selecione o bairro (Frete)</option>
@@ -1064,6 +1067,7 @@ footer {
   </button>
 </div>
 
+<!-- RODAPÉ AJUSTADO (FININHO E EMBUTIDO) -->
 <footer>
   <p class="copyright">© 2026 SIGA-ME STORE</p>
 </footer>

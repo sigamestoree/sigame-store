@@ -647,11 +647,19 @@ footer {
   font-family: 'Outfit', sans-serif;
 }
 
-/* BOTÃO FLUTUANTE DO CARRINHO (Lado Esquerdo) */
-.botao-carrinho-flutuante {
+/* CONTAINER DOS BOTÕES FLUTUANTES (Carrinho e Suporte juntos na esquerda) */
+.botoes-flutuantes-container {
   position: fixed;
   bottom: 20px;
   left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 9997;
+}
+
+/* BOTÃO FLUTUANTE DO CARRINHO */
+.botao-carrinho-flutuante {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -664,7 +672,6 @@ footer {
   font-weight: 600;
   font-size: 13px;
   transition: all 0.3s ease;
-  z-index: 9997;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
   font-family: 'Outfit', sans-serif;
 }
@@ -675,11 +682,8 @@ footer {
   border-color: rgba(255, 255, 255, 0.4);
 }
 
-/* BOTÃO DE SUPORTE (Lado Direito) */
+/* BOTÃO DE SUPORTE */
 .suporte {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -693,7 +697,6 @@ footer {
   font-weight: 600;
   font-size: 13px;
   transition: .3s;
-  z-index: 9997;
   box-shadow: 0 5px 20px rgba(0,0,0,0.3);
   font-family: 'Outfit', sans-serif;
 }
@@ -723,15 +726,16 @@ footer {
   <button onclick="toggleSugestaoModal()" title="Sugerir um produto">💡 Sugerir</button>
 </nav>
 
-<!-- BOTÃO FLUTUANTE DO CARRINHO (Lado Esquerdo) -->
-<button class="botao-carrinho-flutuante" onclick="toggleCarrinho()">
-  🛒 <span id="contadorFlutuante">Carrinho (0)</span>
-</button>
-
-<!-- BOTÃO DE SUPORTE (Lado Direito) -->
-<a href="https://wa.me/5574999019805" class="suporte" target="_blank">
-  💬 Suporte
-</a>
+<!-- CONTAINER DOS BOTÕES FLUTUANTES (Carrinho e Suporte Juntos) -->
+<div class="botoes-flutuantes-container">
+  <button class="botao-carrinho-flutuante" onclick="toggleCarrinho()">
+    🛒 <span id="contadorFlutuante">Carrinho (0)</span>
+  </button>
+  
+  <a href="https://wa.me/5574999019805" class="suporte" target="_blank">
+    💬 Suporte
+  </a>
+</div>
   
 <div id="toast">
   🛒 Produto adicionado
@@ -1067,7 +1071,7 @@ footer {
   </button>
 </div>
 
-<!-- RODAPÉ AJUSTADO (FININHO E EMBUTIDO) -->
+<!-- RODAPÉ AJUSTADO -->
 <footer>
   <p class="copyright">© 2026 SIGA-ME STORE</p>
 </footer>

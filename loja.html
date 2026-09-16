@@ -647,7 +647,7 @@ footer {
   font-family: 'Outfit', sans-serif;
 }
 
-/* CONTAINER DOS BOTÕES FLUTUANTES (Carrinho e Suporte juntos na esquerda) */
+/* CONTAINER DOS BOTÕES FLUTUANTES (Carrinho e Suporte Juntos) */
 .botoes-flutuantes-container {
   position: fixed;
   bottom: 20px;
@@ -658,8 +658,8 @@ footer {
   z-index: 9997;
 }
 
-/* BOTÃO FLUTUANTE DO CARRINHO */
-.botao-carrinho-flutuante {
+/* ESTILO UNIFICADO PARA OS BOTÕES FLUTUANTES */
+.botao-carrinho-flutuante, .suporte {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -667,6 +667,7 @@ footer {
   background: #111;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
+  text-decoration: none;
   cursor: pointer;
   border-radius: 999px;
   font-weight: 600;
@@ -676,34 +677,11 @@ footer {
   font-family: 'Outfit', sans-serif;
 }
 
-.botao-carrinho-flutuante:hover {
+.botao-carrinho-flutuante:hover, .suporte:hover {
   background: #333;
   transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.4);
-}
-
-/* BOTÃO DE SUPORTE */
-.suporte {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255,255,255,0.2);
   color: white;
-  text-decoration: none;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 13px;
-  transition: .3s;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-  font-family: 'Outfit', sans-serif;
-}
-
-.suporte:hover {
-  background: white;
-  color: black;
 }
 
 /* AJUSTE RESPONSIVO PARA CELULARES */
@@ -726,7 +704,7 @@ footer {
   <button onclick="toggleSugestaoModal()" title="Sugerir um produto">💡 Sugerir</button>
 </nav>
 
-<!-- CONTAINER DOS BOTÕES FLUTUANTES (Carrinho e Suporte Juntos) -->
+<!-- CONTAINER DOS BOTÕES FLUTUANTES (Carrinho e Suporte Padronizados) -->
 <div class="botoes-flutuantes-container">
   <button class="botao-carrinho-flutuante" onclick="toggleCarrinho()">
     🛒 <span id="contadorFlutuante">Carrinho (0)</span>

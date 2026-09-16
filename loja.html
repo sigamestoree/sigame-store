@@ -16,11 +16,54 @@ body {
   color: white;
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow-x: hidden;
+  padding-top: 55px; /* Espaço para a barra fixa no topo não cobrir o header */
+}
+
+/* NOVA BARRA FIXA NO TOPO (INÍCIO E TOPO) */
+.barra-topo-fixa {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  z-index: 9996;
+  box-sizing: border-box;
+}
+
+.barra-topo-fixa a, 
+.barra-topo-fixa button {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.3s;
+}
+
+.barra-topo-fixa a:hover, 
+.barra-topo-fixa button:hover {
+  background: white;
+  color: black;
 }
 
 header {
   text-align: center;
-  padding: 30px 20px 10px 20px;
+  padding: 20px 20px 10px 20px;
 }
 
 header img {
@@ -131,7 +174,7 @@ header h1 {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* ABAS DE NAVEGAÇÃO */
+/* ABAS DE NAVEGAÇÃO (ESTILO ORIGINAL) */
 .abas {
   display: flex;
   justify-content: center;
@@ -594,12 +637,11 @@ footer {
   font-family: 'Outfit', sans-serif;
 }
 
-/* PADRÃO UNIFICADO PARA CARRINHO, INÍCIO E TOPO */
-.botao-carrinho-flutuante,
-.botao-inicio-flutuante,
-.botao-topo-flutuante {
+/* BOTÃO FLUTUANTE DO CARRINHO (Lado Esquerdo) */
+.botao-carrinho-flutuante {
   position: fixed;
   bottom: 20px;
+  left: 20px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -615,18 +657,15 @@ footer {
   z-index: 9997;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
   font-family: 'Outfit', sans-serif;
-  text-decoration: none;
 }
 
-.botao-carrinho-flutuante:hover,
-.botao-inicio-flutuante:hover,
-.botao-topo-flutuante:hover {
+.botao-carrinho-flutuante:hover {
   background: #333;
   transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.4);
 }
 
-/* BOTÃO DE SUPORTE NO ESTILO ORIGINAL (Lado Direito) */
+/* BOTÃO DE SUPORTE (Lado Direito) */
 .suporte {
   position: fixed;
   bottom: 20px;
@@ -654,19 +693,6 @@ footer {
   color: black;
 }
 
-/* POSICIONAMENTO COMPUTADOR (Lado Esquerdo com bom espaçamento) */
-.botao-carrinho-flutuante {
-  left: 20px;
-}
-
-.botao-inicio-flutuante {
-  left: 175px;
-}
-
-.botao-topo-flutuante {
-  left: 265px;
-}
-
 /* AJUSTE RESPONSIVO PARA CELULARES */
 @media (max-width: 900px) {
   .container {
@@ -674,41 +700,24 @@ footer {
     gap: 12px;
     padding: 5px 0;
   }
-  
-  /* Oculta o botão de ir ao topo no celular para poupar espaço */
-  .botao-topo-flutuante {
-    display: none;
-  }
-
-  /* Reposiciona com folga segura o botão Início no celular */
-  .botao-inicio-flutuante {
-    left: 162px;
-    padding: 12px 14px;
-  }
-  
-  .botao-carrinho-flutuante {
-    padding: 12px 14px;
-  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- BOTÕES FLUTUANTES DO LADO ESQUERDO -->
+<!-- BARRA FIXA NO TOPO (Início e Topo) -->
+<nav class="barra-topo-fixa">
+  <a href="index.html" title="Voltar para a página inicial">🏠 Início</a>
+  <button onclick="voltarAoTopo()" title="Subir ao topo">⬆️ Topo</button>
+</nav>
+
+<!-- BOTÃO FLUTUANTE DO CARRINHO (Lado Esquerdo) -->
 <button class="botao-carrinho-flutuante" onclick="toggleCarrinho()">
   🛒 <span id="contadorFlutuante">Carrinho (0)</span>
 </button>
 
-<a href="index.html" class="botao-inicio-flutuante" title="Voltar para a página inicial">
-  🏠 Início
-</a>
-
-<button class="botao-topo-flutuante" onclick="voltarAoTopo()" title="Subir ao topo">
-  ⬆️ Topo
-</button>
-
-<!-- BOTÃO DE SUPORTE (Lado Direito - Estilo Original) -->
+<!-- BOTÃO DE SUPORTE (Lado Direito) -->
 <a href="https://wa.me/5574999019805" class="suporte" target="_blank">
   💬 Suporte
 </a>
@@ -735,6 +744,7 @@ footer {
   </div>
 </div>
 
+<!-- ABAS DE CATEGORIAS (IGUAIS AO ORIGINAL) -->
 <div class="abas">
   <button onclick="filtrarCategoria('todos')">TODOS</button>
   <button onclick="filtrarCategoria('livro')">LIVROS</button>

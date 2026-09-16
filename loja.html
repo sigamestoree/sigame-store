@@ -1374,7 +1374,18 @@ function filtrarCategoria(categoria){
 }
 
 atualizar();
+
 </script>
 
+<script>
+  // Faz com que a loja leia o link (ex: loja.html#livro) e filtre automaticamente ao abrir
+  window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash && typeof filtrarCategoria === 'function') {
+      filtrarCategoria(hash);
+    }
+  });
+</script>
+  
 </body>
 </html>

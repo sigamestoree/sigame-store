@@ -16,6 +16,12 @@ html, body {
   box-sizing: border-box;
 }
 
+/* Classe aplicada via JS para travar o fundo quando o carrinho estiver aberto */
+body.carrinho-aberto {
+  overflow: hidden !important;
+  height: 100vh;
+}
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -344,7 +350,7 @@ button:hover {
   visibility: visible;
 }
 
-/* GAVETA DO CARRINHO CORRIGIDA (FIXA NA TELA INTEIRA) */
+/* GAVETA DO CARRINHO - FIXA NA LATERAL DIREITA, OCUPANDO 100% DA ALTURA DA TELA */
 .carrinho {
   position: fixed;
   top: 0;
@@ -360,6 +366,7 @@ button:hover {
   transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
+  overflow-y: auto; /* Permite rolar verticalmente dentro do carrinho de forma isolada */
 }
 
 .carrinho.ativo {
@@ -421,6 +428,7 @@ button:hover {
   align-items: center;
   justify-content: center;
   transition: background 0.2s;
+  flex-shrink: 0;
 }
 
 .fechar-carrinho:hover {
@@ -455,11 +463,7 @@ button:hover {
 
 /* ÁREA DE ITENS DO CARRINHO */
 #lista {
-  flex: 1;
-  overflow-y: auto;
-  padding-right: 4px;
   margin-bottom: 15px;
-  max-height: 45vh;
 }
 
 .item-carrinho {
@@ -611,6 +615,7 @@ button:hover {
   cursor: pointer;
   transition: background 0.2s;
   font-family: 'Outfit', sans-serif;
+  margin-top: auto; /* Empurra o botão para baixo se houver espaço livre */
 }
 
 .finalizar:hover {
@@ -1076,6 +1081,9 @@ function toggleCarrinho() {
   let overlay = document.getElementById("carrinhoOverlay");
   gaveta.classList.toggle("ativo");
   overlay.classList.toggle("ativo");
+  
+  // Trava ou destrava a rolagem do corpo do site para não afetar o fundo
+  document.body.classList.toggle("carrinho-aberto");
 }
 
 function toggleSugestaoModal() {

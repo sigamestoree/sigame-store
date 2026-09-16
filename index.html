@@ -15,7 +15,7 @@
   box-sizing: border-box;
 }
 
-/* TRANSIÇÃO SUAVE AO CARREGAR A PÁGINA + FUNDO ESTÁTICO */
+/* TRANSIÇÃO SUAVE AO CARREGAR A PÁGINA (SEM TRANSFORM PARA NÃO QUEBRAR O FIXED) */
 body {
   background: url("Fundo.png") no-repeat center center fixed;
   background-size: cover;
@@ -23,14 +23,12 @@ body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   overflow-x: hidden;
   opacity: 0;
-  transform: translateY(10px);
-  animation: transicaoSuave 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: transicaoSuave 0.6s ease forwards;
 }
 
 @keyframes transicaoSuave {
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -133,7 +131,7 @@ body::before {
   background: #f8fafc;
 }
 
-/* BOTÃO DE SUPORTE FLUTUANTE (SEMPRE FIXO NO CANTO DA TELA) */
+/* BOTÃO DE SUPORTE FLUTUANTE (AGORA 100% FIXO NA TELA) */
 .suporte-flutuante {
   position: fixed;
   bottom: 30px;
@@ -421,7 +419,7 @@ footer {
 </head>
 <body>
 
-<!-- BOTÃO DE SUPORTE FLUTUANTE (FIXO NO CANTO DA TELA O TEMPO TODO) -->
+<!-- BOTÃO DE SUPORTE FLUTUANTE (FIXO NA TELA) -->
 <a href="https://wa.me/5574999019805" class="suporte-flutuante" target="_blank">💬 Suporte</a>
   
 <section class="hero">
@@ -455,7 +453,7 @@ footer {
   </div>
 </section>
 
-<!-- INDICADORES (LIMPOS, APENAS AS 3 VANTAGENS) -->
+<!-- INDICADORES -->
 <section class="indicadores">
   <div class="indicador">
     <h2>20+</h2>
@@ -545,7 +543,7 @@ footer {
   </div>
 </section>
 
-<div class="divisioria"></div>
+<div class="divisoria"></div>
 
 <section id="sobre">
   <h2>SOBRE A SIGA-ME STORE</h2>

@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SIGA-ME STORE - Início</title>
 
-<!-- Fontes Modernas (Mesmas da Loja) -->
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Fontes Modernas -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -23,6 +23,7 @@ body {
   overflow-x: hidden;
 }
 
+/* CAMADA ESCURA COM LUZES DE FUNDO SUTIS */
 body::before {
   content: "";
   position: fixed;
@@ -30,72 +31,83 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: radial-gradient(circle at 50% 20%, rgba(40, 40, 60, 0.4) 0%, rgba(10, 10, 10, 0.85) 80%);
   z-index: -1;
 }
 
+/* HERO SECTION CINEMATOGRÁFICA */
 .hero {
-  min-height: 35vh;
+  min-height: 45vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 50px 20px 20px 20px;
+  padding: 60px 20px 30px 20px;
+}
+
+.badge-destaque {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  color: #e2e8f0;
 }
 
 .hero img {
-  width: 120px;
+  width: 130px;
   margin-bottom: 15px;
-  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
 }
 
 .hero h1 {
   font-family: 'Outfit', sans-serif;
-  font-size: 42px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -1px;
   margin-bottom: 10px;
+  background: linear-gradient(180deg, #ffffff 0%, #cbd5e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero p {
-  font-size: 16px;
-  max-width: 800px;
-  line-height: 1.5;
-  margin-bottom: 25px;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 17px;
+  max-width: 650px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: rgba(255, 255, 255, 0.75);
 }
 
-.acoes {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.botao {
-  background: #111;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  padding: 14px 28px;
+.botao-principal {
+  background: white;
+  color: #111;
+  padding: 16px 36px;
   border-radius: 999px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 14px;
-  transition: all .3s ease;
-  display: inline-block;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+  transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   font-family: 'Outfit', sans-serif;
 }
 
-.botao:hover {
-  background: #333;
-  transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.4);
-  color: white;
+.botao-principal:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
+  background: #f8fafc;
 }
 
-/* BOTÃO DE SUPORTE PADRONIZADO IGUAL AO DA LOJA */
+/* BOTÃO DE SUPORTE PADRONIZADO */
 .suporte {
   position: fixed;
   bottom: 20px;
@@ -122,7 +134,56 @@ body::before {
   background: #333;
   transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* SEÇÃO DE CATEGORIAS RÁPIDAS (NOVO) */
+.categorias-secao {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.grid-categorias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card-categoria {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 20px;
+  text-decoration: none;
   color: white;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-categoria:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.card-categoria span {
+  font-size: 28px;
+}
+
+.card-categoria h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.card-categoria p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.4;
 }
 
 /* INDICADORES */
@@ -130,37 +191,37 @@ body::before {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 40px auto;
   text-align: center;
-  padding: 20px;
+  padding: 0 20px;
 }
 
 .indicador {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 18px 10px;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 24px 15px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
 }
 
 .indicador h2 {
   font-family: 'Outfit', sans-serif;
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 36px;
+  font-weight: 800;
   margin-bottom: 4px;
   color: #ffffff;
 }
 
 .indicador p {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
   font-weight: 500;
 }
 
 /* CARROSSEL */
 .carrossel {
-  padding: 30px 0;
+  padding: 40px 0;
   overflow: hidden;
   width: 100%;
 }
@@ -175,22 +236,22 @@ body::before {
   display: flex;
   gap: 20px;
   width: max-content;
-  animation: scroll 40s linear infinite;
+  animation: scroll 45s linear infinite;
 }
 
 .slide-track img {
-  width: 180px;
-  height: 260px;
+  width: 200px;
+  height: 280px;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 16px;
   flex-shrink: 0;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   transition: transform 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .slide-track img:hover {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 @keyframes scroll {
@@ -203,30 +264,81 @@ body::before {
   content: "";
   position: absolute;
   top: 0;
-  width: 100px;
+  width: 120px;
   height: 100%;
   z-index: 10;
 }
 
 .slider::before {
   left: 0;
-  background: linear-gradient(to right, rgba(15,15,15,0.9), transparent);
+  background: linear-gradient(to right, rgba(10,10,10,0.95), transparent);
 }
 
 .slider::after {
   right: 0;
-  background: linear-gradient(to left, rgba(15,15,15,0.9), transparent);
+  background: linear-gradient(to left, rgba(10,10,10,0.95), transparent);
+}
+
+/* DEPOIMENTOS / PROVA SOCIAL (NOVO) */
+.depoimentos-secao {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.depoimentos-secao h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.grid-depoimentos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  text-align: left;
+}
+
+.card-depoimento {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 24px;
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.estrelas {
+  color: #fbbf24;
+  font-size: 14px;
+}
+
+.card-depoimento p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.card-depoimento span {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Outfit', sans-serif;
 }
 
 .divisoria {
   width: 100vw;
   height: 1px;
   margin-left: calc(50% - 50vw);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 #sobre {
-  padding: 40px 20px;
+  padding: 50px 20px;
   text-align: center;
   max-width: 700px;
   margin: auto;
@@ -234,47 +346,47 @@ body::before {
 
 #sobre h2 {
   font-family: 'Outfit', sans-serif;
-  font-size: 26px;
-  margin-bottom: 12px;
+  font-size: 28px;
+  margin-bottom: 15px;
   font-weight: 700;
 }
 
 #sobre p {
   font-size: 15px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 footer {
-  background: rgba(15, 15, 15, 0.85);
+  background: rgba(10, 10, 10, 0.95);
   backdrop-filter: blur(12px);
-  padding: 20px;
-  margin-top: 30px;
+  padding: 25px 20px;
+  margin-top: 40px;
   text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .copyright {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
   font-family: 'Outfit', sans-serif;
 }
 
 /* RESPONSIVO PARA COMPUTADOR */
 @media(min-width: 768px) {
-  .hero h1 { font-size: 52px; }
-  .hero p { font-size: 18px; }
+  .hero h1 { font-size: 60px; }
+  .hero p { font-size: 19px; }
   .indicadores {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
   }
   .indicador {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 20px 30px;
+    flex: 1;
+    padding: 30px;
   }
-  .indicador h2 { font-size: 40px; }
-  .slide-track img { width: 210px; height: 300px; }
+  .indicador h2 { font-size: 44px; }
+  .slide-track img { width: 220px; height: 310px; }
 }
 </style>
 </head>
@@ -283,30 +395,52 @@ footer {
 <a href="https://wa.me/5574999019805" class="suporte" target="_blank">💬 Suporte</a>
   
 <section class="hero">
+  <div class="badge-destaque">✨ A curadoria cristã que transforma</div>
   <img src="Logo.png" alt="SIGA-ME STORE Logo">
   <h1>SIGA-ME STORE</h1>
-  <p>Mais do que um negócio, um propósito.</p>
+  <p>Mais do que um negócio, um propósito. Encontre leituras e materiais que edificam a sua jornada espiritual.</p>
   <div class="acoes">
-    <a href="loja.html" class="botao">VER PRODUTOS</a>
+    <a href="loja.html" class="botao-principal">ACESSAR CATÁLOGO ➔</a>
+  </div>
+</section>
+
+<!-- SEÇÃO DE CATEGORIAS RÁPIDAS -->
+<section class="categorias-secao">
+  <div class="grid-categorias">
+    <a href="loja.html" class="card-categoria">
+      <span>📖</span>
+      <h3>Livros e Devocionais</h3>
+      <p>Obras essenciais para o seu crescimento na fé e estudo diário.</p>
+    </a>
+    <a href="loja.html" class="card-categoria">
+      <span>✝️</span>
+      <h3>Bíblias Exclusivas</h3>
+      <p>Edições especiais e inspiradoras para a Palavra de Deus.</p>
+    </a>
+    <a href="loja.html" class="card-categoria">
+      <span>📓</span>
+      <h3>Blocos de Anotações</h3>
+      <p>Perfeitos para registrar seus estudos bíblicos e orações.</p>
+    </a>
   </div>
 </section>
 
 <section class="indicadores">
   <div class="indicador">
     <h2>20+</h2>
-    <p>Produtos</p>
+    <p>Obras Selecionadas</p>
   </div>
   <div class="indicador">
     <h2>100%</h2>
-    <p>Seguro</p>
+    <p>Compra Segura</p>
   </div>
   <div class="indicador">
     <h2>🚚</h2>
-    <p>Entrega Local</p>
+    <p>Entrega Local Ágil</p>
   </div>
   <div class="indicador">
     <h2>💬</h2>
-    <p>Atendimento</p>
+    <p>Suporte Dedicado</p>
   </div>
 </section>
 
@@ -363,10 +497,34 @@ footer {
 
 <div class="divisoria"></div>
 
+<!-- SEÇÃO DE DEPOIMENTOS / PROVA SOCIAL -->
+<section class="depoimentos-secao">
+  <h2>O QUE NOSSOS CLIENTES DIZEM</h2>
+  <div class="grid-depoimentos">
+    <div class="card-depoimento">
+      <div class="estrelas">★★★★★</div>
+      <p>"Comprei o livro e chegou super rápido. A qualidade do atendimento é impecável, recomendo muito!"</p>
+      <span>— Juliana M.</span>
+    </div>
+    <div class="card-depoimento">
+      <div class="estrelas">★★★★★</div>
+      <p>"Os blocos de anotações são lindos demais e o material é excelente para os cultos. Sou cliente fiel!"</p>
+      <span>— Lucas R.</span>
+    </div>
+    <div class="card-depoimento">
+      <div class="estrelas">★★★★★</div>
+      <p>"Fácil de comprar pelo WhatsApp e a entrega local foi certinha. Parabéns pelo cuidado com os produtos."</p>
+      <span>— Beatriz S.</span>
+    </div>
+  </div>
+</section>
+
+<div class="divisoria"></div>
+
 <section id="sobre">
   <h2>SOBRE A SIGA-ME STORE</h2>
   <p>
-    Oferecemos produtos selecionados com foco em qualidade, confiança e satisfação, buscando proporcionar a melhor experiência para cada cliente.
+    Oferecemos produtos selecionados com foco em qualidade, confiança e satisfação, buscando proporcionar a melhor experiência para cada cliente em sua caminhada com Cristo.
   </p>
 </section>
 

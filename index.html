@@ -133,35 +133,42 @@ body::before {
   background: #f8fafc;
 }
 
-/* SEÇÃO DE SUPORTE NO FLUXO DA PÁGINA (AGORA ROLA JUNTO) */
-.secao-suporte {
-  text-align: center;
-  padding: 30px 20px 10px 20px;
-}
-
+/* BOTÃO DE SUPORTE FIXO E SEMPRE VISÍVEL NO CANTO DA TELA */
 .suporte {
-  display: inline-flex;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
   align-items: center;
   gap: 8px;
-  padding: 14px 28px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 14px 22px;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
   text-decoration: none;
   cursor: pointer;
   border-radius: 999px;
   font-weight: 600;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  font-size: 13px;
+  z-index: 9999;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   font-family: 'Outfit', sans-serif;
   backdrop-filter: blur(10px);
+  animation: flutuar 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+@keyframes flutuar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
 }
 
 .suporte:hover {
-  background: rgba(255, 255, 255, 0.12);
-  transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: #1a1a1a;
+  border-color: #ffffff;
+  transform: scale(1.05) translateY(-4px);
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
 }
 
 /* SEÇÃO DE CATEGORIAS DIRECIONADAS */
@@ -423,6 +430,9 @@ footer {
 </style>
 </head>
 <body>
+
+<!-- BOTÃO DE SUPORTE FIXO (SEMPRE VISÍVEL NA TELA) -->
+<a href="https://wa.me/5574999019805" class="suporte" target="_blank">💬 Suporte</a>
   
 <section class="hero">
   <div class="badge-destaque">✨ A curadoria cristã que transforma</div>
@@ -555,11 +565,6 @@ footer {
   <p>
     Oferecemos produtos selecionados com foco em qualidade, confiança e satisfação, buscando proporcionar a melhor experiência para cada cliente em sua caminhada com Cristo.
   </p>
-</section>
-
-<!-- BOTÃO DE SUPORTE NO FLUXO DA PÁGINA (AGORA ROLA JUNTO COM A TELA) -->
-<section class="secao-suporte">
-  <a href="https://wa.me/5574999019805" class="suporte" target="_blank">💬 Falar com o Suporte via WhatsApp</a>
 </section>
 
 <footer>

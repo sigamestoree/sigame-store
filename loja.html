@@ -9,14 +9,34 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+/* CORREÇÃO DE RESPONSIVIDADE GLOBAL */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   background: url("Fundo.png") no-repeat center center fixed;
   background-size: cover;
   color: white;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  overflow-x: hidden;
   padding-top: 55px; /* Espaço para a barra fixa no topo */
+  opacity: 0;
+  transform: translateY(10px);
+  animation: transicaoSuave 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes transicaoSuave {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* BARRA FIXA NO TOPO */
@@ -34,7 +54,6 @@ body {
   gap: 10px;
   padding: 10px 20px;
   z-index: 9996;
-  box-sizing: border-box;
 }
 
 .barra-topo-fixa a, 
@@ -95,7 +114,6 @@ header h1 {
   color: white;
   border-radius: 16px;
   outline: none;
-  box-sizing: border-box;
   backdrop-filter: blur(12px);
   text-align: center;
   transition: .3s;
@@ -231,7 +249,6 @@ header h1 {
   display: flex;
   flex-direction: column;
   height: 100%;
-  box-sizing: border-box;
   border: 1px solid rgba(0,0,0,0.05);
   cursor: pointer;
 }
@@ -312,8 +329,8 @@ button:hover {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
   z-index: 9998;
@@ -327,18 +344,17 @@ button:hover {
   visibility: visible;
 }
 
-/* GAVETA DO CARRINHO */
+/* GAVETA DO CARRINHO CORRIGIDA PARA MOBILE */
 .carrinho {
   position: fixed;
   top: 0;
-  right: -420px;
+  right: -100%;
   width: 100%;
-  max-width: 400px;
+  max-width: 380px;
   height: 100%;
   background: white;
   color: #111;
   padding: 24px;
-  box-sizing: border-box;
   z-index: 9999;
   box-shadow: -10px 0 35px rgba(0,0,0,0.3);
   transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -367,7 +383,6 @@ button:hover {
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-sizing: border-box;
 }
 
 .sugestao-modal-box.ativo {
@@ -418,7 +433,6 @@ button:hover {
 .sugestao-modal-box select,
 .sugestao-modal-box textarea {
   width: 100%;
-  box-sizing: border-box;
   margin: 6px 0 12px 0;
   padding: 11px 14px;
   border-radius: 12px;
@@ -537,7 +551,6 @@ button:hover {
   font-family: 'Plus Jakarta Sans', sans-serif;
   background: #f8fafc;
   color: #2d3748;
-  box-sizing: border-box;
 }
 
 .cupom-box {
@@ -647,7 +660,7 @@ footer {
   font-family: 'Outfit', sans-serif;
 }
 
-/* CONTAINER DOS BOTÕES FLUTUANTES (Carrinho e Suporte Juntos) */
+/* CONTAINER DOS BOTÕES FLUTUANTES */
 .botoes-flutuantes-container {
   position: fixed;
   bottom: 20px;
@@ -658,7 +671,6 @@ footer {
   z-index: 9997;
 }
 
-/* ESTILO UNIFICADO PARA OS BOTÕES FLUTUANTES */
 .botao-carrinho-flutuante, .suporte {
   display: flex;
   align-items: center;
@@ -692,20 +704,6 @@ footer {
     padding: 5px 0;
   }
 }
-
-/* EFEITO DE TRANSIÇÃO SUAVE AO CARREGAR A PÁGINA */
-body {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: transicaoSuave 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes transicaoSuave {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 </style>
 </head>
 
@@ -718,7 +716,7 @@ body {
   <button onclick="toggleSugestaoModal()" title="Sugerir um produto">💡 Sugerir</button>
 </nav>
 
-<!-- CONTAINER DOS BOTÕES FLUTUANTES (Carrinho e Suporte Padronizados) -->
+<!-- CONTAINER DOS BOTÕES FLUTUANTES -->
 <div class="botoes-flutuantes-container">
   <button class="botao-carrinho-flutuante" onclick="toggleCarrinho()">
     🛒 <span id="contadorFlutuante">Carrinho (0)</span>
@@ -1388,11 +1386,9 @@ function filtrarCategoria(categoria){
 }
 
 atualizar();
-
 </script>
 
 <script>
-  // Faz com que a loja leia o link (ex: loja.html#livro) e filtre automaticamente ao abrir
   window.addEventListener('DOMContentLoaded', () => {
     const hash = window.location.hash.replace('#', '');
     if (hash && typeof filtrarCategoria === 'function') {

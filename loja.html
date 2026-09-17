@@ -665,15 +665,15 @@ footer {
   font-family: 'Outfit', sans-serif;
 }
 
-/* ESTILO IDÊNTICO AO BOTÃO DE SUPORTE FLUTUANTE DA PÁGINA INICIAL */
+/* BOTÕES FLUTUANTES FIXOS NA TELA (ACOMPANHAM A ROLAGEM CONSTANTEMENTE) */
 .botoes-flutuantes-container {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  z-index: 99999;
+  position: fixed !important;
+  bottom: 30px !important;
+  right: 30px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  z-index: 99999 !important;
 }
 
 .botao-carrinho-flutuante, .suporte {
@@ -729,7 +729,7 @@ footer {
   <button onclick="toggleSugestaoModal()" title="Sugerir um produto">💡 Sugerir</button>
 </nav>
 
-<!-- CONTAINER DOS BOTÕES FLUTUANTES (CARRINHO E SUPORTE IDÊNTICOS À HOME) -->
+<!-- CONTAINER DOS BOTÕES FLUTUANTES FIXOS NA TELA -->
 <div class="botoes-flutuantes-container">
   <button class="botao-carrinho-flutuante" onclick="toggleCarrinho()">
     🛒 <span id="contadorFlutuante">Carrinho (0)</span>

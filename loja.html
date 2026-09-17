@@ -34,7 +34,7 @@ body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   padding-top: 55px; /* Espaço para a barra fixa no topo */
   opacity: 0;
-  animation: transicaoSuave 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; /* REMOVIDO O TRANSFORM DAQUI PARA NÃO QUEBRAR O FIXED */
+  animation: transicaoSuave 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes transicaoSuave {
@@ -343,7 +343,7 @@ button:hover {
   z-index: 9998;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
 }
 
 .carrinho-overlay.ativo, .sugestao-overlay.ativo {
@@ -351,11 +351,11 @@ button:hover {
   visibility: visible;
 }
 
-/* GAVETA DO CARRINHO - FIXA NA LATERAL DIREITA */
+/* GAVETA DO CARRINHO - FIXA NA LATERAL DIREITA COM TRANSIÇÃO SUAVE DE ENTRADA/SAÍDA */
 .carrinho {
   position: fixed;
   top: 0;
-  right: -100%;
+  right: -420px; /* Mantém totalmente escondido fora da tela à direita */
   width: 100%;
   max-width: 380px;
   height: 100vh;
@@ -364,14 +364,14 @@ button:hover {
   padding: 24px;
   z-index: 9999;
   box-shadow: -10px 0 35px rgba(0,0,0,0.3);
-  transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Transição suave de deslizar */
   display: flex;
   flex-direction: column;
   overflow-y: auto;
 }
 
 .carrinho.ativo {
-  right: 0;
+  right: 0; /* Desliza para dentro da tela */
 }
 
 /* MODAL DE SUGESTÃO (CENTRALIZADO) */

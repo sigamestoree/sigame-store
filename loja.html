@@ -355,7 +355,7 @@ button:hover {
 .carrinho {
   position: fixed;
   top: 0;
-  right: -420px; /* Mantém totalmente escondido fora da tela à direita */
+  right: -420px; 
   width: 100%;
   max-width: 380px;
   height: 100vh;
@@ -364,14 +364,14 @@ button:hover {
   padding: 24px;
   z-index: 9999;
   box-shadow: -10px 0 35px rgba(0,0,0,0.3);
-  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Transição suave de deslizar */
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
 }
 
 .carrinho.ativo {
-  right: 0; /* Desliza para dentro da tela */
+  right: 0; 
 }
 
 /* MODAL DE SUGESTÃO (CENTRALIZADO) */
@@ -666,7 +666,7 @@ footer {
   font-family: 'Outfit', sans-serif;
 }
 
-/* BOTÕES FLUTUANTES FIXOS NA TELA (ACOMPANHAM A ROLAGEM CONSTANTEMENTE) */
+/* BOTÕES FLUTUANTES FIXOS NA TELA */
 .botoes-flutuantes-container {
   position: fixed !important;
   bottom: 30px !important;
@@ -674,7 +674,15 @@ footer {
   display: flex !important;
   align-items: center !important;
   gap: 10px !important;
-  z-index: 99999 !important;
+  z-index: 997 !important; /* Mantido abaixo da gaveta do carrinho */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Esconde os botões flutuantes automaticamente quando o carrinho estiver aberto */
+body.carrinho-aberto .botoes-flutuantes-container {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .botao-carrinho-flutuante, .suporte {

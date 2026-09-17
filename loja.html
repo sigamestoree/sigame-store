@@ -366,7 +366,7 @@ button:hover {
   transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
-  overflow-y: auto; /* Permite rolar verticalmente dentro do carrinho de forma isolada */
+  overflow-y: auto;
 }
 
 .carrinho.ativo {
@@ -615,7 +615,7 @@ button:hover {
   cursor: pointer;
   transition: background 0.2s;
   font-family: 'Outfit', sans-serif;
-  margin-top: auto; /* Empurra o botão para baixo se houver espaço livre */
+  margin-top: auto;
 }
 
 .finalizar:hover {
@@ -665,40 +665,48 @@ footer {
   font-family: 'Outfit', sans-serif;
 }
 
-/* CONTAINER DOS BOTÕES FLUTUANTES */
+/* ESTILO IDÊNTICO AO BOTÃO DE SUPORTE FLUTUANTE DA PÁGINA INICIAL */
 .botoes-flutuantes-container {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
+  bottom: 30px;
+  right: 30px;
   display: flex;
   align-items: center;
   gap: 10px;
-  z-index: 9997;
+  z-index: 99999;
 }
 
 .botao-carrinho-flutuante, .suporte {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 18px;
-  background: #111;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 14px 22px;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
   text-decoration: none;
   cursor: pointer;
   border-radius: 999px;
   font-weight: 600;
   font-size: 13px;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   font-family: 'Outfit', sans-serif;
+  backdrop-filter: blur(10px);
+  animation: flutuar 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+@keyframes flutuar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
 }
 
 .botao-carrinho-flutuante:hover, .suporte:hover {
-  background: #333;
-  transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.4);
-  color: white;
+  background: #1a1a1a;
+  border-color: #ffffff;
+  transform: scale(1.05) translateY(-4px);
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
 }
 
 /* AJUSTE RESPONSIVO PARA CELULARES */
@@ -721,7 +729,7 @@ footer {
   <button onclick="toggleSugestaoModal()" title="Sugerir um produto">💡 Sugerir</button>
 </nav>
 
-<!-- CONTAINER DOS BOTÕES FLUTUANTES -->
+<!-- CONTAINER DOS BOTÕES FLUTUANTES (CARRINHO E SUPORTE IDÊNTICOS À HOME) -->
 <div class="botoes-flutuantes-container">
   <button class="botao-carrinho-flutuante" onclick="toggleCarrinho()">
     🛒 <span id="contadorFlutuante">Carrinho (0)</span>
@@ -1082,7 +1090,6 @@ function toggleCarrinho() {
   gaveta.classList.toggle("ativo");
   overlay.classList.toggle("ativo");
   
-  // Trava ou destrava a rolagem do corpo do site para não afetar o fundo
   document.body.classList.toggle("carrinho-aberto");
 }
 

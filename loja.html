@@ -1295,7 +1295,7 @@ function enviar(){
     msg += `🚚 *Entrega:* ${nomeBairro}\n`;
   }
 
-  msg += `💰 *Total dos Produtos:* R$ ${totalGeral.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}${selecaoFreteVal === "combinar" ? " (Mais frete a combinar)" : ""}\n\n🏦`;
+  msg += `💰 *Total dos Produtos:* R$ ${totalGeral.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}${selecaoFreteVal === "combinar" ? " (Mais frete a combinar)" : ""}`;
 
   window.open("https://wa.me/5574999019805?text=" + encodeURIComponent(msg), "_blank");
 

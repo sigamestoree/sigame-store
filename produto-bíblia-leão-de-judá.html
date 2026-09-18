@@ -29,9 +29,10 @@ body{
     display:grid;
     grid-template-columns:120px 1fr 350px;
     gap:30px;
-    align-items: start;
+    align-items: start; /* Alinhamento perfeito no topo */
 }
 
+/* Área de miniaturas com rolagem interna e altura fixa */
 .miniaturas{
     display:flex;
     flex-direction:column;
@@ -41,15 +42,16 @@ body{
     padding-right: 4px;
 }
 
+/* Estilização moderna e sutil da barra de rolagem interna */
 .miniaturas::-webkit-scrollbar {
     width: 4px;
 }
 .miniaturas::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.2);
     border-radius: 10px;
 }
 .miniaturas::-webkit-scrollbar-thumb:hover {
-    background: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.4);
 }
 
 .miniaturas img{
@@ -67,7 +69,7 @@ body{
     border-color: rgba(255, 255, 255, 0.6);
 }
 
-/* Botão de mais fotos com a borda fina idêntica ao botão de suporte */
+/* Botão de mais fotos com borda fina e elegante (idêntica ao botão de suporte) */
 .btn-mais-fotos {
     width: 90px;
     height: 90px;
@@ -295,6 +297,7 @@ Disponíveis em estoque: 1
 
 <script>
 
+/* Script que exibe as primeiras 3 miniaturas, insere o botão de '+' com a borda idêntica ao suporte e expande o restante ao clicar */
 document.addEventListener("DOMContentLoaded", () => {
     const painel = document.getElementById("painelMiniaturas");
     const imagens = painel.querySelectorAll("img");

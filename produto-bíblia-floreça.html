@@ -29,12 +29,27 @@ body{
     display:grid;
     grid-template-columns:120px 1fr 350px;
     gap:30px;
+    align-items: start;
 }
 
 .miniaturas{
     display:flex;
     flex-direction:column;
     gap:10px;
+    max-height: 480px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.miniaturas::-webkit-scrollbar {
+    width: 4px;
+}
+.miniaturas::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+}
+.miniaturas::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.3);
 }
 
 .miniaturas img{
@@ -44,18 +59,20 @@ body{
     border-radius:10px;
     cursor:pointer;
     border:2px solid transparent;
+    flex-shrink: 0;
+    transition: 0.2s ease;
 }
 
 .miniaturas img:hover{
-    border-color:#ff5722;
+    border-color: rgba(255, 255, 255, 0.6);
 }
 
-/* Estilo para o botão de mais fotos */
+/* Botão de mais fotos sem borda, seguindo o estilo moderno */
 .btn-mais-fotos {
     width: 90px;
     height: 90px;
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px dashed white;
+    background: #111;
+    border: none;
     border-radius: 10px;
     color: white;
     font-size: 24px;
@@ -64,12 +81,12 @@ body{
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.2s ease;
+    flex-shrink: 0;
 }
 
 .btn-mais-fotos:hover {
     background: #ff5722;
-    border-color: #ff5722;
 }
 
 .principal{
@@ -167,7 +184,8 @@ ul{
     .miniaturas{
         flex-direction:row;
         overflow-x:auto;
-        gap:10px;
+        overflow-y:hidden;
+        max-height: none;
         padding-bottom:10px;
     }
 
@@ -277,30 +295,26 @@ Disponíveis em estoque: Esgotado ❌
 
 <script>
 
-// Função para gerenciar a exibição das miniaturas (mostra 3 e o botão de "+" se houver mais de 4)
 document.addEventListener("DOMContentLoaded", () => {
     const painel = document.getElementById("painelMiniaturas");
     const imagens = painel.querySelectorAll("img");
 
     if (imagens.length > 4) {
-        // Esconde todas a partir da 4ª imagem (índice 3 em diante)
         for (let i = 3; i < imagens.length; i++) {
             imagens[i].style.display = "none";
         }
 
-        // Cria o botão "+"
         const btnMais = document.createElement("div");
         btnMais.className = "btn-mais-fotos";
         btnMais.innerHTML = "+";
         btnMais.title = "Ver mais fotos";
 
-        // Ao clicar no botão, revela todas as imagens escondidas e remove o botão
         btnMais.onclick = () => {
             imagens.forEach(img => img.style.display = "block");
             btnMais.remove();
+            painel.style.maxHeight = "none";
         };
 
-        // Insere o botão logo após a 3ª imagem
         imagens[2].after(btnMais);
     }
 });

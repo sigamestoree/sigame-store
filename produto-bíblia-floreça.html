@@ -39,6 +39,8 @@ body{
 
 .miniaturas img{
     width:90px;
+    height: 90px;
+    object-fit: cover;
     border-radius:10px;
     cursor:pointer;
     border:2px solid transparent;
@@ -46,6 +48,28 @@ body{
 
 .miniaturas img:hover{
     border-color:#ff5722;
+}
+
+/* Estilo para o botão de mais fotos */
+.btn-mais-fotos {
+    width: 90px;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px dashed white;
+    border-radius: 10px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-mais-fotos:hover {
+    background: #ff5722;
+    border-color: #ff5722;
 }
 
 .principal{
@@ -147,8 +171,9 @@ ul{
         padding-bottom:10px;
     }
 
-    .miniaturas img{
+    .miniaturas img, .btn-mais-fotos{
         width:70px;
+        height:70px;
         flex-shrink:0;
     }
 
@@ -189,37 +214,20 @@ ul{
 </div>
 
 <div class="container">
-<div class="miniaturas">
+<div class="miniaturas" id="painelMiniaturas">
 
-<img src="Bfloreça.png"
-onclick="trocarImagem(this.src)">
+    <!-- Suas imagens -->
+    <img src="Bfloreça.png" onclick="trocarImagem(this.src)">
+    <img src="bibliafloreca2.png" onclick="trocarImagem(this.src)">
+    <img src="bibliafloreca3.png" onclick="trocarImagem(this.src)">
+    <img src="bibliafloreca4.png" onclick="trocarImagem(this.src)">
+    <img src="bibliafloreca5.png" onclick="trocarImagem(this.src)">
+    <img src="bibliafloreca6.png" onclick="trocarImagem(this.src)">
+    <img src="bibliafloreca7.png" onclick="trocarImagem(this.src)">
+    <img src="bibliafloreca8.png" onclick="trocarImagem(this.src)">
+    <img src="bibliafloreca9.png" onclick="trocarImagem(this.src)">
+    <img src="bibliafloreca10.png" onclick="trocarImagem(this.src)">
 
-<img src="bibliafloreca2.png"
-onclick="trocarImagem(this.src)">
-
-<img src="bibliafloreca3.png"
-onclick="trocarImagem(this.src)">
-
-<img src="bibliafloreca4.png"
-onclick="trocarImagem(this.src)">
-
-<img src="bibliafloreca5.png"
-onclick="trocarImagem(this.src)">
-
-<img src="bibliafloreca6.png"
-onclick="trocarImagem(this.src)">
-
-<img src="bibliafloreca7.png"
-onclick="trocarImagem(this.src)">
-
-<img src="bibliafloreca8.png"
-onclick="trocarImagem(this.src)">
-
-<img src="bibliafloreca9.png"
-onclick="trocarImagem(this.src)">
-
-<img src="bibliafloreca10.png"
-onclick="trocarImagem(this.src)">
 </div>
     
 <div class="principal">
@@ -268,6 +276,34 @@ Disponíveis em estoque: Esgotado ❌
 </div>
 
 <script>
+
+// Função para gerenciar a exibição das miniaturas (mostra 3 e o botão de "+" se houver mais de 4)
+document.addEventListener("DOMContentLoaded", () => {
+    const painel = document.getElementById("painelMiniaturas");
+    const imagens = painel.querySelectorAll("img");
+
+    if (imagens.length > 4) {
+        // Esconde todas a partir da 4ª imagem (índice 3 em diante)
+        for (let i = 3; i < imagens.length; i++) {
+            imagens[i].style.display = "none";
+        }
+
+        // Cria o botão "+"
+        const btnMais = document.createElement("div");
+        btnMais.className = "btn-mais-fotos";
+        btnMais.innerHTML = "+";
+        btnMais.title = "Ver mais fotos";
+
+        // Ao clicar no botão, revela todas as imagens escondidas e remove o botão
+        btnMais.onclick = () => {
+            imagens.forEach(img => img.style.display = "block");
+            btnMais.remove();
+        };
+
+        // Insere o botão logo após a 3ª imagem
+        imagens[2].after(btnMais);
+    }
+});
 
 function add(nome, preco, tipo = "encomenda") {
     let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];

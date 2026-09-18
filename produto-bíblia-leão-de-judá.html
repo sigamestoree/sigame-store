@@ -9,218 +9,172 @@
 <style>
 
 body{
-    margin:0;
-    padding:30px;
-    background:url("Fundo.png") no-repeat center center fixed;
-    background-size:cover;
-    color:white;
-    font-family:Arial,sans-serif;
+    margin:0;
+    padding:30px;
+    background:url("Fundo.png") no-repeat center center fixed;
+    background-size:cover;
+    color:white;
+    font-family:Arial,sans-serif;
 }
 
 .voltar{
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
 }
 
 .container{
-    max-width:1400px;
-    margin:30px auto;
-    display:grid;
-    grid-template-columns:120px 1fr 350px;
-    gap:30px;
-    align-items: start; /* Alinhamento perfeito no topo */
+    max-width:1400px;
+    margin:30px auto;
+    display:grid;
+    grid-template-columns:120px 1fr 350px;
+    gap:30px;
 }
 
-/* Área de miniaturas com rolagem interna e altura fixa */
 .miniaturas{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    max-height: 480px;
-    overflow-y: auto;
-    padding-right: 4px;
-}
-
-/* Estilização moderna e sutil da barra de rolagem interna */
-.miniaturas::-webkit-scrollbar {
-    width: 4px;
-}
-.miniaturas::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.2);
-    border-radius: 10px;
-}
-.miniaturas::-webkit-scrollbar-thumb:hover {
-    background: rgba(255,255,255,0.4);
+    display:flex;
+    flex-direction:column;
+    gap:10px;
 }
 
 .miniaturas img{
-    width:90px;
-    height: 90px;
-    object-fit: cover;
-    border-radius:10px;
-    cursor:pointer;
-    border:2px solid transparent;
-    flex-shrink: 0;
-    transition: 0.2s ease;
+    width:90px;
+    border-radius:10px;
+    cursor:pointer;
+    border:2px solid transparent;
 }
 
 .miniaturas img:hover{
-    border-color: rgba(255, 255, 255, 0.6);
-}
-
-/* Botão de mais fotos com borda fina e elegante (idêntica ao botão de suporte) */
-.btn-mais-fotos {
-    width: 90px;
-    height: 90px;
-    background: #111;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 10px;
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: 0.2s ease;
-    flex-shrink: 0;
-}
-
-.btn-mais-fotos:hover {
-    background: #ff5722;
-    border-color: #ff5722;
+    border-color:#ff5722;
 }
 
 .principal{
-    background:white;
-    border-radius:20px;
-    padding:20px;
-    text-align:center;
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
 }
 
 .principal img{
-    max-width:450px;
-    width:100%;
+    max-width:450px;
+    width:100%;
 }
 
 .info{
-    background:white;
-    color:black;
-    padding:25px;
-    border-radius:20px;
+    background:white;
+    color:black;
+    padding:25px;
+    border-radius:20px;
 }
 
 .info h1{
-    margin-top:0;
+    margin-top:0;
 }
 
 .preco{
-    font-size:40px;
-    font-weight:bold;
-    color:#ff5722;
+    font-size:40px;
+    font-weight:bold;
+    color:#ff5722;
 }
 
 .preco-antigo{
-    text-decoration: line-through;
-    opacity: .7;
-    font-size: 14px;
-    margin-top: -5px;
-    margin-bottom: 15px;
+    text-decoration: line-through;
+    opacity: .7;
+    font-size: 14px;
+    margin-top: -5px;
+    margin-bottom: 15px;
 }
 
 .estoque{
-    color: black;
-    font-weight: bold;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    color: black;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .botao{
-    width:100%;
-    padding:15px;
-    border:none;
-    border-radius:10px;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-    margin-top:10px;
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:10px;
 }
 
 .adicionar{
-    background:#111;
-    color:white;
+    background:#111;
+    color:white;
 }
 
 .adicionar:hover{
-    background:#ff5722;
+    background:#ff5722;
 }
 
 ul{
-    line-height:2;
+    line-height:2;
 }
 
 #toast{
-    position:fixed;
-    bottom:25px;
-    right:25px;
-    background:white;
-    color:black;
-    padding:16px 22px;
-    border-radius:16px;
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
-    opacity:0;
-    transform:translateY(20px);
-    transition:.35s;
-    z-index:9999;
-    font-weight:bold;
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:white;
+    color:black;
+    padding:16px 22px;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    opacity:0;
+    transform:translateY(20px);
+    transition:.35s;
+    z-index:9999;
+    font-weight:bold;
 }
 
 @media (max-width: 768px){
 
-    .container{
-        display:flex;
-        flex-direction:column;
-        gap:20px;
-    }
+    .container{
+        display:flex;
+        flex-direction:column;
+        gap:20px;
+    }
 
-    .miniaturas{
-        flex-direction:row;
-        overflow-x:auto;
-        overflow-y:hidden;
-        max-height: none;
-        padding-bottom:10px;
-    }
+    .miniaturas{
+        flex-direction:row;
+        overflow-x:auto;
+        gap:10px;
+        padding-bottom:10px;
+    }
 
-    .miniaturas img, .btn-mais-fotos{
-        width:70px;
-        height:70px;
-        flex-shrink:0;
-    }
+    .miniaturas img{
+        width:70px;
+        flex-shrink:0;
+    }
 
-    .principal{
-        width:auto;
-    }
+    .principal{
+        width:auto;
+    }
 
-    .principal img{
-        max-width:100%;
-        height:auto;
-    }
+    .principal img{
+        max-width:100%;
+        height:auto;
+    }
 
-    .info{
-        width:auto;
-    }
+    .info{
+        width:auto;
+    }
 
-    .info h1{
-        font-size:30px;
-    }
+    .info h1{
+        font-size:30px;
+    }
 
-    .preco{
-        font-size:32px;
-    }
+    .preco{
+        font-size:32px;
+    }
 
 }
-    
+    
 </style>
 </head>
 
@@ -235,19 +189,33 @@ ul{
 </div>
 
 <div class="container">
-<div class="miniaturas" id="painelMiniaturas">
+<div class="miniaturas">
 
-<img src="Brujaoleaodejuda.png" onclick="trocarImagem(this.src)">
-<img src="biblialeaodejuda3.png" onclick="trocarImagem(this.src)">
-<img src="biblialeaodejuda4.png" onclick="trocarImagem(this.src)">
-<img src="biblialeaodejuda5.png" onclick="trocarImagem(this.src)">
-<img src="biblialeaodejuda6.png" onclick="trocarImagem(this.src)">
-<img src="biblialeaodejuda7.png" onclick="trocarImagem(this.src)">
-<img src="biblialeaodejuda8.png" onclick="trocarImagem(this.src)">
-<img src="biblialeaodejuda9.png" onclick="trocarImagem(this.src)">
+<img src="Brujaoleaodejuda.png"
+onclick="trocarImagem(this.src)">
 
+<img src="biblialeaodejuda3.png"
+onclick="trocarImagem(this.src)">
+
+<img src="biblialeaodejuda4.png"
+onclick="trocarImagem(this.src)">
+
+<img src="biblialeaodejuda5.png"
+onclick="trocarImagem(this.src)">
+
+<img src="biblialeaodejuda6.png"
+onclick="trocarImagem(this.src)">
+
+<img src="biblialeaodejuda7.png"
+onclick="trocarImagem(this.src)">
+
+<img src="biblialeaodejuda8.png"
+onclick="trocarImagem(this.src)">
+
+<img src="biblialeaodejuda9.png"
+onclick="trocarImagem(this.src)">
 </div>
-    
+    
 <div class="principal">
 <img
 id="imagemPrincipal"
@@ -297,60 +265,35 @@ Disponíveis em estoque: 1
 
 <script>
 
-/* Script que exibe as primeiras 3 miniaturas, insere o botão de '+' com a borda idêntica ao suporte e expande o restante ao clicar */
-document.addEventListener("DOMContentLoaded", () => {
-    const painel = document.getElementById("painelMiniaturas");
-    const imagens = painel.querySelectorAll("img");
-
-    if (imagens.length > 4) {
-        for (let i = 3; i < imagens.length; i++) {
-            imagens[i].style.display = "none";
-        }
-
-        const btnMais = document.createElement("div");
-        btnMais.className = "btn-mais-fotos";
-        btnMais.innerHTML = "+";
-        btnMais.title = "Ver mais fotos";
-
-        btnMais.onclick = () => {
-            imagens.forEach(img => img.style.display = "block");
-            btnMais.remove();
-            painel.style.maxHeight = "none";
-        };
-
-        imagens[2].after(btnMais);
-    }
-});
-
 function add(nome, preco, tipo = "pronta_entrega") {
-    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-    carrinho.push({
-        nome: nome,
-        preco: preco,
-        tipo: tipo
-    });
+    carrinho.push({
+        nome: nome,
+        preco: preco,
+        tipo: tipo
+    });
 
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
-    mostrarToast();
+    mostrarToast();
 }
 
 function mostrarToast(){
-    let toast = document.getElementById("toast");
-    toast.style.opacity = "1";
-    toast.style.transform = "translateY(0)";
-    
-    setTimeout(() => {
-        toast.style.opacity = "0";
-        toast.style.transform = "translateY(20px)";
-    }, 2000);
+    let toast = document.getElementById("toast");
+    toast.style.opacity = "1";
+    toast.style.transform = "translateY(0)";
+    
+    setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.transform = "translateY(20px)";
+    }, 2000);
 }
 
 function trocarImagem(src){
-    document.getElementById(
-        "imagemPrincipal"
-    ).src = src;
+    document.getElementById(
+        "imagemPrincipal"
+    ).src = src;
 }
 
 </script>

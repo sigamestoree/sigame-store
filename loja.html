@@ -65,8 +65,8 @@ body {
 
 .barra-topo-fixa a, 
 .barra-topo-fixa button {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(30, 30, 30, 0.9); /* Fundo sólido translúcido para evitar o efeito visual de borda */
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
   padding: 8px 14px;
   border-radius: 10px;
@@ -116,12 +116,11 @@ header h1 {
   width: 100%;
   padding: 14px 24px;
   font-size: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(30, 30, 30, 0.85); /* Fundo sólido e limpo sem blur interno */
   color: white;
   border-radius: 16px;
   outline: none;
-  backdrop-filter: blur(12px);
   text-align: center;
   transition: .3s;
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -132,7 +131,7 @@ header h1 {
 }
 
 .pesquisa:focus {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(45, 45, 45, 0.95);
   border-color: rgba(255, 255, 255, 0.4);
 }
 
@@ -211,9 +210,8 @@ header h1 {
 }
 
 .abas button {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(30, 30, 30, 0.9); /* Fundo sólido translúcido limpo */
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
   padding: 10px 20px;
   border-radius: 14px;
@@ -674,7 +672,7 @@ footer {
   display: flex !important;
   align-items: center !important;
   gap: 10px !important;
-  z-index: 997 !important; /* Mantido abaixo da gaveta do carrinho */
+  z-index: 997 !important;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
@@ -1295,7 +1293,7 @@ function enviar(){
     msg += `🚚 *Entrega:* ${nomeBairro}\n`;
   }
 
-  msg += `💰 *Total dos Produtos:* R$ ${totalGeral.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}${selecaoFreteVal === "combinar" ? " (Mais frete a combinar)" : ""}`;
+  msg += `💰 *Total dos Produtos:* R$ ${totalGeral.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}${selecaoFreteVal === "combinar" ? " (Mais frete a combinar)" : ""}\n\n🏦`;
 
   window.open("https://wa.me/5574999019805?text=" + encodeURIComponent(msg), "_blank");
 

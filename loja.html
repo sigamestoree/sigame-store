@@ -65,7 +65,7 @@ body {
 
 .barra-topo-fixa a, 
 .barra-topo-fixa button {
-  background: rgba(30, 30, 30, 0.9); /* Fundo sólido translúcido para evitar o efeito visual de borda */
+  background: rgba(30, 30, 30, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
   padding: 8px 14px;
@@ -89,11 +89,14 @@ body {
 
 header {
   text-align: center;
-  padding: 20px 20px 10px 20px;
+  padding: 15px 20px 5px 20px;
+  margin-bottom: -5px; /* Compensa o aumento da logo para não empurrar o site */
 }
 
 header img {
-  width: 110px;
+  width: 170px; /* Logo aumentada preenchendo o espaço */
+  max-width: 100%;
+  height: auto;
 }
 
 header h1 {
@@ -117,7 +120,7 @@ header h1 {
   padding: 14px 24px;
   font-size: 15px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(30, 30, 30, 0.85); /* Fundo sólido e limpo sem blur interno */
+  background: rgba(30, 30, 30, 0.85);
   color: white;
   border-radius: 16px;
   outline: none;
@@ -210,7 +213,7 @@ header h1 {
 }
 
 .abas button {
-  background: rgba(30, 30, 30, 0.9); /* Fundo sólido translúcido limpo */
+  background: rgba(30, 30, 30, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
   padding: 10px 20px;
@@ -349,7 +352,7 @@ button:hover {
   visibility: visible;
 }
 
-/* GAVETA DO CARRINHO - FIXA NA LATERAL DIREITA COM TRANSIÇÃO SUAVE DE ENTRADA/SAÍDA */
+/* GAVETA DO CARRINHO */
 .carrinho {
   position: fixed;
   top: 0;
@@ -372,7 +375,7 @@ button:hover {
   right: 0; 
 }
 
-/* MODAL DE SUGESTÃO (CENTRALIZADO) */
+/* MODAL DE SUGESTÃO */
 .sugestao-modal-box {
   position: fixed;
   top: 50%;
@@ -676,7 +679,6 @@ footer {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Esconde os botões flutuantes automaticamente quando o carrinho estiver aberto */
 body.carrinho-aberto .botoes-flutuantes-container {
   opacity: 0;
   visibility: hidden;

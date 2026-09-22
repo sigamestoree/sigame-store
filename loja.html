@@ -32,7 +32,7 @@ body {
   background-size: cover;
   color: white;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  padding-top: 34px; /* Próximo ao topo */
+  padding-top: 45px; /* Ajustado para aproximar o topo */
   opacity: 0;
   animation: transicaoSuave 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -59,7 +59,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
-  padding: 5px 20px;
+  padding: 8px 20px;
   z-index: 9996;
 }
 
@@ -68,8 +68,8 @@ body {
   background: rgba(30, 30, 30, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
-  padding: 4px 10px;
-  border-radius: 8px;
+  padding: 6px 12px;
+  border-radius: 10px;
   font-weight: 600;
   font-size: 12px;
   cursor: pointer;
@@ -89,22 +89,21 @@ body {
 
 header {
   text-align: center;
-  padding: 0 20px;
-  margin-top: -4px; /* Puxa o cabeçalho mais para cima */
+  padding: 5px 20px 0px 20px; /* Espaço superior reduzido */
   margin-bottom: 0px; 
 }
 
 header img {
-  width: 110px; /* Mantém a logo compacta como estava */
+  width: 200px; /* Logo aumentada um pouco mais */
   max-width: 100%;
   height: auto;
 }
 
 header h1 {
   font-family: 'Outfit', sans-serif;
-  font-size: 26px; /* Nome da loja restaurado ao tamanho normal */
-  margin-top: 2px;
-  margin-bottom: 2px;
+  font-size: 32px;
+  margin-top: 5px;
+  margin-bottom: 10px;
   font-weight: 700;
   letter-spacing: -0.5px;
 }
@@ -114,17 +113,17 @@ header h1 {
   position: relative;
   width: 90%;
   max-width: 480px;
-  margin: 2px auto; /* Próximo à logo */
+  margin: 10px auto; /* Espaço reduzido entre a logo e a barra de pesquisa */
 }
 
 .pesquisa {
   width: 100%;
-  padding: 8px 18px;
-  font-size: 13px;
+  padding: 12px 24px;
+  font-size: 15px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: rgba(30, 30, 30, 0.85);
   color: white;
-  border-radius: 12px;
+  border-radius: 16px;
   outline: none;
   text-align: center;
   transition: .3s;
@@ -149,8 +148,8 @@ header h1 {
   background: rgba(20, 20, 20, 0.95);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  margin-top: 4px;
+  border-radius: 14px;
+  margin-top: 8px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   display: none;
   z-index: 1000;
@@ -161,7 +160,7 @@ header h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 14px;
+  padding: 10px 16px;
   font-size: 12px;
   color: rgba(255,255,255,0.6);
   border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -185,11 +184,11 @@ header h1 {
 .historico-lista {
   list-style: none;
   margin: 0;
-  padding: 4px 0;
+  padding: 6px 0;
 }
 
 .historico-lista li {
-  padding: 8px 14px;
+  padding: 10px 16px;
   font-size: 13px;
   cursor: pointer;
   color: white;
@@ -208,8 +207,8 @@ header h1 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 6px;
-  margin: 4px auto 10px auto; /* Abas restauradas ao tamanho normal e próximas */
+  gap: 10px;
+  margin: 15px auto; /* Espaço reduzido nas abas */
   padding: 0 15px;
   max-width: 900px;
 }
@@ -218,10 +217,10 @@ header h1 {
   background: rgba(30, 30, 30, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
-  padding: 6px 12px; /* Tamanho normal das abas */
-  border-radius: 10px;
+  padding: 9px 18px;
+  border-radius: 14px;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
   transition: .3s;
   font-family: 'Outfit', sans-serif;
@@ -243,7 +242,7 @@ header h1 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
-  padding: 5px 0;
+  padding: 10px 0;
 }
 
 /* CARDS DE PRODUTO */
